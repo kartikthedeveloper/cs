@@ -167,23 +167,23 @@ text-white">
 
               <div className="mt-6 flex gap-3 flex-wrap">
 
-                <span className="bg-white/20 px-4 py-2 rounded-full">
+                <Link href="/roadmap" className="bg-white/20 px-4 py-2 rounded-full">
 
                   Roadmaps
 
-                </span>
+                </Link>
 
-                <span className="bg-white/20 px-4 py-2 rounded-full">
+                {/* <span className="bg-white/20 px-4 py-2 rounded-full">
 
                   Projects
 
-                </span>
+                </span> */}
 
-                <span className="bg-white/20 px-4 py-2 rounded-full">
+                <Link href="/interview" className="bg-white/20 px-4 py-2 rounded-full">
 
                   Interview
 
-                </span>
+                </Link>
 
               </div>
               <div className="mt-10">

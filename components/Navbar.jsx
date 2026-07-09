@@ -89,8 +89,8 @@ export default function Navbar({ setSidebarOpen }) {
             <Image
               src="/Images/logo.png"
               alt="Logo"
-              width={120}
-              height={120}
+              width={160}
+              height={150}
               className="transition-transform ml-4 duration-300 hover:scale-105"
               priority
             />
