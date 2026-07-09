@@ -15,7 +15,7 @@ const quickLinks = [
   { name: "Learning Roadmaps", link: "/roadmap" },
   { name: "Interview Questions", link: "/interview" },
   { name: "Computer Glossary", link: "/glossary" },
-  { name: "Online Courses", link: "/courses" },
+  // { name: "Online Courses", link: "/courses" },
   { name: "Training Institutes", link: "/institute" },
 ];
 const technologies = [
@@ -122,7 +122,7 @@ export default function Hero() {
 
               </Link>
 
-              <Link href="/courses">
+              {/* <Link href="/courses">
 
                 <button className="px-7 py-4 rounded-xl font-semibold text-gray-700 bg-[#ecf0f3] shadow-[6px_6px_12px_#c5c9cc,-6px_-6px_12px_#ffffff] hover:shadow-[inset_6px_6px_12px_#c5c9cc,inset_-6px_-6px_12px_#ffffff] transition">
 
@@ -130,7 +130,7 @@ export default function Hero() {
 
                 </button>
 
-              </Link>
+              </Link> */}
 
             </div>
 
