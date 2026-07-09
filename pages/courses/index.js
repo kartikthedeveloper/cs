@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
-import coursesData from "../../data/courses";
+// import coursesData from "../../data/courses";
 import SimpleLayout from "@/components/SimpleLayout";
 import {
   FaClock,
@@ -222,7 +222,7 @@ const openWhatsApp = (message) => {
             </div>
 
             <div className="flex flex-wrap justify-center gap-4 mb-12">
-              {coursesData.map((cat) => (
+              {/* {coursesData.map((cat) => (
                 <button
                   key={cat.category}
                   onClick={() => setActiveCategory(cat.category)}
@@ -239,7 +239,7 @@ const openWhatsApp = (message) => {
                     </span>
                   )}
                 </button>
-              ))}
+              ))} */}
             </div>
 
             {/* Courses Grid */}
