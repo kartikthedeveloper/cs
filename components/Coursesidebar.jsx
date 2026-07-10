@@ -7,7 +7,7 @@ export default function CourseSidebar({ isOpen, setSidebarOpen }) {
   const mcqsubjects = [
     { id: 0, name: "MCQ's", link: "/mcq" },
     { id: 1,name: "Angular Js", link: "/mcq/angularjs-mcq"},
-    { id: 2, name: "Artificial Intelligence", link: "/mcq/artificial-intelligence/ai-fundamental"   },
+    { id: 2, name: "Artificial Intelligence", link: "/mcq/artificial-intelligence"   },
     { id: 3, name: "Blockchain", link: "/mcq/blockchain" },
     { id: 4, name: "C Language", link: "/mcq/c-language" },
     { id: 5, name: "Cloud Computing", link: "/mcq/cloud-mcq" },

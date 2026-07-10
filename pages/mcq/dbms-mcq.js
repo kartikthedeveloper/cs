@@ -1962,57 +1962,6 @@ export default function DbmsMcq() {
           </div>
         </section>
 
-        {/* ===== RELATED RESOURCES ===== */}
-        <section className="mb-10">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-            <span className="text-3xl">🔗</span>
-            Related Resources
-          </h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {[
-              { title: "DBMS Tutorial", href: "/tutorials/dbms", icon: "📖" },
-              { title: "DBMS Interview Questions", href: "/interview/dbms", icon: "💼" },
-              { title: "DBMS Notes", href: "/notes/dbms", icon: "📝" },
-              { title: "SQL MCQs", href: "/mcq/sql", icon: "📋" },
-              { title: "Normalization Guide", href: "/guides/normalization", icon: "⚡" },
-              { title: "NoSQL MCQs", href: "/mcq/nosql", icon: "🗄️" },
-            ].map((item) => (
-              <Link
-                key={item.title}
-                href={item.href}
-                className="flex items-center gap-3 p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-400 hover:shadow-md transition-all duration-200 group"
-              >
-                <span className="text-2xl group-hover:scale-110 transition-transform">{item.icon}</span>
-                <span className="text-sm font-medium text-gray-700 group-hover:text-blue-600">{item.title}</span>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        {/* ===== CTA ===== */}
-        <section className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl p-8 text-center text-white">
-          <h2 className="text-2xl md:text-3xl font-bold mb-3">
-            Ready to Master DBMS?
-          </h2>
-          <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-            Explore our full collection of tutorials, notes, and interview guides to
-            accelerate your learning journey.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/tutorials/dbms"
-              className="px-8 py-3 bg-white text-blue-700 font-medium rounded-xl hover:bg-blue-50 transition-colors shadow-lg"
-            >
-              Start Learning
-            </Link>
-            <Link
-              href="/roadmap/dbms"
-              className="px-8 py-3 bg-blue-500/30 text-white font-medium rounded-xl hover:bg-blue-500/50 transition-colors border border-white/20"
-            >
-              View Roadmap
-            </Link>
-          </div>
-        </section>
       </main>
     </CourseLayout>
   );
