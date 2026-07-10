@@ -6,13 +6,13 @@ export default function CourseSidebar({ isOpen, setSidebarOpen }) {
 
   const mcqsubjects = [
     { id: 0, name: "MCQ's", link: "/mcq" },
-    { id: 1, name: "Artificial Intelligence", link: "/mcq/artificial-intelligence" },
-    { id: 2, name: "Angular Js", link: "/mcq/angularjs-mcq" },
+    { id: 1,name: "Angular Js", link: "/mcq/angularjs-mcq"},
+    { id: 2, name: "Artificial Intelligence", link: "/mcq/artificial-intelligence/ai-fundamental"   },
     { id: 3, name: "Blockchain", link: "/mcq/blockchain" },
     { id: 4, name: "C Language", link: "/mcq/c-language" },
-    { id: 5, name: "Computer Fundamental", link: "/mcq/computer-fundamental" },
-    { id: 6, name: "Computer Memory", link: "/mcq/computer-memory" },
-    { id: 7, name: "Cloud Computing", link: "/mcq/cloud-mcq" },
+    { id: 5, name: "Cloud Computing", link: "/mcq/cloud-mcq" },
+    { id: 6, name: "Computer Fundamental", link: "/mcq/computer-fundamental" },
+    { id: 7, name: "Computer Memory", link: "/mcq/computer-memory" },
     { id: 8, name: "C++", link: "/mcq/cpp-language" },
     { id: 9, name: "Computer Networking", link: "/mcq/networking-mcq" },
     { id: 10, name: "CSS", link: "/mcq/css-mcq" },
@@ -20,10 +20,17 @@ export default function CourseSidebar({ isOpen, setSidebarOpen }) {
     { id: 12, name: "DBMS", link: "/mcq/dbms-mcq" },
     { id: 13, name: "Ethical Hacking", link: "/mcq/ethical-hacking-mcq" },
     { id: 14, name: "HTML", link: "/mcq/html-mcq" },
-    { id: 15, name: "Java", link: "/mcq/java-mcq" },
-    { id: 16, name: "JavaScript", link: "/mcq/javascript-mcq" },
-    { id: 17, name: "Python", link: "/mcq/python-mcq" },
-    { id: 18, name: "ReactJs", link: "/mcq/react-mcq" },
+    { id: 15, name: "IO Device", link: "/mcq/io-device" },
+    { id: 16, name: "Java", link: "/mcq/java-mcq" },
+    { id: 17, name: "JavaScript", link: "/mcq/javascript-mcq" },
+    { id: 18, name: "Machine Learning", link: "/mcq/machine-learning-mcq" },
+    { id: 19, name: "Multimedia", link: "/mcq/multimedia-mcq" },
+    { id: 20, name: "Node JS", link: "/mcq/node-mcq" },
+    { id: 21, name: "Operating System", link: "/mcq/operating-system" },
+    { id: 22, name: "Python", link: "/mcq/python-mcq" },
+    { id: 23, name: "React JS", link: "/mcq/react-mcq" },
+    { id: 24, name: "System Design", link: "/mcq/system-design-mcq" },
+
   ];
 
   return (
