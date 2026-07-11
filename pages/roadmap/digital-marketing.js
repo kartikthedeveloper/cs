@@ -100,7 +100,7 @@ export default function DigitalMarketingRoadmap() {
     return (
         <>
             <Head>
-                <title>Complete Digital Marketing Expert Roadmap 2025 | CodeSkipper.in</title>
+                <title>Complete Digital Marketing Expert Roadmap 2026 | CodeSkipper.in</title>
                 <meta
                     name="description"
                     content="Master Digital Marketing with our complete roadmap. Learn SEO, social media marketing, content creation, paid advertising, analytics, and become a marketing expert."

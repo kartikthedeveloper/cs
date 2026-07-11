@@ -1,550 +1,344 @@
 import { useState } from "react";
-import Layout from '@/components/layouts/InterviewLayout';
+import Layout from "@/components/layouts/InterviewLayout";
 import Head from "next/head";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { 
-  FaCode, 
-  FaLaptopCode, 
-  FaDatabase, 
-  FaCloud, 
-  FaMobile, 
-  FaShieldAlt,
-  FaRobot,
-  FaNetworkWired,
-  FaPython,
-  FaJava,
-  FaJs,
-  FaHtml5,
-  FaCss3Alt,
-  FaReact,
-  FaNodeJs,
-  FaAws,
-  FaDocker,
-  FaGitAlt,
-  FaLinux
+import {
+    FaRobot,
+    FaCss3Alt,
+    FaShieldAlt,
+    FaChartLine,
+    FaLock,
+    FaHtml5,
+    FaJava,
+    FaJs,
+    FaLinux,
+    FaMicrochip,
+    FaStackOverflow,
+    FaChartBar,
+    FaPython,
+    FaReact,
+    FaDatabase,
+    FaSearch,
+    FaArrowRight,
+    FaBookOpen,
+    FaLightbulb,
+    FaUsers,
+    FaCode,
+    FaCheckCircle
 } from 'react-icons/fa';
 
 const InterviewHome = () => {
-  const [searchTerm, setSearchTerm] = useState("");
+    const [searchTerm, setSearchTerm] = useState("");
 
-  // Main categories with icons, colors and links
-  const mainCategories = [
-    {
-      title: "Programming Fundamentals",
-      icon: FaCode,
-      color: "from-blue-500 to-blue-700",
-      bgColor: "bg-blue-50",
-      textColor: "text-blue-700",
-      borderColor: "border-blue-200",
-      technologies: ["Data Structures", "Algorithms", "OOP", "System Design"],
-      link: "/interview-questions/programming-fundamentals"
-    },
-    {
-      title: "Web Development",
-      icon: FaLaptopCode,
-      color: "from-green-500 to-green-700",
-      bgColor: "bg-green-50",
-      textColor: "text-green-700",
-      borderColor: "border-green-200",
-      technologies: ["Frontend", "Backend", "Full Stack", "Web Technologies"],
-      link: "/interview-questions/web-development"
-    },
-    {
-      title: "Database Technologies",
-      icon: FaDatabase,
-      color: "from-purple-500 to-purple-700",
-      bgColor: "bg-purple-50",
-      textColor: "text-purple-700",
-      borderColor: "border-purple-200",
-      technologies: ["SQL", "NoSQL", "Database Design", "Optimization"],
-      link: "/interview-questions/database"
-    },
-    {
-      title: "Cloud & DevOps",
-      icon: FaCloud,
-      color: "from-orange-500 to-orange-700",
-      bgColor: "bg-orange-50",
-      textColor: "text-orange-700",
-      borderColor: "border-orange-200",
-      technologies: ["AWS", "Docker", "Kubernetes", "CI/CD"],
-      link: "/interview-questions/cloud-devops"
-    },
-    {
-      title: "Mobile Development",
-      icon: FaMobile,
-      color: "from-pink-500 to-pink-700",
-      bgColor: "bg-pink-50",
-      textColor: "text-pink-700",
-      borderColor: "border-pink-200",
-      technologies: ["Android", "iOS", "React Native", "Flutter"],
-      link: "/interview-questions/mobile-development"
-    },
-    {
-      title: "Cybersecurity",
-      icon: FaShieldAlt,
-      color: "from-red-500 to-red-700",
-      bgColor: "bg-red-50",
-      textColor: "text-red-700",
-      borderColor: "border-red-200",
-      technologies: ["Network Security", "Cryptography", "Ethical Hacking"],
-      link: "/interview-questions/cybersecurity"
-    },
-    {
-      title: "AI & Machine Learning",
-      icon: FaRobot,
-      color: "from-indigo-500 to-indigo-700",
-      bgColor: "bg-indigo-50",
-      textColor: "text-indigo-700",
-      borderColor: "border-indigo-200",
-      technologies: ["Machine Learning", "Deep Learning", "NLP", "Computer Vision"],
-      link: "/interview-questions/ai-ml"
-    },
-    {
-      title: "Networking",
-      icon: FaNetworkWired,
-      color: "from-teal-500 to-teal-700",
-      bgColor: "bg-teal-50",
-      textColor: "text-teal-700",
-      borderColor: "border-teal-200",
-      technologies: ["TCP/IP", "DNS", "HTTP/HTTPS", "Network Protocols"],
-      link: "/interview-questions/networking"
-    }
-  ];
+    // ===== CORE SUBJECTS (only these 15) =====
+    const subjects = [
+        { id: 1, name: "Artificial Intelligence", icon: FaRobot, color: "from-indigo-500 to-indigo-700", bg: "bg-indigo-50", text: "text-indigo-700", border: "border-indigo-200", desc: "Machine learning, neural networks, NLP & computer vision fundamentals.", link: "/interview/artificial-intelligence" },
+        { id: 2, name: "CSS", icon: FaCss3Alt, color: "from-blue-400 to-blue-600", bg: "bg-blue-50", text: "text-blue-700", border: "border-blue-200", desc: "Flexbox, Grid, animations, responsive design & preprocessors.", link: "/interview/css" },
+        { id: 3, name: "Cyber Security", icon: FaShieldAlt, color: "from-red-500 to-red-700", bg: "bg-red-50", text: "text-red-700", border: "border-red-200", desc: "Network security, cryptography, risk assessment & compliance.", link: "/interview/cyber-security" },
+        { id: 4, name: "Digital Marketing", icon: FaChartLine, color: "from-emerald-500 to-emerald-700", bg: "bg-emerald-50", text: "text-emerald-700", border: "border-emerald-200", desc: "SEO, SEM, content marketing, analytics & social media strategy.", link: "/interview/digital-marketing" },
+        { id: 5, name: "Ethical Hacking", icon: FaLock, color: "from-rose-500 to-rose-700", bg: "bg-rose-50", text: "text-rose-700", border: "border-rose-200", desc: "Penetration testing, vulnerability assessment & security tools.", link: "/interview/ethical-hacking" },
+        { id: 6, name: "HTML", icon: FaHtml5, color: "from-orange-500 to-orange-700", bg: "bg-orange-50", text: "text-orange-700", border: "border-orange-200", desc: "Semantic markup, accessibility, forms & modern HTML5 APIs.", link: "/interview/html" },
+        { id: 7, name: "Java", icon: FaJava, color: "from-red-600 to-red-800", bg: "bg-red-50", text: "text-red-700", border: "border-red-200", desc: "OOP, collections, multithreading, JVM & Spring framework.", link: "/interview/java" },
+        { id: 8, name: "JavaScript", icon: FaJs, color: "from-yellow-400 to-yellow-600", bg: "bg-yellow-50", text: "text-yellow-700", border: "border-yellow-200", desc: "ES6+, closures, promises, async/await & DOM manipulation.", link: "/interview/javascript" },
+        { id: 9, name: "Kali Linux", icon: FaLinux, color: "from-slate-600 to-slate-800", bg: "bg-slate-50", text: "text-slate-700", border: "border-slate-200", desc: "Penetration testing tools, reconnaissance & ethical hacking on Kali.", link: "/interview/kali-linux" },
+        { id: 10, name: "Machine Learning", icon: FaMicrochip, color: "from-purple-500 to-purple-700", bg: "bg-purple-50", text: "text-purple-700", border: "border-purple-200", desc: "Supervised/unsupervised learning, regression, classification & clustering.", link: "/interview/machine-learning" },
+        { id: 11, name: "MERN Stack", icon: FaStackOverflow, color: "from-teal-500 to-teal-700", bg: "bg-teal-50", text: "text-teal-700", border: "border-teal-200", desc: "MongoDB, Express, React, Node.js — full‑stack JavaScript.", link: "/interview/mern-stack" },
+        { id: 12, name: "Power BI", icon: FaChartBar, color: "from-amber-500 to-amber-700", bg: "bg-amber-50", text: "text-amber-700", border: "border-amber-200", desc: "Data visualization, DAX, Power Query & business intelligence.", link: "/interview/power-bi" },
+        { id: 13, name: "Python", icon: FaPython, color: "from-blue-500 to-blue-700", bg: "bg-blue-50", text: "text-blue-700", border: "border-blue-200", desc: "Data structures, OOP, libraries (NumPy, Pandas) & automation.", link: "/interview/python" },
+        { id: 14, name: "React", icon: FaReact, color: "from-cyan-500 to-cyan-700", bg: "bg-cyan-50", text: "text-cyan-700", border: "border-cyan-200", desc: "Components, hooks, state management, routing & performance.", link: "/interview/react-js" },
+        { id: 15, name: "SQL", icon: FaDatabase, color: "from-sky-500 to-sky-700", bg: "bg-sky-50", text: "text-sky-700", border: "border-sky-200", desc: "Queries, joins, subqueries, indexing, normalization & transactions.", link: "/interview/sql" }
+    ];
 
-  // Popular technologies with icons and links
-  const popularTechnologies = [
-    { 
-      name: "Python", 
-      icon: FaPython, 
-      color: "text-yellow-600", 
-      bg: "bg-yellow-50",
-      link: "/interview/python"
-    },
-    // { 
-    //   name: "Java", 
-    //   icon: FaJava, 
-    //   color: "text-red-600", 
-    //   bg: "bg-red-50",
-    //   link: "/interview-questions/java"
-    // },
-    // { 
-    //   name: "JavaScript", 
-    //   icon: FaJs, 
-    //   color: "text-yellow-500", 
-    //   bg: "bg-yellow-50",
-    //   link: "/interview-questions/javascript"
-    // },
-    { 
-      name: "HTML5", 
-      icon: FaHtml5, 
-      color: "text-orange-600", 
-      bg: "bg-orange-50",
-      link: "/interview/html"
-    },
-    // { 
-    //   name: "CSS3", 
-    //   icon: FaCss3Alt, 
-    //   color: "text-blue-600", 
-    //   bg: "bg-blue-50",
-    //   link: "/interview-questions/css"
-    // },
-    // { 
-    //   name: "React", 
-    //   icon: FaReact, 
-    //   color: "text-blue-500", 
-    //   bg: "bg-blue-50",
-    //   link: "/interview-questions/react"
-    // },
-    // { 
-    //   name: "Node.js", 
-    //   icon: FaNodeJs, 
-    //   color: "text-green-600", 
-    //   bg: "bg-green-50",
-    //   link: "/interview-questions/nodejs"
-    // },
-    // { 
-    //   name: "AWS", 
-    //   icon: FaAws, 
-    //   color: "text-orange-500", 
-    //   bg: "bg-orange-50",
-    //   link: "/interview-questions/aws"
-    // },
-    // { 
-    //   name: "Docker", 
-    //   icon: FaDocker, 
-    //   color: "text-blue-400", 
-    //   bg: "bg-blue-50",
-    //   link: "/interview-questions/docker"
-    // },
-    // { 
-    //   name: "Git", 
-    //   icon: FaGitAlt, 
-    //   color: "text-orange-600", 
-    //   bg: "bg-orange-50",
-    //   link: "/interview-questions/git"
-    // },
-    // { 
-    //   name: "Linux", 
-    //   icon: FaLinux, 
-    //   color: "text-yellow-700", 
-    //   bg: "bg-yellow-50",
-    //   link: "/interview-questions/linux"
-    // }
-  ];
-
-  // Difficulty levels with links
-  const difficultyLevels = [
-    {
-      level: "Beginner",
-      description: "Basic concepts and fundamentals",
-      questions: "500+ Questions",
-      color: "from-green-400 to-green-600",
-      textColor: "text-green-700",
-      bgColor: "bg-green-50",
-      link: "/interview-questions/beginner"
-    },
-    {
-      level: "Intermediate",
-      description: "Practical scenarios and problem-solving",
-      questions: "800+ Questions",
-      color: "from-blue-400 to-blue-600",
-      textColor: "text-blue-700",
-      bgColor: "bg-blue-50",
-      link: "/interview-questions/intermediate"
-    },
-    {
-      level: "Advanced",
-      description: "Complex algorithms and system design",
-      questions: "300+ Questions",
-      color: "from-purple-400 to-purple-600",
-      textColor: "text-purple-700",
-      bgColor: "bg-purple-50",
-      link: "/interview-questions/advanced"
-    },
-    {
-      level: "Expert",
-      description: "Architecture and leadership scenarios",
-      questions: "200+ Questions",
-      color: "from-red-400 to-red-600",
-      textColor: "text-red-700",
-      bgColor: "bg-red-50",
-      link: "/interview-questions/expert"
-    }
-  ];
-
-  // Featured interview tips
-  const interviewTips = [
-    {
-      title: "Master Problem Solving",
-      description: "Learn to break down complex problems into manageable steps",
-      icon: "💡"
-    },
-    {
-      title: "Practice Coding",
-      description: "Regular practice on data structures and algorithms",
-      icon: "👨‍💻"
-    },
-    {
-      title: "System Design",
-      description: "Understand how to design scalable systems",
-      icon: "🏗️"
-    },
-    {
-      title: "Behavioral Questions",
-      description: "Prepare for situational and experience-based questions",
-      icon: "👥"
-    },
-    {
-      title: "Mock Interviews",
-      description: "Practice with real interview scenarios",
-      icon: "🎯"
-    },
-    {
-      title: "Stay Updated",
-      description: "Keep up with latest technologies and trends",
-      icon: "📚"
-    }
-  ];
-
-  return (
-    <Layout>
-      <Head>
-        <title>Technical Interview Questions & Answers 2024 | Code Skipper</title>
-        <meta
-          name="description"
-          content="Comprehensive collection of technical interview questions for software developers, engineers, and IT professionals. Prepare for FAANG companies and top tech interviews."
-        />
-        <meta
-          name="keywords"
-          content="technical interview questions, coding interview, programming questions, software engineer interview, FAANG interview, computer science interview, IT job interview"
-        />
-        <meta property="og:title" content="Technical Interview Questions & Answers 2024 | Code Skipper" />
-        <meta
-          property="og:description"
-          content="Master your next technical interview with our comprehensive question bank. Practice coding problems, system design, and behavioral questions."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://codeskipper.in/interview-questions" />
-        <link rel="canonical" href="https://codeskipper.in/interview-questions" />
-      </Head>
-
-      <section id="interview-wrapper">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          {/* Hero Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="text-center py-16"
-          >
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              Ace Your <span className="text-blue-600">Technical Interview</span>
-            </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Master the art of technical interviews with our comprehensive collection of questions, 
-              coding challenges, and real-world scenarios from top tech companies.
-            </p>
-            
-      
-          </motion.div>
-
-          {/* Stats Section */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
-          >
-            <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">2000+</div>
-              <div className="text-gray-600">Interview Questions</div>
-            </div>
-            <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-              <div className="text-3xl font-bold text-green-600 mb-2">50+</div>
-              <div className="text-gray-600">Technologies</div>
-            </div>
-            <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-              <div className="text-3xl font-bold text-purple-600 mb-2">100+</div>
-              <div className="text-gray-600">Company Patterns</div>
-            </div>
-            <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-              <div className="text-3xl font-bold text-orange-600 mb-2">24/7</div>
-              <div className="text-gray-600">Updated Content</div>
-            </div>
-          </motion.div>
-
-          {/* Main Categories */}
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.7 }}
-            className="mb-16"
-          >
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Explore by Category</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {mainCategories.map((category, index) => {
-                const IconComponent = category.icon;
-                return (
-                  <Link href={category.link} key={category.title}>
-                    <motion.div
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      whileHover={{ scale: 1.05 }}
-                      className={`rounded-xl shadow-lg overflow-hidden cursor-pointer transform transition-all duration-300`}
-                    >
-                      <div className={`bg-gradient-to-r ${category.color} p-6 text-white`}>
-                        <div className="flex items-center justify-between">
-                          <IconComponent className="text-3xl" />
-                          <span className="text-sm bg-white bg-opacity-20 px-3 py-1 rounded-full">
-                            {category.technologies.length} areas
-                          </span>
-                        </div>
-                        <h3 className="text-xl font-bold mt-4">{category.title}</h3>
-                      </div>
-                      <div className={`${category.bgColor} p-4`}>
-                        <div className="flex flex-wrap gap-2">
-                          {category.technologies.map((tech) => (
-                            <span 
-                              key={tech}
-                              className={`text-xs ${category.textColor} bg-white px-2 py-1 rounded-full border ${category.borderColor}`}
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </motion.div>
-                  </Link>
-                );
-              })}
-            </div>
-          </motion.section>
-
-          {/* Popular Technologies */}
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.9 }}
-            className="mb-16"
-          >
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Popular Technologies</h2>
-            <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-11 gap-4">
-              {popularTechnologies.map((tech, index) => {
-                const IconComponent = tech.icon;
-                return (
-                  <Link href={tech.link} key={tech.name}>
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.1 * index }}
-                      whileHover={{ scale: 1.1 }}
-                      className={`flex flex-col items-center p-4 rounded-lg ${tech.bg} cursor-pointer transform transition-all duration-300`}
-                    >
-                      <IconComponent className={`text-3xl ${tech.color} mb-2`} />
-                      <span className="text-sm font-medium text-gray-700 text-center">{tech.name}</span>
-                    </motion.div>
-                  </Link>
-                );
-              })}
-            </div>
-          </motion.section>
-
-          {/* Difficulty Levels */}
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.1 }}
-            className="mb-16"
-          >
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Choose Your Challenge Level</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {difficultyLevels.map((level, index) => (
-                <Link href={level.link} key={level.level}>
-                  <motion.div
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.2 * index }}
-                    whileHover={{ scale: 1.05 }}
-                    className={`rounded-xl overflow-hidden shadow-lg cursor-pointer transform transition-all duration-300`}
-                  >
-                    <div className={`bg-gradient-to-r ${level.color} p-6 text-white`}>
-                      <h3 className="text-2xl font-bold mb-2">{level.level}</h3>
-                      <p className="text-white text-opacity-90 mb-4">{level.description}</p>
-                      <div className="text-sm bg-white bg-opacity-20 px-3 py-1 rounded-full inline-block">
-                        {level.questions}
-                      </div>
-                    </div>
-                    <div className={`${level.bgColor} p-4 text-center`}>
-                      <span className={`${level.textColor} font-semibold hover:underline`}>
-                        Explore Questions →
-                      </span>
-                    </div>
-                  </motion.div>
-                </Link>
-              ))}
-            </div>
-          </motion.section>
-
-          {/* Interview Tips */}
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.3 }}
-            className="mb-16"
-          >
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Pro Interview Tips</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {interviewTips.map((tip, index) => (
-                <motion.div
-                  key={tip.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 * index }}
-                  whileHover={{ y: -5 }}
-                  className="bg-white rounded-lg shadow-lg p-6 border-l-4 border-blue-500 transform transition-all duration-300"
-                >
-                  <div className="flex items-start space-x-4">
-                    <span className="text-2xl">{tip.icon}</span>
-                    <div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">{tip.title}</h3>
-                      <p className="text-gray-600">{tip.description}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.section>
-
-          {/* CTA Section */}
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.5 }}
-            className="text-center py-16"
-          >
-            <div className="bg-gradient-to-r from-blue-600 to-purple-700 rounded-2xl p-12 text-white">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Ready to Master Your Next Interview?
-              </h2>
-              <p className="text-xl mb-8 opacity-90">
-                Join thousands of developers who landed their dream jobs with our interview preparation resources.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/interview-questions/all-topics">
-                  <button className="bg-white text-blue-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transform hover:scale-105 transition duration-300">
-                    Start Practicing Now
-                  </button>
-                </Link>
-                <Link href="/interview-questions/study-plans">
-                  <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-blue-600 transform hover:scale-105 transition duration-300">
-                    View Study Plans
-                  </button>
-                </Link>
-              </div>
-            </div>
-          </motion.section>
-
-          {/* FAQ Section */}
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.7 }}
-            className="mb-16"
-          >
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-lg shadow-lg p-6">
-                <h3 className="text-xl font-semibold mb-3">How often are questions updated?</h3>
-                <p className="text-gray-600">We update our question bank weekly with new patterns from recent interviews at top tech companies.</p>
-              </div>
-              <div className="bg-white rounded-lg shadow-lg p-6">
-                <h3 className="text-xl font-semibold mb-3">Are solutions provided for coding problems?</h3>
-                <p className="text-gray-600">Yes, every coding question comes with multiple optimized solutions and detailed explanations.</p>
-              </div>
-              <div className="bg-white rounded-lg shadow-lg p-6">
-                <h3 className="text-xl font-semibold mb-3">Do you cover company-specific questions?</h3>
-                <p className="text-gray-600">We have dedicated sections for FAANG and other top tech companies with their specific interview patterns.</p>
-              </div>
-              <div className="bg-white rounded-lg shadow-lg p-6">
-                <h3 className="text-xl font-semibold mb-3">Is there a mobile app available?</h3>
-                <p className="text-gray-600">Our website is fully responsive and works perfectly on all mobile devices. Native apps coming soon!</p>
-              </div>
-            </div>
-          </motion.section>
-        </div>
-      </section>
-
-      <style jsx>{`
-        #interview-wrapper {
-          background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-          min-height: 100vh;
+    // Group subjects into logical categories for display
+    const categories = [
+        {
+            title: "💻 Programming Languages",
+            subjects: subjects.filter(s => ["Python", "Java", "JavaScript", "SQL", "HTML", "CSS"].includes(s.name))
+        },
+        {
+            title: "⚛️ Frameworks & Stacks",
+            subjects: subjects.filter(s => ["React", "MERN Stack"].includes(s.name))
+        },
+        {
+            title: "🤖 AI & Data Science",
+            subjects: subjects.filter(s => ["Artificial Intelligence", "Machine Learning", "Power BI"].includes(s.name))
+        },
+        {
+            title: "🔐 Security & Hacking",
+            subjects: subjects.filter(s => ["Cyber Security", "Ethical Hacking", "Kali Linux"].includes(s.name))
+        },
+        {
+            title: "📈 Marketing",
+            subjects: subjects.filter(s => ["Digital Marketing"].includes(s.name))
         }
-      `}</style>
-    </Layout>
-  );
+    ].filter(cat => cat.subjects.length > 0);
+
+    // ===== STATS =====
+    const stats = [
+        { value: "750+", label: "Interview Questions" },
+        { value: "15", label: "Core Subjects" },
+        { value: "100+", label: "Company Patterns" },
+        { value: "24/7", label: "Updated Content" }
+    ];
+
+    // ===== INTERVIEW TIPS =====
+    const tips = [
+        { icon: "💡", title: "Master the Basics", desc: "Strong fundamentals are the foundation of every great interview." },
+        { icon: "👨‍💻", title: "Practice Coding", desc: "Regularly solve problems on data structures and algorithms." },
+        { icon: "🏗️", title: "System Design", desc: "Learn to design scalable, fault‑tolerant systems." },
+        { icon: "👥", title: "Behavioral Prep", desc: "Prepare STAR stories for situational questions." },
+        { icon: "🎯", title: "Mock Interviews", desc: "Simulate real interview pressure with peers." },
+        { icon: "📚", title: "Stay Current", desc: "Keep up with the latest tech trends and tools." }
+    ];
+
+    // ===== DIFFICULTY LEVELS =====
+    const difficultyLevels = [
+        { level: "Beginner", desc: "Core concepts & fundamentals", qs: "500+ Qs", color: "from-green-400 to-green-600", bg: "bg-green-50", text: "text-green-700", link: "/interview/beginner" },
+        { level: "Intermediate", desc: "Practical problem‑solving", qs: "800+ Qs", color: "from-blue-400 to-blue-600", bg: "bg-blue-50", text: "text-blue-700", link: "/interview/intermediate" },
+        { level: "Advanced", desc: "Complex algorithms & design", qs: "300+ Qs", color: "from-purple-400 to-purple-600", bg: "bg-purple-50", text: "text-purple-700", link: "/interview/advanced" },
+        { level: "Expert", desc: "Architecture & leadership", qs: "200+ Qs", color: "from-red-400 to-red-600", bg: "bg-red-50", text: "text-red-700", link: "/interview/expert" }
+    ];
+
+    // ===== FAQ =====
+    const faqs = [
+        { q: "How often are questions updated?", a: "We refresh our question bank weekly with real patterns from recent interviews at top tech companies." },
+        { q: "Are solutions provided for coding problems?", a: "Yes, every coding question includes multiple optimized solutions with detailed explanations." },
+        { q: "Do you cover company‑specific questions?", a: "We have dedicated sections for FAANG and other leading tech firms with their specific interview patterns." },
+        { q: "Is the content mobile‑friendly?", a: "Our site is fully responsive and works perfectly on all devices. Native apps are coming soon!" }
+    ];
+
+    return (
+        <Layout>
+            <Head>
+                <title>Computer Science Interview Questions 2026 | Code Skipper</title>
+                <meta
+                    name="description"
+                    content="Master your technical interview with questions on 15 core subjects: AI, Python, React, SQL, Cyber Security, MERN Stack, and more. Updated weekly."
+                />
+                <meta
+                    name="keywords"
+                    content="technical interview questions, coding interview, programming interview, software engineer interview, FAANG interview, AI interview, Python interview, React interview, SQL interview, cyber security interview"
+                />
+                <meta property="og:title" content="Technical Interview Questions 2026 | Code Skipper" />
+                <meta
+                    property="og:description"
+                    content="Prepare for your dream tech job with handpicked interview questions across 15 core subjects. Practice, learn, and succeed."
+                />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://codeskipper.in/interview" />
+                <link rel="canonical" href="https://codeskipper.in/interview" />
+                <meta name="robots" content="index, follow" />
+            </Head>
+
+            <section id="interview-wrapper">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+                    {/* ===== HERO ===== */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 40 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.7 }}
+                        className="text-center py-12 md:py-16"
+                    >
+                        <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
+                            Ace Your <span className="text-blue-600">Technical Interview</span>
+                        </h1>
+                        <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+                            Master interview questions across <strong>15 core subjects</strong> — from AI and Python to React and Cyber Security. Updated weekly with real-world patterns.
+                        </p>
+
+                        {/* Search Bar */}
+                        <div className="max-w-2xl mx-auto relative">
+                            <div className="relative">
+                                <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg" />
+                                <input
+                                    type="text"
+                                    placeholder="Search subjects (e.g. Python, React, SQL)..."
+                                    value={searchTerm}
+                                    onChange={(e) => setSearchTerm(e.target.value)}
+                                    className="w-full pl-12 pr-4 py-4 rounded-full border-2 border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-100 outline-none text-lg shadow-md transition"
+                                />
+                            </div>
+                            {searchTerm && (
+                                <div className="absolute left-0 right-0 mt-2 bg-white rounded-xl shadow-xl border border-gray-100 max-h-72 overflow-y-auto z-20">
+                                    {subjects
+                                        .filter(s => s.name.toLowerCase().includes(searchTerm.toLowerCase()))
+                                        .map(s => (
+                                            <Link key={s.id} href={s.link}>
+                                                <div className="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 cursor-pointer transition border-b border-gray-50">
+                                                    <s.icon className="text-blue-600 text-lg" />
+                                                    <span className="font-medium text-gray-800">{s.name}</span>
+                                                    <FaArrowRight className="ml-auto text-gray-400 text-sm" />
+                                                </div>
+                                            </Link>
+                                        ))}
+                                    {subjects.filter(s => s.name.toLowerCase().includes(searchTerm.toLowerCase())).length === 0 && (
+                                        <div className="px-4 py-4 text-gray-500 text-center">No subjects found</div>
+                                    )}
+                                </div>
+                            )}
+                        </div>
+                    </motion.div>
+
+                    {/* ===== STATS ===== */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.4 }}
+                        className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
+                    >
+                        {stats.map((stat, i) => (
+                            <div key={i} className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-6 text-center border border-gray-100">
+                                <div className="text-3xl font-extrabold text-blue-600 mb-1">{stat.value}</div>
+                                <div className="text-gray-600 text-sm font-medium">{stat.label}</div>
+                            </div>
+                        ))}
+                    </motion.div>
+
+                    {/* ===== SUBJECTS by CATEGORY ===== */}
+                    <motion.section
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.6 }}
+                        className="mb-16"
+                    >
+                        <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">
+                            Explore by <span className="text-blue-600">Subject</span>
+                        </h2>
+
+                        {categories.map((category, catIdx) => (
+                            <div key={catIdx} className="mb-12">
+                                <h3 className="text-xl font-semibold text-gray-800 mb-5 flex items-center gap-2">
+                                    <span className="text-2xl">{category.title.split(' ')[0]}</span>
+                                    <span>{category.title.replace(/^[^\s]+\s/, '')}</span>
+                                </h3>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                                    {category.subjects.map((subject, idx) => {
+                                        const Icon = subject.icon;
+                                        return (
+                                            <Link href={subject.link} key={subject.id}>
+                                                <motion.div
+                                                    initial={{ opacity: 0, y: 20 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    transition={{ delay: 0.05 * (catIdx + idx) }}
+                                                    whileHover={{ y: -6, scale: 1.02 }}
+                                                    className="group rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden bg-white border border-gray-100 cursor-pointer"
+                                                >
+                                                    <div className={`bg-gradient-to-r ${subject.color} px-5 py-4 flex items-center justify-between`}>
+                                                        <Icon className="text-white text-2xl" />
+                                                        <span className="text-white/80 text-xs bg-white/20 px-3 py-1 rounded-full font-medium">
+                                                            Interview Qs
+                                                        </span>
+                                                    </div>
+                                                    <div className="p-5">
+                                                        <h4 className="text-lg font-bold text-gray-900 mb-1">{subject.name}</h4>
+                                                        <p className="text-sm text-gray-600 mb-3">{subject.desc}</p>
+                                                        <span className={`text-xs font-semibold ${subject.text} flex items-center gap-1 group-hover:underline`}>
+                                                            Explore questions <FaArrowRight className="text-xs" />
+                                                        </span>
+                                                    </div>
+                                                </motion.div>
+                                            </Link>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                        ))}
+                    </motion.section>
+                    {/* ===== INTERVIEW TIPS ===== */}
+                    <motion.section
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 1.0 }}
+                        className="mb-16"
+                    >
+                        <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">💎 Pro Interview Tips</h2>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {tips.map((tip, idx) => (
+                                <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.06 * idx }}
+                                    whileHover={{ y: -4 }}
+                                    className="bg-white rounded-2xl shadow-md p-6 border-l-4 border-blue-500 transition"
+                                >
+                                    <div className="flex items-start gap-4">
+                                        <span className="text-2xl">{tip.icon}</span>
+                                        <div>
+                                            <h3 className="font-semibold text-gray-900">{tip.title}</h3>
+                                            <p className="text-sm text-gray-600 mt-1">{tip.desc}</p>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.section>
+
+                    {/* ===== CTA ===== */}
+                    <motion.section
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 1.2 }}
+                        className="text-center py-12"
+                    >
+                        <div className="bg-gradient-to-r from-blue-600 to-purple-700 rounded-3xl p-10 md:p-14 text-white">
+                            <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
+                                Ready to Land Your Dream Job?
+                            </h2>
+                            <p className="text-lg md:text-xl opacity-90 max-w-2xl mx-auto mb-8">
+                                Join thousands of developers who aced their interviews with our curated question bank and expert insights.
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                                <Link href="/roadmap">
+                                    <button className="bg-white text-blue-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transform hover:scale-105 transition shadow-lg">
+                                      Roadmap
+                                    </button>
+                                </Link>
+                                <Link href="/mcq">
+                                    <button className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-blue-700 transform hover:scale-105 transition">
+                                        MCQ's
+                                    </button>
+                                </Link>
+                            </div>
+                        </div>
+                    </motion.section>
+
+                    {/* ===== FAQ ===== */}
+                    <motion.section
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 1.4 }}
+                        className="mb-12"
+                    >
+                        <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">❓ Frequently Asked Questions</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {faqs.map((faq, idx) => (
+                                <div key={idx} className="bg-white rounded-2xl shadow-md p-6 border border-gray-100">
+                                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{faq.q}</h3>
+                                    <p className="text-gray-600 text-sm">{faq.a}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </motion.section>
+
+                    {/* ===== FOOTER NOTE ===== */}
+                    <div className="text-center text-sm text-gray-500 border-t border-gray-200 pt-8 mt-4">
+                        <p>© 2026 Code Skipper — Technical Interview Preparation. Updated weekly with love ❤️</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <style jsx>{`
+                #interview-wrapper {
+                    background: linear-gradient(135deg, #f0f4ff 0%, #e8ecf8 100%);
+                    min-height: 100vh;
+                }
+            `}</style>
+        </Layout>
+    );
 };
 
 export default InterviewHome;

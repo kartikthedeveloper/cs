@@ -134,7 +134,7 @@ export default function BackendDeveloperRoadmap() {
                                     className="inline-block mb-6"
                                 >
                                     <span className="bg-gradient-to-r from-green-600 to-blue-600 text-white px-6 py-3 rounded-full text-sm font-semibold shadow-lg">
-                                        Industry-Focused 2025
+                                        Industry-Focused 2026
                                     </span>
                                 </motion.div>
                                 <h1 className="text-5xl md:text-6xl font-bold text-gray-800 mb-6">

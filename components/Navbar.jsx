@@ -78,11 +78,11 @@ export default function Navbar({ setSidebarOpen }) {
   const navItems = [
     { name: "Home", path: "/" },
     { name: "MCQ",path: "/mcq"},
+    { name: "Interview Q/A", path: "/interview" },
     // { name: "Online Course",path: "/courses"},
     { name: "Roadmap", path: "/roadmap" },
     { name: "Test", path: "/test" },
     {name:  "Tools",path:"/tools"},
-    { name: "Interview", path: "/interview" },
 
 
   ];

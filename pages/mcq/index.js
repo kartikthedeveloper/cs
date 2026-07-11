@@ -34,248 +34,248 @@ const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
 
-const mcqsubjects = [
-  {
-    id: 1,
-    name: "Artificial Intelligence",
-    category: ["Emerging Technologies"],
-    link: "/mcq/artificial-intelligence",
-    icon: BrainCircuit,
-    gradient: "from-purple-500 to-indigo-500",
-    description:
-      "AI concepts, machine learning basics, and neural networks.",
-  },
-  {
-    id: 2,
-    name: "Angular Js",
-    category: ["Web Development"],
-    link: "/mcq/angularjs-mcq",
-    icon: Hexagon,
-    gradient: "from-red-500 to-red-700",
-    description:
-      "Angular components, directives, services, and routing.",
-  },
-  {
-    id: 3,
-    name: "Blockchain",
-    category: ["Emerging Technologies"],
-    link: "/mcq/blockchain",
-    icon: Blocks,
-    gradient: "from-yellow-500 to-orange-600",
-    description:
-      "Blockchain technology, cryptocurrency, and smart contracts.",
-  },
-  {
-    id: 4,
-    name: "C Language",
-    category: ["Programming"],
-    link: "/mcq/c-language",
-    icon: FileCode,
-    gradient: "from-blue-500 to-cyan-600",
-    description:
-      "C programming basics, functions, pointers, and arrays.",
-  },
-  {
-    id: 5,
-    name: "Cloud Computing",
-    category: ["Cloud"],
-    link: "/mcq/cloud-mcq",
-    icon: Cloud,
-    gradient: "from-sky-500 to-blue-700",
-    description:
-      "Cloud services, virtualization, AWS, Azure, and Google Cloud.",
-  },
-  {
-    id: 6,
-    name: "Computer Fundamental",
-    category: ["Computer Basics"],
-    link: "/mcq/computer-fundamental",
-    icon: Computer,
-    gradient: "from-teal-500 to-emerald-600",
-    description:
-      "Basic computer concepts, hardware, software, and generations.",
-  },
-  {
-    id: 7,
-    name: "Computer Memory",
-    category: ["Computer Basics"],
-    link: "/mcq/computer-memory",
-    icon: MemoryStick,
-    gradient: "from-green-500 to-lime-600",
-    description:
-      "RAM, ROM, cache memory, storage devices, and memory hierarchy.",
-  },
-  {
-    id: 8,
-    name: "C++",
-    category: ["Programming"],
-    link: "/mcq/cpp-language",
-    icon: Code2,
-    gradient: "from-indigo-500 to-blue-700",
-    description:
-      "Object-oriented programming, classes, inheritance, and STL.",
-  },
-  {
-    id: 9,
-    name: "Computer Networking",
-    category: ["Networking"],
-    link: "/mcq/networking-mcq",
-    icon: Network,
-    gradient: "from-cyan-500 to-sky-700",
-    description:
-      "OSI model, TCP/IP, routing, switching, and network security.",
-  },
-  {
-    id: 10,
-    name: "CSS",
-    category: ["Web Development"],
-    link: "/mcq/css-mcq",
-    icon: Palette,
-    gradient: "from-blue-400 to-indigo-600",
-    description:
-      "CSS selectors, flexbox, grid, animations, and responsive design.",
-  },
-  {
-    id: 11,
-    name: "Data Structure",
-    category: ["Programming"],
-    link: "/mcq/data-structure-mcq",
-    icon: Workflow,
-    gradient: "from-orange-500 to-red-600",
-    description:
-      "Arrays, linked lists, stacks, queues, trees, and graphs.",
-  },
-  {
-    id: 12,
-    name: "DBMS",
-    category: ["Database"],
-    link: "/mcq/dbms-mcq",
-    icon: Database,
-    gradient: "from-violet-500 to-purple-700",
-    description:
-      "Database concepts, normalization, SQL, and transactions.",
-  },
-  {
-    id: 13,
-    name: "Ethical Hacking",
-    category: ["Cyber Security"],
-    link: "/mcq/ethical-hacking-mcq",
-    icon: ShieldCheck,
-    gradient: "from-red-600 to-pink-700",
-    description:
-      "Penetration testing, vulnerabilities, and cybersecurity basics.",
-  },
-  {
-    id: 14,
-    name: "HTML",
-    category: ["Web Development"],
-    link: "/mcq/html-mcq",
-    icon: FileText,
-    gradient: "from-orange-500 to-red-500",
-    description:
-      "HTML elements, forms, semantic tags, and page structure.",
-  },
-  {
-    id: 15,
-    name: "IO Device",
-    category: ["Computer Basics"],
-    link: "/mcq/io-device",
-    icon: HardDrive,
-    gradient: "from-gray-500 to-slate-700",
-    description:
-      "Input, output, storage devices, and peripheral hardware.",
-  },
-  {
-    id: 16,
-    name: "Java",
-    category: ["Programming"],
-    link: "/mcq/java-mcq",
-    icon: Coffee,
-    gradient: "from-amber-500 to-orange-700",
-    description:
-      "Java syntax, OOP, collections, exception handling, and JVM.",
-  },
-  {
-    id: 17,
-    name: "JavaScript",
-    category: ["Web Development"],
-    link: "/mcq/javascript-mcq",
-    icon: Braces,
-    gradient: "from-yellow-400 to-yellow-600",
-    description:
-      "JavaScript fundamentals, ES6, DOM, events, and promises.",
-  },
-  {
-    id: 18,
-    name: "Machine Learning",
-    category: ["Emerging Technologies"],
-    link: "/mcq/machine-learning-mcq",
-    icon: Bot,
-    gradient: "from-fuchsia-500 to-purple-700",
-    description:
-      "Supervised, unsupervised learning, regression, and classification.",
-  },
-  {
-    id: 19,
-    name: "Multimedia",
-    category: ["Computer Basics"],
-    link: "/mcq/multimedia-mcq",
-    icon: Image,
-    gradient: "from-pink-500 to-rose-600",
-    description:
-      "Graphics, audio, video, animation, and multimedia applications.",
-  },
-  {
-    id: 20,
-    name: "Node JS",
-    category: ["Backend Development"],
-    link: "/mcq/node-mcq",
-    icon: Server,
-    gradient: "from-green-600 to-emerald-700",
-    description:
-      "Node.js modules, Express, APIs, and asynchronous programming.",
-  },
-  {
-    id: 21,
-    name: "Operating System",
-    category: ["Computer Basics"],
-    link: "/mcq/operating-system",
-    icon: Monitor,
-    gradient: "from-slate-500 to-gray-700",
-    description:
-      "Processes, threads, scheduling, memory management, and file systems.",
-  },
-  {
-    id: 22,
-    name: "Python",
-    category: ["Programming"],
-    link: "/mcq/python-mcq",
-    icon: Terminal,
-    gradient: "from-blue-500 to-yellow-500",
-    description:
-      "Python syntax, OOP, modules, functions, and data structures.",
-  },
-  {
-    id: 23,
-    name: "React JS",
-    category: ["Web Development"],
-    link: "/mcq/react-mcq",
-    icon: Atom,
-    gradient: "from-cyan-400 to-blue-600",
-    description:
-      "React components, hooks, state management, and routing.",
-  },
-  {
-    id: 24,
-    name: "System Design",
-    category: ["Software Engineering"],
-    link: "/mcq/system-design-mcq",
-    icon: Workflow,
-    gradient: "from-indigo-600 to-violet-700",
-    description:
-      "Scalability, load balancing, caching, databases, and architecture.",
-  },
-];
+  const mcqsubjects = [
+    {
+      id: 1,
+      name: "Artificial Intelligence",
+      category: ["Emerging Technologies"],
+      link: "/mcq/artificial-intelligence",
+      icon: BrainCircuit,
+      gradient: "from-purple-500 to-indigo-500",
+      description:
+        "AI concepts, machine learning basics, and neural networks.",
+    },
+    {
+      id: 2,
+      name: "Angular Js",
+      category: ["Web Development"],
+      link: "/mcq/angularjs-mcq",
+      icon: Hexagon,
+      gradient: "from-red-500 to-red-700",
+      description:
+        "Angular components, directives, services, and routing.",
+    },
+    {
+      id: 3,
+      name: "Blockchain",
+      category: ["Emerging Technologies"],
+      link: "/mcq/blockchain",
+      icon: Blocks,
+      gradient: "from-yellow-500 to-orange-600",
+      description:
+        "Blockchain technology, cryptocurrency, and smart contracts.",
+    },
+    {
+      id: 4,
+      name: "C Language",
+      category: ["Programming"],
+      link: "/mcq/c-language",
+      icon: FileCode,
+      gradient: "from-blue-500 to-cyan-600",
+      description:
+        "C programming basics, functions, pointers, and arrays.",
+    },
+    {
+      id: 5,
+      name: "Cloud Computing",
+      category: ["Cloud"],
+      link: "/mcq/cloud-mcq",
+      icon: Cloud,
+      gradient: "from-sky-500 to-blue-700",
+      description:
+        "Cloud services, virtualization, AWS, Azure, and Google Cloud.",
+    },
+    {
+      id: 6,
+      name: "Computer Fundamental",
+      category: ["Computer Basics"],
+      link: "/mcq/computer-fundamental",
+      icon: Computer,
+      gradient: "from-teal-500 to-emerald-600",
+      description:
+        "Basic computer concepts, hardware, software, and generations.",
+    },
+    {
+      id: 7,
+      name: "Computer Memory",
+      category: ["Computer Basics"],
+      link: "/mcq/computer-memory",
+      icon: MemoryStick,
+      gradient: "from-green-500 to-lime-600",
+      description:
+        "RAM, ROM, cache memory, storage devices, and memory hierarchy.",
+    },
+    {
+      id: 8,
+      name: "C++",
+      category: ["Programming"],
+      link: "/mcq/cpp-language",
+      icon: Code2,
+      gradient: "from-indigo-500 to-blue-700",
+      description:
+        "Object-oriented programming, classes, inheritance, and STL.",
+    },
+    {
+      id: 9,
+      name: "Computer Networking",
+      category: ["Networking"],
+      link: "/mcq/networking-mcq",
+      icon: Network,
+      gradient: "from-cyan-500 to-sky-700",
+      description:
+        "OSI model, TCP/IP, routing, switching, and network security.",
+    },
+    {
+      id: 10,
+      name: "CSS",
+      category: ["Web Development"],
+      link: "/mcq/css-mcq",
+      icon: Palette,
+      gradient: "from-blue-400 to-indigo-600",
+      description:
+        "CSS selectors, flexbox, grid, animations, and responsive design.",
+    },
+    {
+      id: 11,
+      name: "Data Structure",
+      category: ["Programming"],
+      link: "/mcq/data-structure-mcq",
+      icon: Workflow,
+      gradient: "from-orange-500 to-red-600",
+      description:
+        "Arrays, linked lists, stacks, queues, trees, and graphs.",
+    },
+    {
+      id: 12,
+      name: "DBMS",
+      category: ["Database"],
+      link: "/mcq/dbms-mcq",
+      icon: Database,
+      gradient: "from-violet-500 to-purple-700",
+      description:
+        "Database concepts, normalization, SQL, and transactions.",
+    },
+    {
+      id: 13,
+      name: "Ethical Hacking",
+      category: ["Cyber Security"],
+      link: "/mcq/ethical-hacking-mcq",
+      icon: ShieldCheck,
+      gradient: "from-red-600 to-pink-700",
+      description:
+        "Penetration testing, vulnerabilities, and cybersecurity basics.",
+    },
+    {
+      id: 14,
+      name: "HTML",
+      category: ["Web Development"],
+      link: "/mcq/html-mcq",
+      icon: FileText,
+      gradient: "from-orange-500 to-red-500",
+      description:
+        "HTML elements, forms, semantic tags, and page structure.",
+    },
+    {
+      id: 15,
+      name: "IO Device",
+      category: ["Computer Basics"],
+      link: "/mcq/io-device",
+      icon: HardDrive,
+      gradient: "from-gray-500 to-slate-700",
+      description:
+        "Input, output, storage devices, and peripheral hardware.",
+    },
+    {
+      id: 16,
+      name: "Java",
+      category: ["Programming"],
+      link: "/mcq/java-mcq",
+      icon: Coffee,
+      gradient: "from-amber-500 to-orange-700",
+      description:
+        "Java syntax, OOP, collections, exception handling, and JVM.",
+    },
+    {
+      id: 17,
+      name: "JavaScript",
+      category: ["Web Development"],
+      link: "/mcq/javascript-mcq",
+      icon: Braces,
+      gradient: "from-yellow-400 to-yellow-600",
+      description:
+        "JavaScript fundamentals, ES6, DOM, events, and promises.",
+    },
+    {
+      id: 18,
+      name: "Machine Learning",
+      category: ["Emerging Technologies"],
+      link: "/mcq/machine-learning-mcq",
+      icon: Bot,
+      gradient: "from-fuchsia-500 to-purple-700",
+      description:
+        "Supervised, unsupervised learning, regression, and classification.",
+    },
+    {
+      id: 19,
+      name: "Multimedia",
+      category: ["Computer Basics"],
+      link: "/mcq/multimedia-mcq",
+      icon: Image,
+      gradient: "from-pink-500 to-rose-600",
+      description:
+        "Graphics, audio, video, animation, and multimedia applications.",
+    },
+    {
+      id: 20,
+      name: "Node JS",
+      category: ["Backend Development"],
+      link: "/mcq/node-mcq",
+      icon: Server,
+      gradient: "from-green-600 to-emerald-700",
+      description:
+        "Node.js modules, Express, APIs, and asynchronous programming.",
+    },
+    {
+      id: 21,
+      name: "Operating System",
+      category: ["Computer Basics"],
+      link: "/mcq/operating-system",
+      icon: Monitor,
+      gradient: "from-slate-500 to-gray-700",
+      description:
+        "Processes, threads, scheduling, memory management, and file systems.",
+    },
+    {
+      id: 22,
+      name: "Python",
+      category: ["Programming"],
+      link: "/mcq/python-mcq",
+      icon: Terminal,
+      gradient: "from-blue-500 to-yellow-500",
+      description:
+        "Python syntax, OOP, modules, functions, and data structures.",
+    },
+    {
+      id: 23,
+      name: "React JS",
+      category: ["Web Development"],
+      link: "/mcq/react-mcq",
+      icon: Atom,
+      gradient: "from-cyan-400 to-blue-600",
+      description:
+        "React components, hooks, state management, and routing.",
+    },
+    {
+      id: 24,
+      name: "System Design",
+      category: ["Software Engineering"],
+      link: "/mcq/system-design-mcq",
+      icon: Workflow,
+      gradient: "from-indigo-600 to-violet-700",
+      description:
+        "Scalability, load balancing, caching, databases, and architecture.",
+    },
+  ];
 
   const categories = useMemo(
     () => [...new Set(mcqsubjects.flatMap((subject) => subject.category))],
@@ -303,7 +303,7 @@ const mcqsubjects = [
 
   const pageTitle = "Computer Science MCQs with Answers | Code Skipper";
   const pageDescription =
-    "Practice 1000+ computer science MCQs with detailed answers — programming, web development, databases, networking, AI, and more. Free, updated, and exam-ready.";
+    "Practice 1000+ computer science MCQs for competition exam — programming, web development, databases, networking, AI, and more. Free, updated, and exam-ready.";
 
 
   const itemListSchema = {
@@ -425,7 +425,7 @@ const mcqsubjects = [
               className="text-center max-w-4xl mx-auto px-4"
             >
               <h1 className="text-4xl md:text-5xl font-bold text-blue-700">
-                Computer Science MCQs with Answers - Code Skipper
+                Free Computer Science MCQs with Answers for Exams, Interviews & Placement Preparation
               </h1>
               <p className="mt-4 text-gray-700 text-lg">
                 Practice{" "}

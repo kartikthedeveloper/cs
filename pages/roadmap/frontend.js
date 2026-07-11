@@ -131,7 +131,7 @@ export default function FrontendDeveloperRoadmap() {
                   className="inline-block mb-6"
                 >
                   <span className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full text-sm font-semibold shadow-lg">
-                    Updated for 2025
+                    Updated for 2026
                   </span>
                 </motion.div>
                 <h1 className="text-5xl md:text-6xl font-bold text-gray-800 mb-6">
