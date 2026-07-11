@@ -8,11 +8,12 @@ export default function Sidebar({ isOpen, setSidebarOpen }) {
       name: "Home",
       link: "/roadmap",
     },
-    { id: 2, name: "Frontend Developer", link: "/roadmap/frontend" },
     { id: 3, name: "Backend Developer", link: "/roadmap/backend" },
-    { id: 4, name: "Full Stack Web Developer", link: "/roadmap/fullstack" },
-    { id: 5, name: "React Developer", link: "/roadmap/react" },
     { id: 6, name: "Cyber Security", link: "/roadmap/cyber-security" },
+    { id: 4, name: "Digital Marketing", link: "/roadmap/digital-marketing" },
+    { id: 5, name: "Frontend Developer", link: "/roadmap/frontend" },
+    { id: 6, name: "Full Stack Web Developer", link: "/roadmap/fullstack" },
+    { id: 7, name: "React Developer", link: "/roadmap/react" },
 
 
     // Add more subjects here
