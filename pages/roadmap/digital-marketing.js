@@ -45,7 +45,6 @@ import {
     SiYoutube,
     SiTiktok,
     SiTwitter,
-    SiCanva,
     SiWordpress,
     SiMailchimp
 } from 'react-icons/si';
@@ -1291,7 +1290,7 @@ const careerPaths = [
 const tools = [
     { name: "Google Analytics", purpose: "Web Analytics", icon: <SiGoogleanalytics /> },
     { name: "Google Ads", purpose: "PPC Advertising", icon: <SiGoogleads /> },
-    { name: "Canva", purpose: "Design & Visual Content", icon: <SiCanva /> },
+    { name: "Canva", purpose: "Design & Visual Content", icon: <SiGoogleanalytics /> },
     { name: "SEMrush", purpose: "SEO & Competitor Research", icon: <FaSearch /> },
     { name: "HubSpot", purpose: "Marketing Automation", icon: <FaCogs /> },
     { name: "Mailchimp", purpose: "Email Marketing", icon: <SiMailchimp /> },

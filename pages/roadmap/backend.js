@@ -51,7 +51,6 @@ import {
     SiKubernetes,
     SiNginx,
     SiTensorflow,
-    SiOpenai,
     SiPytorch
 } from 'react-icons/si';
 import Head from 'next/head';
@@ -1211,7 +1210,7 @@ const tools = [
     { name: "AWS", purpose: "Cloud Platform", useCase: "Infrastructure & services", icon: <FaAws />, color: "#FF9900" },
     { name: "Kubernetes", purpose: "Container Orchestration", useCase: "Managing containerized apps", icon: <SiKubernetes />, color: "#326CE5" },
     { name: "NGINX", purpose: "Web Server & Proxy", useCase: "Load balancing & reverse proxy", icon: <SiNginx />, color: "#009639" },
-    { name: "OpenAI", purpose: "LLM Integration", useCase: "AI features & agents", icon: <SiOpenai />, color: "#10A37F" },
+    { name: "OpenAI", purpose: "LLM Integration", useCase: "AI features & agents", icon: <FaCloud />, color: "#10A37F" },
     { name: "Terraform", purpose: "Infrastructure as Code", useCase: "Cloud provisioning", icon: <FaCloud />, color: "#7B42BC" },
     { name: "GitHub Actions", purpose: "CI/CD Pipeline", useCase: "Automated deployment", icon: <FaGitAlt />, color: "#181717" }
 ];
