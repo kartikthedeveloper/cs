@@ -6,6 +6,8 @@ import Mcq from "@/components/Mcq";
 import Tools from "@/components/Tools";
 import Games from "@/components/Games";
 import Roadmaps from "@/components/Roadmap";
+import Question from "@/components/Question";
+
 
 export default function Home() {
   return (
@@ -62,8 +64,9 @@ export default function Home() {
       <SimpleLayout>
         <Hero/>
         <Feature/>
-        <Roadmaps/>
+        <Question/>
         <Mcq/>
+        <Roadmaps/>
         <Tools/>
         <Games/>
       </SimpleLayout>
