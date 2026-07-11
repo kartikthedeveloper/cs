@@ -23,7 +23,7 @@ export default function Sidebar({ isOpen, setSidebarOpen }) {
         border-r border-slate-700
         shadow-2xl
         transform transition-transform duration-300 ease-in-out
-        z-50
+        z-[90]
         ${isOpen ? "translate-x-0" : "-translate-x-full"}
         md:translate-x-0
       `}
@@ -31,7 +31,7 @@ export default function Sidebar({ isOpen, setSidebarOpen }) {
       {/* Header */}
       <div className="px-6 py-6 border-b border-slate-700">
         <h2 className="text-xl font-bold text-white tracking-wide">
-          🚀 Roadmaps
+          Roadmaps
         </h2>
         <p className="text-sm text-slate-400 mt-1">
           Choose your learning path
