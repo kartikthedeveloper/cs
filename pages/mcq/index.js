@@ -301,9 +301,9 @@ const mcqsubjects = [
     return result;
   }, [mcqsubjects, selectedCategory, searchQuery]);
 
-  const pageTitle = "5000+ Computer Science MCQs with Answers | Code Skipper";
+  const pageTitle = "Computer Science MCQs with Answers | Code Skipper";
   const pageDescription =
-    "Practice 5000+ computer science MCQs with detailed answers — programming, web development, databases, networking, AI, and more. Free, updated, and exam-ready.";
+    "Practice 1000+ computer science MCQs with detailed answers — programming, web development, databases, networking, AI, and more. Free, updated, and exam-ready.";
 
 
   const itemListSchema = {
@@ -425,7 +425,7 @@ const mcqsubjects = [
               className="text-center max-w-4xl mx-auto px-4"
             >
               <h1 className="text-4xl md:text-5xl font-bold text-blue-700">
-                5000+ Computer Science MCQs with Answers
+                Computer Science MCQs with Answers - Code Skipper
               </h1>
               <p className="mt-4 text-gray-700 text-lg">
                 Practice{" "}

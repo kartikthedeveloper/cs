@@ -22,14 +22,10 @@ export default function CourseSidebar({ isOpen, setSidebarOpen }) {
     { id: 14, name: "HTML", link: "/mcq/html-mcq" },
     { id: 15, name: "IO Device", link: "/mcq/io-device" },
     { id: 16, name: "Java", link: "/mcq/java-mcq" },
-    { id: 17, name: "JavaScript", link: "/mcq/javascript-mcq" },
-    { id: 18, name: "Machine Learning", link: "/mcq/machine-learning-mcq" },
-    { id: 19, name: "Multimedia", link: "/mcq/multimedia-mcq" },
-    { id: 20, name: "Node JS", link: "/mcq/node-mcq" },
-    { id: 21, name: "Operating System", link: "/mcq/operating-system" },
-    { id: 22, name: "Python", link: "/mcq/python-mcq" },
-    { id: 23, name: "React JS", link: "/mcq/react-mcq" },
-    { id: 24, name: "System Design", link: "/mcq/system-design-mcq" },
+    { id: 17, name: "Machine Learning", link: "/mcq/machine-learning-mcq" },
+    { id: 18, name: "Multimedia", link: "/mcq/multimedia-mcq" },
+    { id: 19, name: "Operating System", link: "/mcq/operating-system" },
+    { id: 20, name: "System Design", link: "/mcq/system-design-mcq" },
 
   ];
 

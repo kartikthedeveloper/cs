@@ -27,21 +27,28 @@ export default function Navbar({ setSidebarOpen }) {
   }, []);
 
   const scrollItemsData = [
-    { text: "Artificial Intelligence", path: "/mcq/artificial-intelligence" },
     { text: "Angular Js", path: "/mcq/angularjs-mcq" },
+    { text: "Artificial Intelligence", path: "/mcq/artificial-intelligence" },
     { text: "Blockchain", path: "/mcq/blockchain" },
     { text: "C Language", path: "/mcq/c-language" },
+    { text: "Cloud Computing", path: "/mcq/cloud-mcq" },
     { text: "Computer Fundamental", path: "/mcq/computer-fundamental" },
+    { text: "Computer Memory", path: "/mcq/computer-memory" },
+    { text: "Computer Networking", path: "/mcq/networking-mcq" },
     { text: "C++", path: "/mcq/cpp-language" },
+    { text: "CSS", path: "/mcq/css-mcq" },
+    { text: "Data Structure", path: "/mcq/data-structure-mcq" },
     { text: "DBMS", path: "/mcq/dbms-mcq" },
     { text: "Ethical Hacking", path: "/mcq/ethical-hacking-mcq" },
     { text: "HTML", path: "/mcq/html-mcq" },
-    { text: "JavaScript", path: "/mcq/javascript-mcq" },
-    { text: "ReactJs", path: "/mcq/react-mcq" },
-    { text: "Python", path: "/mcq/python-mcq" },
-    { text: "Operating System", path: "/mcq/operating-system" },
+    { text: "IO Device", path: "/mcq/io-device" },
+    { text: "Java", path: "/mcq/java-mcq" },
     { text: "Machine Learning", path: "/mcq/machine-learning-mcq" },
-  ];
+    { text: "Multimedia", path: "/mcq/multimedia-mcq" },
+    { text: "Operating System", path: "/mcq/operating-system" },
+    { text: "System Design", path: "/mcq/system-design-mcq" },
+
+    ];
 
   useEffect(() => setItems([...scrollItemsData, ...scrollItemsData]), []);
 
