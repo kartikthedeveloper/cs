@@ -226,7 +226,7 @@ export default function BackendDeveloperRoadmap() {
                                     "@type": "ListItem",
                                     "position": 2,
                                     "name": "Roadmaps",
-                                    "item": "https://codeskipper.in/roadmaps"
+                                    "item": "https://codeskipper.in/roadmap"
                                 },
                                 {
                                     "@type": "ListItem",
@@ -258,7 +258,7 @@ export default function BackendDeveloperRoadmap() {
                                 "name": "CodeSkipper",
                                 "logo": {
                                     "@type": "ImageObject",
-                                    "url": "https://codeskipper.in/logo.png"
+                                    "url": "https://codeskipper.in/Images/logo.png"
                                 }
                             }
                         })
