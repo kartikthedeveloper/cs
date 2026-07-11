@@ -38,7 +38,7 @@ export default function Sidebar({ isOpen, setSidebarOpen }) {
         </p>
       </div>
 
-      {/* Menu */}
+      {/* Menuu */}
       <nav className="p-4 space-y-2 overflow-y-auto h-[calc(100vh-90px)]">
         {roadmapSubjects.map((subject) => {
           const isActive =
