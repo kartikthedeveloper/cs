@@ -2,548 +2,532 @@ import { useState } from "react";
 import Head from "next/head";
 import SimpleLayout from "@/components/SimpleLayout";
 
-// ---------- 50 OPERATING SYSTEMS QUESTIONS ----------
+// ---------- 50 CLOUD COMPUTING QUESTIONS ----------
 const questions = [
     // 1
     {
         id: 1,
-        question: "Which of the following is NOT a function of an operating system?",
+        question: "Which of the following is a key characteristic of cloud computing?",
         options: [
-            "Memory management",
-            "Process management",
-            "File management",
-            "Database management",
+            "On-demand self-service",
+            "Broad network access",
+            "Resource pooling",
+            "All of the above",
         ],
         correct: 3,
     },
     // 2
     {
         id: 2,
-        question: "What is the kernel of an operating system?",
-        options: [
-            "The user interface",
-            "The core component that manages system resources",
-            "A file system",
-            "A scheduling algorithm",
-        ],
-        correct: 1,
+        question: "Which cloud service model provides virtualized computing resources over the internet?",
+        options: ["SaaS", "PaaS", "IaaS", "DaaS"],
+        correct: 2,
     },
     // 3
     {
         id: 3,
-        question: "Which scheduling algorithm is non-preemptive?",
-        options: ["Round Robin", "Shortest Job First (SJF)", "Priority Scheduling", "First Come First Serve (FCFS)"],
-        correct: 3,
+        question: "Which cloud service model allows users to develop, run, and manage applications without the complexity of infrastructure?",
+        options: ["SaaS", "PaaS", "IaaS", "CaaS"],
+        correct: 1,
     },
     // 4
     {
         id: 4,
-        question: "What is a process?",
-        options: [
-            "A program in execution",
-            "A file stored on disk",
-            "A thread",
-            "A system call",
-        ],
+        question: "Which cloud service model delivers software applications over the internet on a subscription basis?",
+        options: ["SaaS", "PaaS", "IaaS", "FaaS"],
         correct: 0,
     },
     // 5
     {
         id: 5,
-        question: "Which of the following is a state of a process?",
-        options: ["Ready", "Running", "Waiting", "All of the above"],
-        correct: 3,
+        question: "What is a public cloud?",
+        options: [
+            "Cloud infrastructure owned and operated by a third-party provider and made available to the general public",
+            "Cloud infrastructure used exclusively by a single organization",
+            "A hybrid model combining on-premise and cloud",
+            "A cloud managed by the government",
+        ],
+        correct: 0,
     },
     // 6
     {
         id: 6,
-        question: "What is a deadlock?",
+        question: "What is a private cloud?",
         options: [
-            "A situation where two or more processes are unable to proceed because each is waiting for a resource held by the other",
-            "A situation where a process terminates abnormally",
-            "A scheduling algorithm",
-            "A memory management technique",
+            "Cloud infrastructure used exclusively by a single organization, either on-premises or hosted",
+            "A cloud open to the public",
+            "A cloud that combines public and private elements",
+            "A cloud offered by a community of organizations",
         ],
         correct: 0,
     },
     // 7
     {
         id: 7,
-        question: "Which of the following is NOT a necessary condition for deadlock?",
+        question: "What is a hybrid cloud?",
         options: [
-            "Mutual exclusion",
-            "Hold and wait",
-            "No preemption",
-            "Circular wait",
-            "All are necessary conditions",
+            "A combination of public and private clouds, allowing data and applications to be shared between them",
+            "A cloud that only uses public infrastructure",
+            "A cloud that only uses private infrastructure",
+            "A cloud that is not connected to the internet",
         ],
-        correct: 4,
+        correct: 0,
     },
     // 8
     {
         id: 8,
-        question: "What is the purpose of virtual memory?",
-        options: [
-            "To allow the execution of processes that are not entirely in memory",
-            "To increase the speed of the CPU",
-            "To manage input/output devices",
-            "To allocate memory to processes",
-        ],
-        correct: 0,
+        question: "Which of the following is NOT a major cloud provider?",
+        options: ["Amazon Web Services", "Microsoft Azure", "Google Cloud Platform", "Linux Cloud"],
+        correct: 3,
     },
     // 9
     {
         id: 9,
-        question: "Which page replacement algorithm is optimal?",
-        options: ["FIFO", "LRU", "Optimal (MIN)", "Clock"],
-        correct: 2,
+        question: "What is AWS Lambda?",
+        options: [
+            "A serverless compute service that runs code in response to events",
+            "A virtual machine service",
+            "A container orchestration service",
+            "A database service",
+        ],
+        correct: 0,
     },
     // 10
     {
         id: 10,
-        question: "What is a system call?",
+        question: "What is virtualization in cloud computing?",
         options: [
-            "A request by a program for a service from the operating system",
-            "A hardware interrupt",
-            "A type of scheduling algorithm",
-            "A file system operation",
+            "Creating a virtual version of a resource (server, storage, network) to run multiple instances on a single physical machine",
+            "Physical isolation of servers",
+            "A type of cloud service model",
+            "A security mechanism",
         ],
         correct: 0,
     },
     // 11
     {
         id: 11,
-        question: "Which of the following is a type of operating system?",
-        options: [
-            "Batch OS",
-            "Time-sharing OS",
-            "Real-time OS",
-            "All of the above",
-        ],
+        question: "Which technology is commonly used for virtualization?",
+        options: ["Hypervisor", "Container", "VMware", "All of the above"],
         correct: 3,
     },
     // 12
     {
         id: 12,
-        question: "What is the role of a scheduler?",
+        question: "What is a container?",
         options: [
-            "To select which process runs next",
-            "To allocate memory",
-            "To handle file I/O",
-            "To manage network connections",
+            "A lightweight, portable unit that packages code and dependencies for consistent execution across environments",
+            "A virtual machine",
+            "A type of database",
+            "A storage service",
         ],
         correct: 0,
     },
     // 13
     {
         id: 13,
-        question: "Which of the following is a preemptive scheduling algorithm?",
-        options: ["FCFS", "SJF (non-preemptive)", "Round Robin", "Priority (non-preemptive)"],
-        correct: 2,
+        question: "Which container orchestration platform is most popular?",
+        options: ["Docker Swarm", "Kubernetes", "Apache Mesos", "AWS ECS"],
+        correct: 1,
     },
     // 14
     {
         id: 14,
-        question: "What is a thread?",
+        question: "What is serverless computing?",
         options: [
-            "A lightweight process",
-            "A heavy-weight process",
-            "A file descriptor",
-            "A system call",
+            "A cloud execution model where the cloud provider manages the infrastructure and automatically scales resources",
+            "A type of database",
+            "A virtual machine with no operating system",
+            "A network service",
         ],
         correct: 0,
     },
     // 15
     {
         id: 15,
-        question: "Which of the following is true about multithreading?",
-        options: [
-            "It improves CPU utilization",
-            "It reduces context switching overhead",
-            "Both A and B",
-            "Neither A nor B",
-        ],
-        correct: 2,
+        question: "Which of the following is an example of a serverless platform?",
+        options: ["AWS Lambda", "Google Cloud Functions", "Azure Functions", "All of the above"],
+        correct: 3,
     },
     // 16
     {
         id: 16,
-        question: "What is the purpose of inter-process communication (IPC)?",
+        question: "What is the pay-as-you-go pricing model?",
         options: [
-            "To allow processes to exchange data",
-            "To synchronize processes",
-            "Both A and B",
-            "To schedule processes",
+            "Paying only for the resources you use, often on a per-hour or per-second basis",
+            "A fixed monthly fee",
+            "A one-time payment",
+            "A free service",
         ],
-        correct: 2,
+        correct: 0,
     },
     // 17
     {
         id: 17,
-        question: "Which of the following is a synchronization mechanism?",
-        options: ["Semaphore", "Mutex", "Monitor", "All of the above"],
+        question: "Which of the following is a benefit of cloud computing?",
+        options: [
+            "Cost efficiency",
+            "Scalability",
+            "High availability",
+            "All of the above",
+        ],
         correct: 3,
     },
     // 18
     {
         id: 18,
-        question: "What is the difference between a semaphore and a mutex?",
+        question: "What is elasticity in cloud computing?",
         options: [
-            "A semaphore can be used for counting; a mutex is binary",
-            "A mutex can be used for counting; a semaphore is binary",
-            "They are the same",
-            "Semaphore is hardware; mutex is software",
+            "The ability to automatically scale resources up or down based on demand",
+            "The ability to run multiple operating systems",
+            "The ability to secure data",
+            "The ability to deploy applications quickly",
         ],
         correct: 0,
     },
     // 19
     {
         id: 19,
-        question: "What is a critical section?",
+        question: "What is a Virtual Private Cloud (VPC)?",
         options: [
-            "A segment of code that accesses shared resources",
-            "A segment of code that is not executed",
-            "A memory region for kernel",
-            "A scheduling queue",
+            "A logically isolated section of a public cloud providing private networking",
+            "A physical data center",
+            "A type of hybrid cloud",
+            "A serverless function",
         ],
         correct: 0,
     },
     // 20
     {
         id: 20,
-        question: "Which of the following is a file allocation method?",
-        options: [
-            "Contiguous allocation",
-            "Linked allocation",
-            "Indexed allocation",
-            "All of the above",
-        ],
-        correct: 3,
+        question: "Which protocol is commonly used for cloud storage access?",
+        options: ["HTTP/HTTPS", "FTP", "SMB", "NFS"],
+        correct: 0,
     },
     // 21
     {
         id: 21,
-        question: "What is a file system?",
+        question: "What is object storage?",
         options: [
-            "A method for storing and organizing files",
-            "A type of operating system",
-            "A scheduling algorithm",
-            "A memory management technique",
+            "A data storage architecture that manages data as objects, each with metadata and a unique identifier",
+            "A block storage system",
+            "A file storage system",
+            "A relational database",
         ],
         correct: 0,
     },
     // 22
     {
         id: 22,
-        question: "Which of the following is a type of file system?",
-        options: ["FAT", "NTFS", "ext4", "All of the above"],
-        correct: 3,
+        question: "Which AWS service is used for object storage?",
+        options: ["Amazon S3", "Amazon EBS", "Amazon EFS", "Amazon RDS"],
+        correct: 0,
     },
     // 23
     {
         id: 23,
-        question: "What is the role of a device driver?",
+        question: "What is block storage?",
         options: [
-            "To manage hardware devices",
-            "To schedule processes",
-            "To manage memory",
-            "To handle file systems",
+            "Storage that is divided into fixed-sized blocks, often used for databases and virtual machines",
+            "Storage of objects with metadata",
+            "A file-based storage system",
+            "A caching mechanism",
         ],
         correct: 0,
     },
     // 24
     {
         id: 24,
-        question: "Which of the following is an example of a real-time operating system?",
-        options: ["Windows", "Linux", "VxWorks", "macOS"],
-        correct: 2,
+        question: "Which AWS service is used for block storage?",
+        options: ["Amazon EBS", "Amazon S3", "Amazon Glacier", "Amazon EFS"],
+        correct: 0,
     },
     // 25
     {
         id: 25,
-        question: "What is the purpose of a bootloader?",
+        question: "What is a Content Delivery Network (CDN)?",
         options: [
-            "To load the operating system into memory",
-            "To compile the kernel",
-            "To manage user accounts",
-            "To perform system updates",
+            "A network of distributed servers that deliver content to users based on their geographic location",
+            "A type of load balancer",
+            "A database replication service",
+            "A security service",
         ],
         correct: 0,
     },
     // 26
     {
         id: 26,
-        question: "Which of the following is a protection mechanism in OS?",
-        options: [
-            "User mode vs. kernel mode",
-            "File permissions",
-            "Memory protection",
-            "All of the above",
-        ],
+        question: "Which of the following is a CDN service?",
+        options: ["Amazon CloudFront", "Google Cloud CDN", "Azure CDN", "All of the above"],
         correct: 3,
     },
     // 27
     {
         id: 27,
-        question: "What is a process control block (PCB)?",
+        question: "What is load balancing in cloud computing?",
         options: [
-            "A data structure that contains information about a process",
-            "A file system structure",
-            "A memory block",
-            "A scheduling queue",
+            "Distributing incoming traffic across multiple servers to ensure high availability and reliability",
+            "A security measure",
+            "A type of virtualization",
+            "A backup technique",
         ],
         correct: 0,
     },
     // 28
     {
         id: 28,
-        question: "Which of the following is a scheduling criterion?",
-        options: ["CPU utilization", "Throughput", "Turnaround time", "All of the above"],
-        correct: 3,
+        question: "Which cloud service is used for relational databases?",
+        options: ["RDS (Relational Database Service)", "DynamoDB", "MongoDB Atlas", "All of the above"],
+        correct: 0,
     },
     // 29
     {
         id: 29,
-        question: "What is the difference between preemptive and non-preemptive scheduling?",
-        options: [
-            "Preemptive can interrupt a running process; non-preemptive cannot",
-            "Non-preemptive can interrupt a running process; preemptive cannot",
-            "They are the same",
-            "Preemptive is only for real-time systems",
-        ],
-        correct: 0,
+        question: "Which cloud service is used for NoSQL databases?",
+        options: ["DynamoDB", "Cloud Firestore", "Cosmos DB", "All of the above"],
+        correct: 3,
     },
     // 30
     {
         id: 30,
-        question: "What is thrashing?",
+        question: "What is a Disaster Recovery (DR) strategy in the cloud?",
         options: [
-            "High page fault activity causing poor performance",
-            "A scheduling algorithm",
-            "A file system error",
-            "A hardware failure",
+            "A set of policies and tools to recover data and systems after a catastrophic event",
+            "A security protocol",
+            "A migration technique",
+            "A cost optimization method",
         ],
         correct: 0,
     },
     // 31
     {
         id: 31,
-        question: "Which of the following is a method for handling deadlocks?",
+        question: "What is the difference between scalability and elasticity?",
         options: [
-            "Deadlock prevention",
-            "Deadlock avoidance",
-            "Deadlock detection and recovery",
-            "All of the above",
+            "Scalability is the ability to handle increased load; elasticity is the ability to automatically scale up and down",
+            "They are the same",
+            "Elasticity is manual scaling; scalability is automatic",
+            "Scalability is only vertical scaling",
         ],
-        correct: 3,
+        correct: 0,
     },
     // 32
     {
         id: 32,
-        question: "What is the banker's algorithm used for?",
+        question: "What is cloud migration?",
         options: [
-            "Deadlock avoidance",
-            "Deadlock prevention",
-            "Deadlock detection",
-            "Memory allocation",
+            "The process of moving applications, data, and workloads from on-premises to the cloud",
+            "A type of cloud provider",
+            "A security service",
+            "A backup method",
         ],
         correct: 0,
     },
     // 33
     {
         id: 33,
-        question: "Which of the following is a type of memory management technique?",
-        options: ["Paging", "Segmentation", "Both A and B", "Neither"],
-        correct: 2,
+        question: "Which of the following is a cloud security best practice?",
+        options: [
+            "Identity and Access Management (IAM)",
+            "Encryption",
+            "Regular audits",
+            "All of the above",
+        ],
+        correct: 3,
     },
     // 34
     {
         id: 34,
-        question: "What is a page fault?",
+        question: "What is the shared responsibility model in cloud security?",
         options: [
-            "An interrupt that occurs when a program accesses a page that is not in memory",
-            "A hardware error",
-            "A scheduling error",
-            "A file system error",
+            "Security responsibilities are divided between the cloud provider and the customer",
+            "Only the cloud provider is responsible for security",
+            "Only the customer is responsible for security",
+            "Security is not a concern in the cloud",
         ],
         correct: 0,
     },
     // 35
     {
         id: 35,
-        question: "Which of the following is a disk scheduling algorithm?",
-        options: ["FCFS", "SSTF", "SCAN", "All of the above"],
-        correct: 3,
+        question: "What is a cloud service provider (CSP)?",
+        options: [
+            "A company that offers cloud computing services",
+            "A customer of cloud services",
+            "A type of cloud deployment model",
+            "A software application",
+        ],
+        correct: 0,
     },
     // 36
     {
         id: 36,
-        question: "What is the purpose of a file descriptor?",
+        question: "What is multi-cloud strategy?",
         options: [
-            "An identifier for an open file",
-            "A file name",
-            "A directory entry",
-            "A file system type",
+            "Using multiple cloud providers to avoid vendor lock-in and increase redundancy",
+            "Using only one cloud provider",
+            "A hybrid deployment",
+            "A private cloud only",
         ],
         correct: 0,
     },
     // 37
     {
         id: 37,
-        question: "Which of the following is a characteristic of a distributed operating system?",
+        question: "What is the purpose of a cloud service level agreement (SLA)?",
         options: [
-            "Multiple independent systems appear as a single system",
-            "Centralized control",
-            "Single point of failure",
-            "All of the above",
+            "To define the performance and availability commitments between a cloud provider and customer",
+            "To define pricing",
+            "To list all available services",
+            "To outline legal terms only",
         ],
         correct: 0,
     },
     // 38
     {
         id: 38,
-        question: "What is a system call interface?",
+        question: "Which of the following is a cloud cost optimization technique?",
         options: [
-            "The boundary between user programs and the kernel",
-            "A file system",
-            "A scheduling algorithm",
-            "A memory management unit",
+            "Rightsizing instances",
+            "Using spot instances",
+            "Scheduling resources to turn off when not needed",
+            "All of the above",
         ],
-        correct: 0,
+        correct: 3,
     },
     // 39
     {
         id: 39,
-        question: "Which of the following is a real-time scheduling algorithm?",
-        options: ["Rate Monotonic", "Earliest Deadline First", "Both A and B", "Round Robin"],
-        correct: 2,
+        question: "What is a cloud-native application?",
+        options: [
+            "An application designed and built to run in the cloud, leveraging microservices, containers, and orchestration",
+            "An application running on legacy on-premises systems",
+            "A virtual machine image",
+            "A database service",
+        ],
+        correct: 0,
     },
     // 40
     {
         id: 40,
-        question: "What is the role of a file system in an OS?",
+        question: "What is microservices architecture?",
         options: [
-            "To organize and store data on storage devices",
-            "To manage memory",
-            "To schedule processes",
-            "To handle network communication",
+            "An approach to building applications as a collection of small, independent services",
+            "A monolithic application design",
+            "A type of database",
+            "A networking protocol",
         ],
         correct: 0,
     },
     // 41
     {
         id: 41,
-        question: "Which of the following is a type of operating system structure?",
-        options: [
-            "Monolithic kernel",
-            "Microkernel",
-            "Hybrid kernel",
-            "All of the above",
-        ],
+        question: "Which of the following is an orchestration tool?",
+        options: ["Kubernetes", "Docker Compose", "AWS CloudFormation", "All of the above"],
         correct: 3,
     },
     // 42
     {
         id: 42,
-        question: "What is the purpose of a system boot?",
+        question: "What is Infrastructure as Code (IaC)?",
         options: [
-            "To start the operating system",
-            "To shut down the system",
-            "To manage processes",
-            "To allocate memory",
+            "Managing and provisioning infrastructure through machine-readable definition files rather than manual processes",
+            "Coding applications in the cloud",
+            "A type of programming language",
+            "A security policy",
         ],
         correct: 0,
     },
     // 43
     {
         id: 43,
-        question: "Which of the following is a security mechanism in OS?",
-        options: [
-            "Authentication",
-            "Authorization",
-            "Encryption",
-            "All of the above",
-        ],
+        question: "Which tool is commonly used for Infrastructure as Code?",
+        options: ["Terraform", "AWS CloudFormation", "Ansible", "All of the above"],
         correct: 3,
     },
     // 44
     {
         id: 44,
-        question: "What is a zombie process?",
+        question: "What is a cloud region?",
         options: [
-            "A process that has terminated but still has an entry in the process table",
-            "A process that is running",
-            "A process that is waiting for I/O",
-            "A process that is in the ready queue",
+            "A geographical area where a cloud provider has data centers",
+            "A network zone",
+            "A type of virtual machine",
+            "A security group",
         ],
         correct: 0,
     },
     // 45
     {
         id: 45,
-        question: "What is the role of the dispatcher in scheduling?",
+        question: "What is a cloud availability zone?",
         options: [
-            "To give control of the CPU to the selected process",
-            "To select the next process to run",
-            "To manage memory",
-            "To handle interrupts",
+            "One or more data centers within a region, isolated from failures in other zones",
+            "A geographic region",
+            "A virtual network",
+            "A storage bucket",
         ],
         correct: 0,
     },
     // 46
     {
         id: 46,
-        question: "Which of the following is a type of I/O buffering?",
-        options: [
-            "Single buffer",
-            "Double buffer",
-            "Circular buffer",
-            "All of the above",
-        ],
+        question: "Which cloud service provides managed Kubernetes clusters?",
+        options: ["EKS (AWS)", "AKS (Azure)", "GKE (GCP)", "All of the above"],
         correct: 3,
     },
     // 47
     {
         id: 47,
-        question: "What is the purpose of a system call library?",
+        question: "What is a container registry?",
         options: [
-            "To provide an interface for system calls to user programs",
-            "To manage files",
-            "To schedule processes",
-            "To manage memory",
+            "A service to store and manage container images",
+            "A type of container",
+            "A virtual machine",
+            "A database",
         ],
         correct: 0,
     },
     // 48
     {
         id: 48,
-        question: "Which of the following is a type of interrupt?",
-        options: ["Hardware interrupt", "Software interrupt", "Exception", "All of the above"],
-        correct: 3,
+        question: "What is the difference between a container and a virtual machine?",
+        options: [
+            "Containers share the host OS kernel and are lightweight; VMs run a full OS and are heavier",
+            "They are the same",
+            "VMs are more portable than containers",
+            "Containers require a hypervisor",
+        ],
+        correct: 0,
     },
     // 49
     {
         id: 49,
-        question: "What is the role of the process scheduler?",
+        question: "What is a function-as-a-service (FaaS) in cloud computing?",
         options: [
-            "To manage the execution of processes",
-            "To manage memory",
-            "To manage files",
-            "To manage network connections",
+            "A serverless execution model where functions are triggered by events",
+            "A type of container orchestration",
+            "A database service",
+            "A storage service",
         ],
         correct: 0,
     },
     // 50
     {
         id: 50,
-        question: "Which of the following is an example of a mobile operating system?",
-        options: ["Android", "iOS", "HarmonyOS", "All of the above"],
+        question: "Which of the following is an emerging trend in cloud computing?",
+        options: [
+            "Edge computing",
+            "AI/ML integration",
+            "Quantum computing as a service",
+            "All of the above",
+        ],
         correct: 3,
     },
 ];
 
 // ---------- COMPONENT ----------
-export default function OSQuiz() {
+export default function CloudComputingQuiz() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [selectedAnswers, setSelectedAnswers] = useState(
         new Array(questions.length).fill(null)
@@ -612,18 +596,18 @@ export default function OSQuiz() {
             <Head>
                 {/* Primary Meta Tags */}
                 <title>
-                    Operating Systems Quiz – 50 MCQs Test Your OS Knowledge
+                    Cloud Computing Quiz – 50 MCQs Test Your Cloud Knowledge
                 </title>
                 <meta
                     name="description"
-                    content="Test your Operating Systems knowledge with 50 high-quality MCQs covering processes, scheduling, memory management, file systems, deadlocks, and more. Score instantly!"
+                    content="Test your Cloud Computing knowledge with 50 high-quality MCQs covering IaaS, PaaS, SaaS, deployment models, AWS, Azure, GCP, virtualization, containers, serverless, and more. Score instantly!"
                 />
                 <meta
                     name="keywords"
-                    content="Operating Systems quiz, OS MCQ, process management, scheduling, memory management, file systems, deadlock, virtualization, kernel"
+                    content="Cloud Computing quiz, cloud MCQ, IaaS, PaaS, SaaS, AWS, Azure, GCP, virtualization, containers, Kubernetes, serverless, cloud security, deployment models"
                 />
                 <meta name="robots" content="index, follow" />
-                <meta name="author" content="OS Quiz" />
+                <meta name="author" content="Cloud Quiz" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta charSet="UTF-8" />
 
@@ -636,22 +620,22 @@ export default function OSQuiz() {
                 <meta name="language" content="en" />
 
                 {/* Open Graph */}
-                <meta property="og:title" content="Operating Systems Quiz – 50 MCQs" />
+                <meta property="og:title" content="Cloud Computing Quiz – 50 MCQs" />
                 <meta
                     property="og:description"
-                    content="Test your OS skills with 50 original MCQs. Get instant results and see your score!"
+                    content="Test your cloud computing skills with 50 original MCQs. Get instant results and see your score!"
                 />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://codeskipper.in/test/operating-system" />
+                <meta property="og:url" content="https://codeskipper.in/test/cloud" />
                 <meta
                     property="og:image"
-                    content="https://codeskipper.in/og-image-os.jpg"
+                    content="https://codeskipper.in/og-image-cloud.jpg"
                 />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Operating Systems Quiz – 50 MCQs" />
+                <meta name="twitter:title" content="Cloud Computing Quiz – 50 MCQs" />
                 <meta
                     name="twitter:description"
-                    content="50 original OS MCQs – test your knowledge now!"
+                    content="50 original cloud computing MCQs – test your knowledge now!"
                 />
 
                 {/* Schema.org JSON-LD */}
@@ -661,16 +645,16 @@ export default function OSQuiz() {
                         __html: JSON.stringify({
                             "@context": "https://schema.org",
                             "@type": "Quiz",
-                            "name": "Operating Systems Quiz",
-                            "description": "50 multiple-choice questions covering processes, scheduling, memory management, file systems, deadlocks, and more.",
+                            "name": "Cloud Computing Quiz",
+                            "description": "50 multiple-choice questions covering IaaS, PaaS, SaaS, deployment models, AWS, Azure, GCP, virtualization, containers, serverless, security, and more.",
                             "educationalLevel": "Intermediate to Advanced",
                             "about": {
                                 "@type": "Thing",
-                                "name": "Operating Systems",
+                                "name": "Cloud Computing",
                             },
                             "creator": {
                                 "@type": "Organization",
-                                "name": "OS Quiz",
+                                "name": "Cloud Quiz",
                             },
                             "numberOfQuestions": 50,
                         }),
@@ -678,7 +662,7 @@ export default function OSQuiz() {
                 />
 
                 {/* Canonical */}
-                <link rel="canonical" href="https://codeskipper.in/test/operating-system" />
+                <link rel="canonical" href="https://codeskipper.in/test/cloud" />
             </Head>
 
             <SimpleLayout>
@@ -687,10 +671,10 @@ export default function OSQuiz() {
                         {/* Header */}
                         <div className="text-center mb-8">
                             <h1 className="text-3xl md:text-4xl font-bold text-slate-800 tracking-tight">
-                                🖥️ Operating Systems Quiz
+                                ☁️ Cloud Computing Quiz
                             </h1>
                             <p className="mt-2 text-slate-600 text-sm md:text-base">
-                                50 original MCQs • Processes • Scheduling • Memory • File Systems • Deadlocks • Virtualization
+                                50 original MCQs • IaaS • PaaS • SaaS • Providers • Virtualization • Containers • Serverless • Security
                             </p>
                             {!showResults && (
                                 <div className="mt-3 inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm text-sm text-slate-700">

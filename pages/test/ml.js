@@ -2,548 +2,567 @@ import { useState } from "react";
 import Head from "next/head";
 import SimpleLayout from "@/components/SimpleLayout";
 
-// ---------- 50 OPERATING SYSTEMS QUESTIONS ----------
+// ---------- 50 MACHINE LEARNING QUESTIONS ----------
 const questions = [
     // 1
     {
         id: 1,
-        question: "Which of the following is NOT a function of an operating system?",
+        question: "What is Machine Learning?",
         options: [
-            "Memory management",
-            "Process management",
-            "File management",
-            "Database management",
+            "A subset of AI that enables systems to learn and improve from experience without explicit programming",
+            "A programming language for data analysis",
+            "A type of database management",
+            "A hardware component for neural networks",
         ],
-        correct: 3,
+        correct: 0,
     },
     // 2
     {
         id: 2,
-        question: "What is the kernel of an operating system?",
+        question: "Which of the following is a type of machine learning?",
         options: [
-            "The user interface",
-            "The core component that manages system resources",
-            "A file system",
-            "A scheduling algorithm",
+            "Supervised learning",
+            "Unsupervised learning",
+            "Reinforcement learning",
+            "All of the above",
         ],
-        correct: 1,
+        correct: 3,
     },
     // 3
     {
         id: 3,
-        question: "Which scheduling algorithm is non-preemptive?",
-        options: ["Round Robin", "Shortest Job First (SJF)", "Priority Scheduling", "First Come First Serve (FCFS)"],
-        correct: 3,
+        question: "In supervised learning, the training data includes:",
+        options: [
+            "Input features and corresponding output labels",
+            "Only input features",
+            "Only output labels",
+            "No labels",
+        ],
+        correct: 0,
     },
     // 4
     {
         id: 4,
-        question: "What is a process?",
+        question: "In unsupervised learning, the training data includes:",
         options: [
-            "A program in execution",
-            "A file stored on disk",
-            "A thread",
-            "A system call",
+            "Input features without labels",
+            "Input features with labels",
+            "Only output labels",
+            "No data",
         ],
         correct: 0,
     },
     // 5
     {
         id: 5,
-        question: "Which of the following is a state of a process?",
-        options: ["Ready", "Running", "Waiting", "All of the above"],
-        correct: 3,
+        question: "Which of the following is a regression algorithm?",
+        options: [
+            "Linear Regression",
+            "Logistic Regression",
+            "Both A and B",
+            "K-Means",
+        ],
+        correct: 2,
     },
     // 6
     {
         id: 6,
-        question: "What is a deadlock?",
+        question: "Which of the following is a classification algorithm?",
         options: [
-            "A situation where two or more processes are unable to proceed because each is waiting for a resource held by the other",
-            "A situation where a process terminates abnormally",
-            "A scheduling algorithm",
-            "A memory management technique",
+            "Decision Tree",
+            "Support Vector Machine",
+            "Logistic Regression",
+            "All of the above",
         ],
-        correct: 0,
+        correct: 3,
     },
     // 7
     {
         id: 7,
-        question: "Which of the following is NOT a necessary condition for deadlock?",
+        question: "What does the term 'overfitting' mean?",
         options: [
-            "Mutual exclusion",
-            "Hold and wait",
-            "No preemption",
-            "Circular wait",
-            "All are necessary conditions",
+            "The model performs well on training data but poorly on unseen data",
+            "The model performs poorly on both training and test data",
+            "The model generalizes well",
+            "The model has too few parameters",
         ],
-        correct: 4,
+        correct: 0,
     },
     // 8
     {
         id: 8,
-        question: "What is the purpose of virtual memory?",
+        question: "What does the term 'underfitting' mean?",
         options: [
-            "To allow the execution of processes that are not entirely in memory",
-            "To increase the speed of the CPU",
-            "To manage input/output devices",
-            "To allocate memory to processes",
+            "The model is too simple to capture the underlying patterns",
+            "The model is too complex and captures noise",
+            "The model performs well on test data",
+            "The model has high variance",
         ],
         correct: 0,
     },
     // 9
     {
         id: 9,
-        question: "Which page replacement algorithm is optimal?",
-        options: ["FIFO", "LRU", "Optimal (MIN)", "Clock"],
-        correct: 2,
+        question: "Bias-variance trade-off refers to:",
+        options: [
+            "The balance between model simplicity and complexity",
+            "The trade-off between training and test error",
+            "The trade-off between precision and recall",
+            "The balance between accuracy and speed",
+        ],
+        correct: 0,
     },
     // 10
     {
         id: 10,
-        question: "What is a system call?",
+        question: "Which of the following techniques helps prevent overfitting?",
         options: [
-            "A request by a program for a service from the operating system",
-            "A hardware interrupt",
-            "A type of scheduling algorithm",
-            "A file system operation",
-        ],
-        correct: 0,
-    },
-    // 11
-    {
-        id: 11,
-        question: "Which of the following is a type of operating system?",
-        options: [
-            "Batch OS",
-            "Time-sharing OS",
-            "Real-time OS",
+            "Regularization",
+            "Cross-validation",
+            "Early stopping",
             "All of the above",
         ],
         correct: 3,
     },
+    // 11
+    {
+        id: 11,
+        question: "What is L1 regularization?",
+        options: [
+            "A penalty term that adds the absolute value of the weights to the loss function",
+            "A penalty term that adds the squared value of the weights",
+            "A technique to drop out neurons",
+            "A data augmentation method",
+        ],
+        correct: 0,
+    },
     // 12
     {
         id: 12,
-        question: "What is the role of a scheduler?",
+        question: "What is L2 regularization?",
         options: [
-            "To select which process runs next",
-            "To allocate memory",
-            "To handle file I/O",
-            "To manage network connections",
+            "A penalty term that adds the squared value of the weights to the loss function",
+            "A penalty term that adds the absolute value of the weights",
+            "A technique for feature selection",
+            "A method for early stopping",
         ],
         correct: 0,
     },
     // 13
     {
         id: 13,
-        question: "Which of the following is a preemptive scheduling algorithm?",
-        options: ["FCFS", "SJF (non-preemptive)", "Round Robin", "Priority (non-preemptive)"],
-        correct: 2,
+        question: "What is cross-validation?",
+        options: [
+            "A technique to evaluate model performance by partitioning data into multiple training/validation sets",
+            "A method to increase training data size",
+            "A type of neural network",
+            "A regularization technique",
+        ],
+        correct: 0,
     },
     // 14
     {
         id: 14,
-        question: "What is a thread?",
+        question: "In k-fold cross-validation, the model is trained and validated:",
         options: [
-            "A lightweight process",
-            "A heavy-weight process",
-            "A file descriptor",
-            "A system call",
+            "k times, each time using a different fold as the validation set",
+            "once",
+            "twice",
+            "k^2 times",
         ],
         correct: 0,
     },
     // 15
     {
         id: 15,
-        question: "Which of the following is true about multithreading?",
-        options: [
-            "It improves CPU utilization",
-            "It reduces context switching overhead",
-            "Both A and B",
-            "Neither A nor B",
-        ],
-        correct: 2,
+        question: "Which of the following is a clustering algorithm?",
+        options: ["K-Means", "DBSCAN", "Hierarchical", "All of the above"],
+        correct: 3,
     },
     // 16
     {
         id: 16,
-        question: "What is the purpose of inter-process communication (IPC)?",
+        question: "What is the elbow method used for?",
         options: [
-            "To allow processes to exchange data",
-            "To synchronize processes",
-            "Both A and B",
-            "To schedule processes",
+            "To determine the optimal number of clusters in K-Means",
+            "To select the best learning rate",
+            "To choose the number of hidden layers",
+            "To evaluate classification performance",
         ],
-        correct: 2,
+        correct: 0,
     },
     // 17
     {
         id: 17,
-        question: "Which of the following is a synchronization mechanism?",
-        options: ["Semaphore", "Mutex", "Monitor", "All of the above"],
-        correct: 3,
+        question: "What is a decision tree?",
+        options: [
+            "A flowchart-like structure where each node represents a test on an attribute, and branches represent outcomes",
+            "A clustering algorithm",
+            "A dimensionality reduction technique",
+            "A type of neural network",
+        ],
+        correct: 0,
     },
     // 18
     {
         id: 18,
-        question: "What is the difference between a semaphore and a mutex?",
+        question: "In decision trees, the impurity measure is used to:",
         options: [
-            "A semaphore can be used for counting; a mutex is binary",
-            "A mutex can be used for counting; a semaphore is binary",
-            "They are the same",
-            "Semaphore is hardware; mutex is software",
+            "Select the best attribute for splitting",
+            "Prune the tree",
+            "Calculate the depth of the tree",
+            "Initialize the tree",
         ],
         correct: 0,
     },
     // 19
     {
         id: 19,
-        question: "What is a critical section?",
-        options: [
-            "A segment of code that accesses shared resources",
-            "A segment of code that is not executed",
-            "A memory region for kernel",
-            "A scheduling queue",
-        ],
-        correct: 0,
+        question: "Which impurity measure is commonly used in decision trees?",
+        options: ["Gini impurity", "Entropy", "Information gain", "All of the above"],
+        correct: 3,
     },
     // 20
     {
         id: 20,
-        question: "Which of the following is a file allocation method?",
+        question: "What is a random forest?",
         options: [
-            "Contiguous allocation",
-            "Linked allocation",
-            "Indexed allocation",
-            "All of the above",
+            "An ensemble of decision trees using bagging",
+            "A single decision tree",
+            "A clustering method",
+            "A neural network architecture",
         ],
-        correct: 3,
+        correct: 0,
     },
     // 21
     {
         id: 21,
-        question: "What is a file system?",
+        question: "What is boosting?",
         options: [
-            "A method for storing and organizing files",
-            "A type of operating system",
-            "A scheduling algorithm",
-            "A memory management technique",
+            "An ensemble technique that combines weak learners sequentially to create a strong learner",
+            "A method to increase data size",
+            "A regularization technique",
+            "A type of clustering",
         ],
         correct: 0,
     },
     // 22
     {
         id: 22,
-        question: "Which of the following is a type of file system?",
-        options: ["FAT", "NTFS", "ext4", "All of the above"],
+        question: "Which of the following is a boosting algorithm?",
+        options: ["AdaBoost", "Gradient Boosting", "XGBoost", "All of the above"],
         correct: 3,
     },
     // 23
     {
         id: 23,
-        question: "What is the role of a device driver?",
+        question: "What is a Support Vector Machine (SVM)?",
         options: [
-            "To manage hardware devices",
-            "To schedule processes",
-            "To manage memory",
-            "To handle file systems",
+            "A supervised algorithm that finds the hyperplane that maximizes the margin between classes",
+            "An unsupervised clustering algorithm",
+            "A dimensionality reduction method",
+            "A reinforcement learning algorithm",
         ],
         correct: 0,
     },
     // 24
     {
         id: 24,
-        question: "Which of the following is an example of a real-time operating system?",
-        options: ["Windows", "Linux", "VxWorks", "macOS"],
-        correct: 2,
+        question: "In SVM, what is the kernel trick?",
+        options: [
+            "A method to implicitly map data to a higher-dimensional space for linear separation",
+            "A technique to reduce the number of support vectors",
+            "A method to handle missing data",
+            "A way to speed up training",
+        ],
+        correct: 0,
     },
     // 25
     {
         id: 25,
-        question: "What is the purpose of a bootloader?",
-        options: [
-            "To load the operating system into memory",
-            "To compile the kernel",
-            "To manage user accounts",
-            "To perform system updates",
-        ],
-        correct: 0,
+        question: "Which kernel is commonly used in SVM for non-linear classification?",
+        options: ["Linear", "Polynomial", "RBF", "All of the above"],
+        correct: 3,
     },
     // 26
     {
         id: 26,
-        question: "Which of the following is a protection mechanism in OS?",
+        question: "What is logistic regression used for?",
         options: [
-            "User mode vs. kernel mode",
-            "File permissions",
-            "Memory protection",
-            "All of the above",
+            "Binary classification",
+            "Multiclass classification",
+            "Regression",
+            "Clustering",
         ],
-        correct: 3,
+        correct: 0,
     },
     // 27
     {
         id: 27,
-        question: "What is a process control block (PCB)?",
+        question: "In logistic regression, the output is transformed using:",
         options: [
-            "A data structure that contains information about a process",
-            "A file system structure",
-            "A memory block",
-            "A scheduling queue",
+            "The sigmoid function",
+            "The ReLU function",
+            "The tanh function",
+            "The softmax function",
         ],
         correct: 0,
     },
     // 28
     {
         id: 28,
-        question: "Which of the following is a scheduling criterion?",
-        options: ["CPU utilization", "Throughput", "Turnaround time", "All of the above"],
-        correct: 3,
+        question: "What is the loss function typically used for logistic regression?",
+        options: [
+            "Cross-entropy log loss",
+            "Mean squared error",
+            "Hinge loss",
+            "Exponential loss",
+        ],
+        correct: 0,
     },
     // 29
     {
         id: 29,
-        question: "What is the difference between preemptive and non-preemptive scheduling?",
+        question: "What is the difference between linear regression and logistic regression?",
         options: [
-            "Preemptive can interrupt a running process; non-preemptive cannot",
-            "Non-preemptive can interrupt a running process; preemptive cannot",
+            "Linear regression is for continuous output; logistic regression is for categorical output",
+            "Linear regression uses a linear activation; logistic uses sigmoid",
+            "Both A and B",
             "They are the same",
-            "Preemptive is only for real-time systems",
         ],
-        correct: 0,
+        correct: 2,
     },
     // 30
     {
         id: 30,
-        question: "What is thrashing?",
-        options: [
-            "High page fault activity causing poor performance",
-            "A scheduling algorithm",
-            "A file system error",
-            "A hardware failure",
-        ],
-        correct: 0,
+        question: "Which of the following is a metric for evaluating regression models?",
+        options: ["Mean Squared Error", "R-squared", "Mean Absolute Error", "All of the above"],
+        correct: 3,
     },
     // 31
     {
         id: 31,
-        question: "Which of the following is a method for handling deadlocks?",
-        options: [
-            "Deadlock prevention",
-            "Deadlock avoidance",
-            "Deadlock detection and recovery",
-            "All of the above",
-        ],
+        question: "Which of the following is a metric for evaluating classification models?",
+        options: ["Accuracy", "Precision", "Recall", "All of the above"],
         correct: 3,
     },
     // 32
     {
         id: 32,
-        question: "What is the banker's algorithm used for?",
+        question: "What is the F1-score?",
         options: [
-            "Deadlock avoidance",
-            "Deadlock prevention",
-            "Deadlock detection",
-            "Memory allocation",
+            "The harmonic mean of precision and recall",
+            "The arithmetic mean of precision and recall",
+            "The product of precision and recall",
+            "The difference between precision and recall",
         ],
         correct: 0,
     },
     // 33
     {
         id: 33,
-        question: "Which of the following is a type of memory management technique?",
-        options: ["Paging", "Segmentation", "Both A and B", "Neither"],
-        correct: 2,
+        question: "What is the confusion matrix?",
+        options: [
+            "A table used to describe the performance of a classification model",
+            "A matrix used for clustering",
+            "A visualization of neural network weights",
+            "A feature extraction method",
+        ],
+        correct: 0,
     },
     // 34
     {
         id: 34,
-        question: "What is a page fault?",
+        question: "In a confusion matrix, what are true positives (TP)?",
         options: [
-            "An interrupt that occurs when a program accesses a page that is not in memory",
-            "A hardware error",
-            "A scheduling error",
-            "A file system error",
+            "Correctly predicted positive instances",
+            "Incorrectly predicted positive instances",
+            "Correctly predicted negative instances",
+            "Incorrectly predicted negative instances",
         ],
         correct: 0,
     },
     // 35
     {
         id: 35,
-        question: "Which of the following is a disk scheduling algorithm?",
-        options: ["FCFS", "SSTF", "SCAN", "All of the above"],
-        correct: 3,
+        question: "In a confusion matrix, what are false positives (FP)?",
+        options: [
+            "Incorrectly predicted positive instances",
+            "Correctly predicted positive instances",
+            "Correctly predicted negative instances",
+            "Incorrectly predicted negative instances",
+        ],
+        correct: 0,
     },
     // 36
     {
         id: 36,
-        question: "What is the purpose of a file descriptor?",
+        question: "What is the ROC curve?",
         options: [
-            "An identifier for an open file",
-            "A file name",
-            "A directory entry",
-            "A file system type",
+            "A plot of true positive rate vs false positive rate at various classification thresholds",
+            "A plot of precision vs recall",
+            "A plot of accuracy vs model complexity",
+            "A plot of loss vs epochs",
         ],
         correct: 0,
     },
     // 37
     {
         id: 37,
-        question: "Which of the following is a characteristic of a distributed operating system?",
+        question: "What does AUC stand for?",
         options: [
-            "Multiple independent systems appear as a single system",
-            "Centralized control",
-            "Single point of failure",
-            "All of the above",
+            "Area Under the Curve (of ROC)",
+            "Accuracy Under Curve",
+            "Average Unweighted Classification",
+            "Automated Unified Clustering",
         ],
         correct: 0,
     },
     // 38
     {
         id: 38,
-        question: "What is a system call interface?",
+        question: "What is feature scaling?",
         options: [
-            "The boundary between user programs and the kernel",
-            "A file system",
-            "A scheduling algorithm",
-            "A memory management unit",
+            "Transforming features to a similar scale to improve convergence",
+            "Removing irrelevant features",
+            "Creating new features from existing ones",
+            "Encoding categorical variables",
         ],
         correct: 0,
     },
     // 39
     {
         id: 39,
-        question: "Which of the following is a real-time scheduling algorithm?",
-        options: ["Rate Monotonic", "Earliest Deadline First", "Both A and B", "Round Robin"],
+        question: "Which method is used for feature scaling?",
+        options: ["Standardization", "Normalization", "Both A and B", "Neither"],
         correct: 2,
     },
     // 40
     {
         id: 40,
-        question: "What is the role of a file system in an OS?",
+        question: "What is principal component analysis (PCA)?",
         options: [
-            "To organize and store data on storage devices",
-            "To manage memory",
-            "To schedule processes",
-            "To handle network communication",
+            "A dimensionality reduction technique that transforms data to a lower-dimensional space",
+            "A classification algorithm",
+            "A clustering method",
+            "A reinforcement learning method",
         ],
         correct: 0,
     },
     // 41
     {
         id: 41,
-        question: "Which of the following is a type of operating system structure?",
+        question: "What is t-SNE?",
         options: [
-            "Monolithic kernel",
-            "Microkernel",
-            "Hybrid kernel",
-            "All of the above",
+            "A technique for visualizing high-dimensional data in 2D or 3D",
+            "A clustering algorithm",
+            "A regression technique",
+            "A neural network layer",
         ],
-        correct: 3,
+        correct: 0,
     },
     // 42
     {
         id: 42,
-        question: "What is the purpose of a system boot?",
+        question: "What is a hyperparameter?",
         options: [
-            "To start the operating system",
-            "To shut down the system",
-            "To manage processes",
-            "To allocate memory",
+            "A parameter set before training, such as learning rate or number of trees",
+            "A parameter learned during training",
+            "The output of the model",
+            "A type of activation function",
         ],
         correct: 0,
     },
     // 43
     {
         id: 43,
-        question: "Which of the following is a security mechanism in OS?",
+        question: "What is a parameter in machine learning?",
         options: [
-            "Authentication",
-            "Authorization",
-            "Encryption",
-            "All of the above",
+            "A variable learned from the training data, such as weights in a linear model",
+            "A setting chosen before training",
+            "A function that evaluates the model",
+            "A feature of the data",
         ],
-        correct: 3,
+        correct: 0,
     },
     // 44
     {
         id: 44,
-        question: "What is a zombie process?",
-        options: [
-            "A process that has terminated but still has an entry in the process table",
-            "A process that is running",
-            "A process that is waiting for I/O",
-            "A process that is in the ready queue",
-        ],
-        correct: 0,
+        question: "Which of the following is a gradient descent variant?",
+        options: ["Batch gradient descent", "Stochastic gradient descent", "Mini-batch gradient descent", "All of the above"],
+        correct: 3,
     },
     // 45
     {
         id: 45,
-        question: "What is the role of the dispatcher in scheduling?",
+        question: "What is the learning rate in gradient descent?",
         options: [
-            "To give control of the CPU to the selected process",
-            "To select the next process to run",
-            "To manage memory",
-            "To handle interrupts",
+            "The step size used to update weights during optimization",
+            "The number of iterations",
+            "The batch size",
+            "The regularization strength",
         ],
         correct: 0,
     },
     // 46
     {
         id: 46,
-        question: "Which of the following is a type of I/O buffering?",
+        question: "What is early stopping?",
         options: [
-            "Single buffer",
-            "Double buffer",
-            "Circular buffer",
-            "All of the above",
+            "A technique to stop training when the validation performance starts to degrade to prevent overfitting",
+            "A method to speed up convergence",
+            "A type of regularization that adds noise to weights",
+            "A way to reduce the number of features",
         ],
-        correct: 3,
+        correct: 0,
     },
     // 47
     {
         id: 47,
-        question: "What is the purpose of a system call library?",
+        question: "What is ensemble learning?",
         options: [
-            "To provide an interface for system calls to user programs",
-            "To manage files",
-            "To schedule processes",
-            "To manage memory",
+            "Combining multiple models to improve performance",
+            "Training a single model",
+            "Using a single algorithm",
+            "A type of unsupervised learning",
         ],
         correct: 0,
     },
     // 48
     {
         id: 48,
-        question: "Which of the following is a type of interrupt?",
-        options: ["Hardware interrupt", "Software interrupt", "Exception", "All of the above"],
+        question: "Which of the following is an ensemble method?",
+        options: ["Bagging", "Boosting", "Stacking", "All of the above"],
         correct: 3,
     },
     // 49
     {
         id: 49,
-        question: "What is the role of the process scheduler?",
+        question: "What is the difference between bagging and boosting?",
         options: [
-            "To manage the execution of processes",
-            "To manage memory",
-            "To manage files",
-            "To manage network connections",
+            "Bagging trains models in parallel; boosting trains sequentially",
+            "Bagging reduces variance; boosting reduces bias",
+            "Both A and B",
+            "They are the same",
         ],
-        correct: 0,
+        correct: 2,
     },
     // 50
     {
         id: 50,
-        question: "Which of the following is an example of a mobile operating system?",
-        options: ["Android", "iOS", "HarmonyOS", "All of the above"],
+        question: "What is the future of machine learning?",
+        options: [
+            "Explainable AI",
+            "Automated machine learning (AutoML)",
+            "Federated learning",
+            "All of the above",
+        ],
         correct: 3,
     },
 ];
 
 // ---------- COMPONENT ----------
-export default function OSQuiz() {
+export default function MLQuiz() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [selectedAnswers, setSelectedAnswers] = useState(
         new Array(questions.length).fill(null)
@@ -612,18 +631,18 @@ export default function OSQuiz() {
             <Head>
                 {/* Primary Meta Tags */}
                 <title>
-                    Operating Systems Quiz – 50 MCQs Test Your OS Knowledge
+                    Machine Learning Quiz – 50 MCQs Test Your ML Knowledge
                 </title>
                 <meta
                     name="description"
-                    content="Test your Operating Systems knowledge with 50 high-quality MCQs covering processes, scheduling, memory management, file systems, deadlocks, and more. Score instantly!"
+                    content="Test your Machine Learning knowledge with 50 high-quality MCQs covering supervised, unsupervised, regression, classification, clustering, evaluation, regularization, ensemble methods, and more. Score instantly!"
                 />
                 <meta
                     name="keywords"
-                    content="Operating Systems quiz, OS MCQ, process management, scheduling, memory management, file systems, deadlock, virtualization, kernel"
+                    content="Machine Learning quiz, ML MCQ, supervised learning, unsupervised learning, regression, classification, clustering, SVM, decision tree, random forest, neural networks, evaluation metrics"
                 />
                 <meta name="robots" content="index, follow" />
-                <meta name="author" content="OS Quiz" />
+                <meta name="author" content="ML Quiz" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta charSet="UTF-8" />
 
@@ -636,22 +655,22 @@ export default function OSQuiz() {
                 <meta name="language" content="en" />
 
                 {/* Open Graph */}
-                <meta property="og:title" content="Operating Systems Quiz – 50 MCQs" />
+                <meta property="og:title" content="Machine Learning Quiz – 50 MCQs" />
                 <meta
                     property="og:description"
-                    content="Test your OS skills with 50 original MCQs. Get instant results and see your score!"
+                    content="Test your ML skills with 50 original MCQs. Get instant results and see your score!"
                 />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://codeskipper.in/test/operating-system" />
+                <meta property="og:url" content="https://codeskipper.in/test/ml" />
                 <meta
                     property="og:image"
-                    content="https://codeskipper.in/og-image-os.jpg"
+                    content="https://codeskipper.in/og-image-ml.jpg"
                 />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Operating Systems Quiz – 50 MCQs" />
+                <meta name="twitter:title" content="Machine Learning Quiz – 50 MCQs" />
                 <meta
                     name="twitter:description"
-                    content="50 original OS MCQs – test your knowledge now!"
+                    content="50 original ML MCQs – test your knowledge now!"
                 />
 
                 {/* Schema.org JSON-LD */}
@@ -661,16 +680,16 @@ export default function OSQuiz() {
                         __html: JSON.stringify({
                             "@context": "https://schema.org",
                             "@type": "Quiz",
-                            "name": "Operating Systems Quiz",
-                            "description": "50 multiple-choice questions covering processes, scheduling, memory management, file systems, deadlocks, and more.",
+                            "name": "Machine Learning Quiz",
+                            "description": "50 multiple-choice questions covering supervised, unsupervised, regression, classification, clustering, evaluation, regularization, ensemble methods, and more.",
                             "educationalLevel": "Intermediate to Advanced",
                             "about": {
                                 "@type": "Thing",
-                                "name": "Operating Systems",
+                                "name": "Machine Learning",
                             },
                             "creator": {
                                 "@type": "Organization",
-                                "name": "OS Quiz",
+                                "name": "ML Quiz",
                             },
                             "numberOfQuestions": 50,
                         }),
@@ -678,7 +697,7 @@ export default function OSQuiz() {
                 />
 
                 {/* Canonical */}
-                <link rel="canonical" href="https://codeskipper.in/test/operating-system" />
+                <link rel="canonical" href="https://codeskipper.in/test/ml" />
             </Head>
 
             <SimpleLayout>
@@ -687,10 +706,10 @@ export default function OSQuiz() {
                         {/* Header */}
                         <div className="text-center mb-8">
                             <h1 className="text-3xl md:text-4xl font-bold text-slate-800 tracking-tight">
-                                🖥️ Operating Systems Quiz
+                                🧠 Machine Learning Quiz
                             </h1>
                             <p className="mt-2 text-slate-600 text-sm md:text-base">
-                                50 original MCQs • Processes • Scheduling • Memory • File Systems • Deadlocks • Virtualization
+                                50 original MCQs • Supervised • Unsupervised • Regression • Classification • Clustering • Evaluation
                             </p>
                             {!showResults && (
                                 <div className="mt-3 inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm text-sm text-slate-700">

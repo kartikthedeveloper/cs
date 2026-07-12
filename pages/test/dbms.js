@@ -566,7 +566,7 @@ export default function DBMSQuiz() {
             <Head>
                 {/* Primary Meta Tags */}
                 <title>
-                    Database Management Systems (DBMS) Quiz – 50 MCQs
+                    Database Management Systems Quiz MCQs - Code Skipper
                 </title>
                 <meta
                     name="description"
@@ -596,10 +596,10 @@ export default function DBMSQuiz() {
                     content="Test your database knowledge with 50 original MCQs. Get instant results and see your score!"
                 />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://yourdomain.com/dbms" />
+                <meta property="og:url" content="https://codeskipper.in/test/dbms" />
                 <meta
                     property="og:image"
-                    content="https://yourdomain.com/og-image-dbms.jpg"
+                    content="https://codeskipper.in/og-image-dbms.jpg"
                 />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="DBMS Quiz – 50 MCQs" />
@@ -632,7 +632,7 @@ export default function DBMSQuiz() {
                 />
 
                 {/* Canonical */}
-                <link rel="canonical" href="https://yourdomain.com/dbms" />
+                <link rel="canonical" href="https://codeskipper.in/test/dbms" />
             </Head>
 
             <SimpleLayout>

@@ -2,548 +2,607 @@ import { useState } from "react";
 import Head from "next/head";
 import SimpleLayout from "@/components/SimpleLayout";
 
-// ---------- 50 OPERATING SYSTEMS QUESTIONS ----------
+// ---------- 50 ARTIFICIAL INTELLIGENCE QUESTIONS ----------
 const questions = [
     // 1
     {
         id: 1,
-        question: "Which of the following is NOT a function of an operating system?",
+        question: "What is Artificial Intelligence (AI)?",
         options: [
-            "Memory management",
-            "Process management",
-            "File management",
-            "Database management",
+            "A branch of computer science focused on creating machines that can perform tasks that typically require human intelligence",
+            "A programming language",
+            "A type of hardware",
+            "A database management system",
         ],
-        correct: 3,
+        correct: 0,
     },
     // 2
     {
         id: 2,
-        question: "What is the kernel of an operating system?",
+        question: "Who is credited with coining the term 'Artificial Intelligence' in 1956?",
         options: [
-            "The user interface",
-            "The core component that manages system resources",
-            "A file system",
-            "A scheduling algorithm",
+            "Alan Turing",
+            "John McCarthy",
+            "Marvin Minsky",
+            "Herbert Simon",
         ],
         correct: 1,
     },
     // 3
     {
         id: 3,
-        question: "Which scheduling algorithm is non-preemptive?",
-        options: ["Round Robin", "Shortest Job First (SJF)", "Priority Scheduling", "First Come First Serve (FCFS)"],
-        correct: 3,
+        question: "What is the Turing Test?",
+        options: [
+            "A test to evaluate a machine's ability to exhibit intelligent behavior equivalent to a human",
+            "A test for measuring CPU performance",
+            "A programming challenge",
+            "A security protocol",
+        ],
+        correct: 0,
     },
     // 4
     {
         id: 4,
-        question: "What is a process?",
+        question: "Which of the following is a subfield of AI?",
         options: [
-            "A program in execution",
-            "A file stored on disk",
-            "A thread",
-            "A system call",
+            "Machine Learning",
+            "Natural Language Processing",
+            "Computer Vision",
+            "All of the above",
         ],
-        correct: 0,
+        correct: 3,
     },
     // 5
     {
         id: 5,
-        question: "Which of the following is a state of a process?",
-        options: ["Ready", "Running", "Waiting", "All of the above"],
-        correct: 3,
+        question: "What is Machine Learning (ML)?",
+        options: [
+            "A subset of AI that enables systems to learn from data without explicit programming",
+            "A programming paradigm",
+            "A database technique",
+            "A networking protocol",
+        ],
+        correct: 0,
     },
     // 6
     {
         id: 6,
-        question: "What is a deadlock?",
+        question: "Which of the following are the main types of machine learning?",
         options: [
-            "A situation where two or more processes are unable to proceed because each is waiting for a resource held by the other",
-            "A situation where a process terminates abnormally",
-            "A scheduling algorithm",
-            "A memory management technique",
+            "Supervised, Unsupervised, Reinforcement",
+            "Static, Dynamic, Hybrid",
+            "Online, Offline, Batch",
+            "Symbolic, Connectionist, Evolutionary",
         ],
         correct: 0,
     },
     // 7
     {
         id: 7,
-        question: "Which of the following is NOT a necessary condition for deadlock?",
+        question: "In supervised learning, the model is trained on:",
         options: [
-            "Mutual exclusion",
-            "Hold and wait",
-            "No preemption",
-            "Circular wait",
-            "All are necessary conditions",
+            "Labeled data",
+            "Unlabeled data",
+            "Reward signals",
+            "No data",
         ],
-        correct: 4,
+        correct: 0,
     },
     // 8
     {
         id: 8,
-        question: "What is the purpose of virtual memory?",
+        question: "In unsupervised learning, the model is trained on:",
         options: [
-            "To allow the execution of processes that are not entirely in memory",
-            "To increase the speed of the CPU",
-            "To manage input/output devices",
-            "To allocate memory to processes",
+            "Labeled data",
+            "Unlabeled data",
+            "Reward signals",
+            "Both labeled and unlabeled data",
         ],
-        correct: 0,
+        correct: 1,
     },
     // 9
     {
         id: 9,
-        question: "Which page replacement algorithm is optimal?",
-        options: ["FIFO", "LRU", "Optimal (MIN)", "Clock"],
-        correct: 2,
+        question: "Reinforcement learning involves:",
+        options: [
+            "An agent learning by interacting with an environment and receiving rewards or penalties",
+            "Learning from labeled examples",
+            "Finding hidden patterns in data",
+            "Clustering data",
+        ],
+        correct: 0,
     },
     // 10
     {
         id: 10,
-        question: "What is a system call?",
+        question: "What is a neural network?",
         options: [
-            "A request by a program for a service from the operating system",
-            "A hardware interrupt",
-            "A type of scheduling algorithm",
-            "A file system operation",
+            "A computational model inspired by the human brain, composed of layers of interconnected nodes",
+            "A type of database",
+            "A programming language",
+            "A hardware device",
         ],
         correct: 0,
     },
     // 11
     {
         id: 11,
-        question: "Which of the following is a type of operating system?",
+        question: "What is the role of an activation function in a neural network?",
         options: [
-            "Batch OS",
-            "Time-sharing OS",
-            "Real-time OS",
-            "All of the above",
+            "To introduce non-linearity into the network",
+            "To normalize the input data",
+            "To reduce the number of parameters",
+            "To initialize weights",
         ],
-        correct: 3,
+        correct: 0,
     },
     // 12
     {
         id: 12,
-        question: "What is the role of a scheduler?",
-        options: [
-            "To select which process runs next",
-            "To allocate memory",
-            "To handle file I/O",
-            "To manage network connections",
-        ],
-        correct: 0,
+        question: "Which of the following is a common activation function?",
+        options: ["Sigmoid", "ReLU", "Tanh", "All of the above"],
+        correct: 3,
     },
     // 13
     {
         id: 13,
-        question: "Which of the following is a preemptive scheduling algorithm?",
-        options: ["FCFS", "SJF (non-preemptive)", "Round Robin", "Priority (non-preemptive)"],
-        correct: 2,
+        question: "What is backpropagation?",
+        options: [
+            "An algorithm to compute the gradient of the loss function with respect to the network weights",
+            "A method to initialize weights",
+            "A technique to reduce overfitting",
+            "A data augmentation technique",
+        ],
+        correct: 0,
     },
     // 14
     {
         id: 14,
-        question: "What is a thread?",
+        question: "What is a loss function in machine learning?",
         options: [
-            "A lightweight process",
-            "A heavy-weight process",
-            "A file descriptor",
-            "A system call",
+            "A function that measures how well the model's predictions match the actual targets",
+            "A function that regularizes the model",
+            "A function that generates data",
+            "A function that optimizes the learning rate",
         ],
         correct: 0,
     },
     // 15
     {
         id: 15,
-        question: "Which of the following is true about multithreading?",
+        question: "What is gradient descent?",
         options: [
-            "It improves CPU utilization",
-            "It reduces context switching overhead",
-            "Both A and B",
-            "Neither A nor B",
+            "An optimization algorithm used to minimize the loss function by updating weights iteratively",
+            "A type of activation function",
+            "A data preprocessing technique",
+            "A model evaluation metric",
         ],
-        correct: 2,
+        correct: 0,
     },
     // 16
     {
         id: 16,
-        question: "What is the purpose of inter-process communication (IPC)?",
+        question: "What is overfitting in machine learning?",
         options: [
-            "To allow processes to exchange data",
-            "To synchronize processes",
-            "Both A and B",
-            "To schedule processes",
+            "When a model learns the training data too well, including noise, and performs poorly on new data",
+            "When a model performs well on both training and test data",
+            "When a model is too simple to capture the underlying patterns",
+            "When a model has too few parameters",
         ],
-        correct: 2,
+        correct: 0,
     },
     // 17
     {
         id: 17,
-        question: "Which of the following is a synchronization mechanism?",
-        options: ["Semaphore", "Mutex", "Monitor", "All of the above"],
-        correct: 3,
+        question: "Which technique helps prevent overfitting?",
+        options: [
+            "Regularization",
+            "Increasing model complexity",
+            "Removing training data",
+            "Using a larger learning rate",
+        ],
+        correct: 0,
     },
     // 18
     {
         id: 18,
-        question: "What is the difference between a semaphore and a mutex?",
+        question: "What is cross-validation?",
         options: [
-            "A semaphore can be used for counting; a mutex is binary",
-            "A mutex can be used for counting; a semaphore is binary",
-            "They are the same",
-            "Semaphore is hardware; mutex is software",
+            "A technique to assess model performance by partitioning data into training and validation sets multiple times",
+            "A method to augment data",
+            "A feature selection technique",
+            "A type of neural network architecture",
         ],
         correct: 0,
     },
     // 19
     {
         id: 19,
-        question: "What is a critical section?",
+        question: "What is a decision tree?",
         options: [
-            "A segment of code that accesses shared resources",
-            "A segment of code that is not executed",
-            "A memory region for kernel",
-            "A scheduling queue",
+            "A flowchart-like structure where each internal node represents a test on an attribute, each branch represents an outcome, and each leaf represents a class label",
+            "A type of neural network",
+            "A clustering algorithm",
+            "A dimensionality reduction technique",
         ],
         correct: 0,
     },
     // 20
     {
         id: 20,
-        question: "Which of the following is a file allocation method?",
+        question: "In decision trees, what does entropy measure?",
         options: [
-            "Contiguous allocation",
-            "Linked allocation",
-            "Indexed allocation",
-            "All of the above",
+            "The impurity or randomness of a set of examples",
+            "The accuracy of the tree",
+            "The depth of the tree",
+            "The number of leaves",
         ],
-        correct: 3,
+        correct: 0,
     },
     // 21
     {
         id: 21,
-        question: "What is a file system?",
+        question: "What is a random forest?",
         options: [
-            "A method for storing and organizing files",
-            "A type of operating system",
-            "A scheduling algorithm",
-            "A memory management technique",
+            "An ensemble learning method that builds multiple decision trees and combines their outputs",
+            "A single decision tree",
+            "A clustering algorithm",
+            "A type of neural network",
         ],
         correct: 0,
     },
     // 22
     {
         id: 22,
-        question: "Which of the following is a type of file system?",
-        options: ["FAT", "NTFS", "ext4", "All of the above"],
-        correct: 3,
+        question: "What is a Support Vector Machine (SVM)?",
+        options: [
+            "A supervised learning algorithm that finds the optimal hyperplane to separate classes",
+            "An unsupervised clustering algorithm",
+            "A reinforcement learning algorithm",
+            "A dimensionality reduction method",
+        ],
+        correct: 0,
     },
     // 23
     {
         id: 23,
-        question: "What is the role of a device driver?",
+        question: "In SVM, what is a kernel?",
         options: [
-            "To manage hardware devices",
-            "To schedule processes",
-            "To manage memory",
-            "To handle file systems",
+            "A function that transforms data into a higher-dimensional space to make it linearly separable",
+            "The margin between classes",
+            "The support vectors",
+            "The learning rate",
         ],
         correct: 0,
     },
     // 24
     {
         id: 24,
-        question: "Which of the following is an example of a real-time operating system?",
-        options: ["Windows", "Linux", "VxWorks", "macOS"],
-        correct: 2,
+        question: "What is K-means clustering?",
+        options: [
+            "An unsupervised learning algorithm that partitions data into K clusters based on similarity",
+            "A supervised classification algorithm",
+            "A reinforcement learning algorithm",
+            "A neural network architecture",
+        ],
+        correct: 0,
     },
     // 25
     {
         id: 25,
-        question: "What is the purpose of a bootloader?",
+        question: "What is Principal Component Analysis (PCA)?",
         options: [
-            "To load the operating system into memory",
-            "To compile the kernel",
-            "To manage user accounts",
-            "To perform system updates",
+            "A dimensionality reduction technique that transforms data to a lower-dimensional space while preserving variance",
+            "A classification algorithm",
+            "A clustering method",
+            "A regression technique",
         ],
         correct: 0,
     },
     // 26
     {
         id: 26,
-        question: "Which of the following is a protection mechanism in OS?",
+        question: "What is a perceptron?",
         options: [
-            "User mode vs. kernel mode",
-            "File permissions",
-            "Memory protection",
-            "All of the above",
+            "The simplest type of neural network, consisting of a single layer of weights",
+            "A deep neural network",
+            "A convolutional neural network",
+            "A recurrent neural network",
         ],
-        correct: 3,
+        correct: 0,
     },
     // 27
     {
         id: 27,
-        question: "What is a process control block (PCB)?",
+        question: "What is a Multi-Layer Perceptron (MLP)?",
         options: [
-            "A data structure that contains information about a process",
-            "A file system structure",
-            "A memory block",
-            "A scheduling queue",
+            "A neural network with one or more hidden layers",
+            "A network with only an input and output layer",
+            "A type of convolutional network",
+            "A type of recurrent network",
         ],
         correct: 0,
     },
     // 28
     {
         id: 28,
-        question: "Which of the following is a scheduling criterion?",
-        options: ["CPU utilization", "Throughput", "Turnaround time", "All of the above"],
-        correct: 3,
+        question: "What is a Convolutional Neural Network (CNN) primarily used for?",
+        options: [
+            "Image and spatial data processing",
+            "Sequential data processing",
+            "Language modeling",
+            "Reinforcement learning",
+        ],
+        correct: 0,
     },
     // 29
     {
         id: 29,
-        question: "What is the difference between preemptive and non-preemptive scheduling?",
+        question: "What is a Recurrent Neural Network (RNN) primarily used for?",
         options: [
-            "Preemptive can interrupt a running process; non-preemptive cannot",
-            "Non-preemptive can interrupt a running process; preemptive cannot",
-            "They are the same",
-            "Preemptive is only for real-time systems",
+            "Sequential data and time-series processing",
+            "Image classification",
+            "Dimensionality reduction",
+            "Clustering",
         ],
         correct: 0,
     },
     // 30
     {
         id: 30,
-        question: "What is thrashing?",
+        question: "What is LSTM (Long Short-Term Memory)?",
         options: [
-            "High page fault activity causing poor performance",
-            "A scheduling algorithm",
-            "A file system error",
-            "A hardware failure",
+            "A type of RNN designed to capture long-term dependencies",
+            "A type of CNN",
+            "A clustering algorithm",
+            "A dimensionality reduction technique",
         ],
         correct: 0,
     },
     // 31
     {
         id: 31,
-        question: "Which of the following is a method for handling deadlocks?",
+        question: "What is transfer learning?",
         options: [
-            "Deadlock prevention",
-            "Deadlock avoidance",
-            "Deadlock detection and recovery",
-            "All of the above",
+            "Using a pre-trained model on a related task and fine-tuning it on a new task",
+            "Transferring data from one format to another",
+            "Moving models between different hardware",
+            "A type of reinforcement learning",
         ],
-        correct: 3,
+        correct: 0,
     },
     // 32
     {
         id: 32,
-        question: "What is the banker's algorithm used for?",
+        question: "What is Natural Language Processing (NLP)?",
         options: [
-            "Deadlock avoidance",
-            "Deadlock prevention",
-            "Deadlock detection",
-            "Memory allocation",
+            "A field of AI focused on enabling machines to understand, interpret, and generate human language",
+            "A type of computer vision",
+            "A database system",
+            "A programming language",
         ],
         correct: 0,
     },
     // 33
     {
         id: 33,
-        question: "Which of the following is a type of memory management technique?",
-        options: ["Paging", "Segmentation", "Both A and B", "Neither"],
-        correct: 2,
+        question: "What is tokenization in NLP?",
+        options: [
+            "The process of splitting text into smaller units called tokens (words, subwords, or characters)",
+            "The process of converting tokens to vectors",
+            "The process of identifying named entities",
+            "The process of parsing grammar",
+        ],
+        correct: 0,
     },
     // 34
     {
         id: 34,
-        question: "What is a page fault?",
+        question: "What is stemming?",
         options: [
-            "An interrupt that occurs when a program accesses a page that is not in memory",
-            "A hardware error",
-            "A scheduling error",
-            "A file system error",
+            "Reducing words to their base or root form by removing affixes",
+            "Converting words to lowercase",
+            "Mapping words to their synonyms",
+            "Replacing words with numerical IDs",
         ],
         correct: 0,
     },
     // 35
     {
         id: 35,
-        question: "Which of the following is a disk scheduling algorithm?",
-        options: ["FCFS", "SSTF", "SCAN", "All of the above"],
-        correct: 3,
+        question: "What is lemmatization?",
+        options: [
+            "Reducing words to their dictionary form (lemma) using vocabulary and morphological analysis",
+            "Removing stop words",
+            "Performing part-of-speech tagging",
+            "Tokenizing sentences",
+        ],
+        correct: 0,
     },
     // 36
     {
         id: 36,
-        question: "What is the purpose of a file descriptor?",
+        question: "What is a language model?",
         options: [
-            "An identifier for an open file",
-            "A file name",
-            "A directory entry",
-            "A file system type",
+            "A probability distribution over sequences of words, used to predict the next word or generate text",
+            "A grammar checker",
+            "A translation system",
+            "A speech recognition engine",
         ],
         correct: 0,
     },
     // 37
     {
         id: 37,
-        question: "Which of the following is a characteristic of a distributed operating system?",
+        question: "What is BERT?",
         options: [
-            "Multiple independent systems appear as a single system",
-            "Centralized control",
-            "Single point of failure",
-            "All of the above",
+            "A pre-trained transformer-based model for NLP tasks, developed by Google",
+            "A type of CNN",
+            "A clustering algorithm",
+            "A reinforcement learning agent",
         ],
         correct: 0,
     },
     // 38
     {
         id: 38,
-        question: "What is a system call interface?",
+        question: "What is GPT (Generative Pre-trained Transformer)?",
         options: [
-            "The boundary between user programs and the kernel",
-            "A file system",
-            "A scheduling algorithm",
-            "A memory management unit",
+            "A transformer-based language model developed by OpenAI that generates human-like text",
+            "A computer vision model",
+            "An unsupervised clustering algorithm",
+            "A type of decision tree",
         ],
         correct: 0,
     },
     // 39
     {
         id: 39,
-        question: "Which of the following is a real-time scheduling algorithm?",
-        options: ["Rate Monotonic", "Earliest Deadline First", "Both A and B", "Round Robin"],
-        correct: 2,
+        question: "What is Computer Vision?",
+        options: [
+            "A field of AI that enables machines to interpret and understand visual information from the world",
+            "A branch of NLP",
+            "A type of database",
+            "A programming paradigm",
+        ],
+        correct: 0,
     },
     // 40
     {
         id: 40,
-        question: "What is the role of a file system in an OS?",
+        question: "What is image classification?",
         options: [
-            "To organize and store data on storage devices",
-            "To manage memory",
-            "To schedule processes",
-            "To handle network communication",
+            "The task of assigning a label to an image from a predefined set of categories",
+            "The task of detecting objects and their locations in an image",
+            "The task of segmenting an image into regions",
+            "The task of generating new images",
         ],
         correct: 0,
     },
     // 41
     {
         id: 41,
-        question: "Which of the following is a type of operating system structure?",
+        question: "What is object detection?",
         options: [
-            "Monolithic kernel",
-            "Microkernel",
-            "Hybrid kernel",
-            "All of the above",
+            "Identifying and localizing objects within an image by drawing bounding boxes around them",
+            "Classifying the entire image",
+            "Segmenting the image into pixels",
+            "Generating an image description",
         ],
-        correct: 3,
+        correct: 0,
     },
     // 42
     {
         id: 42,
-        question: "What is the purpose of a system boot?",
+        question: "What is a convolutional layer in a CNN?",
         options: [
-            "To start the operating system",
-            "To shut down the system",
-            "To manage processes",
-            "To allocate memory",
+            "A layer that applies convolution operations to extract features from the input image",
+            "A layer that performs pooling",
+            "A layer that applies a non-linear activation",
+            "A layer that flattens the input",
         ],
         correct: 0,
     },
     // 43
     {
         id: 43,
-        question: "Which of the following is a security mechanism in OS?",
+        question: "What is pooling in CNNs?",
         options: [
-            "Authentication",
-            "Authorization",
-            "Encryption",
-            "All of the above",
+            "A down-sampling operation to reduce spatial dimensions and extract dominant features",
+            "A type of convolution",
+            "A normalization technique",
+            "An activation function",
         ],
-        correct: 3,
+        correct: 0,
     },
     // 44
     {
         id: 44,
-        question: "What is a zombie process?",
+        question: "In reinforcement learning, what is the role of the environment?",
         options: [
-            "A process that has terminated but still has an entry in the process table",
-            "A process that is running",
-            "A process that is waiting for I/O",
-            "A process that is in the ready queue",
+            "It provides feedback to the agent in the form of states and rewards",
+            "It trains the neural network",
+            "It stores the memory",
+            "It defines the loss function",
         ],
         correct: 0,
     },
     // 45
     {
         id: 45,
-        question: "What is the role of the dispatcher in scheduling?",
+        question: "What is a Markov Decision Process (MDP)?",
         options: [
-            "To give control of the CPU to the selected process",
-            "To select the next process to run",
-            "To manage memory",
-            "To handle interrupts",
+            "A mathematical framework for modeling decision-making in stochastic environments with the Markov property",
+            "A type of neural network",
+            "A clustering algorithm",
+            "A dimensionality reduction method",
         ],
         correct: 0,
     },
     // 46
     {
         id: 46,
-        question: "Which of the following is a type of I/O buffering?",
+        question: "What is the exploration-exploitation trade-off in reinforcement learning?",
         options: [
-            "Single buffer",
-            "Double buffer",
-            "Circular buffer",
-            "All of the above",
+            "The dilemma between trying new actions to discover their effects (exploration) and using known actions that yield high rewards (exploitation)",
+            "The balance between model complexity and performance",
+            "The trade-off between bias and variance",
+            "The conflict between training speed and accuracy",
         ],
-        correct: 3,
+        correct: 0,
     },
     // 47
     {
         id: 47,
-        question: "What is the purpose of a system call library?",
+        question: "What is Q-learning?",
         options: [
-            "To provide an interface for system calls to user programs",
-            "To manage files",
-            "To schedule processes",
-            "To manage memory",
+            "A model-free reinforcement learning algorithm that learns the optimal action-value function",
+            "A supervised learning algorithm",
+            "An unsupervised clustering method",
+            "A type of neural network",
         ],
         correct: 0,
     },
     // 48
     {
         id: 48,
-        question: "Which of the following is a type of interrupt?",
-        options: ["Hardware interrupt", "Software interrupt", "Exception", "All of the above"],
-        correct: 3,
+        question: "What is a genetic algorithm?",
+        options: [
+            "An optimization algorithm inspired by natural selection, using crossover, mutation, and selection",
+            "A type of neural network",
+            "A clustering algorithm",
+            "A reinforcement learning algorithm",
+        ],
+        correct: 0,
     },
     // 49
     {
         id: 49,
-        question: "What is the role of the process scheduler?",
+        question: "What is fuzzy logic?",
         options: [
-            "To manage the execution of processes",
-            "To manage memory",
-            "To manage files",
-            "To manage network connections",
+            "A form of many-valued logic that deals with reasoning that is approximate rather than fixed and exact",
+            "A binary logic system",
+            "A deterministic rule-based system",
+            "A type of machine learning",
         ],
         correct: 0,
     },
     // 50
     {
         id: 50,
-        question: "Which of the following is an example of a mobile operating system?",
-        options: ["Android", "iOS", "HarmonyOS", "All of the above"],
-        correct: 3,
+        question: "Which of the following is a major challenge for the future of AI?",
+        options: [
+            "Ethical considerations and bias",
+            "Lack of computing power",
+            "Limited data availability",
+            "All of the above",
+        ],
+        correct: 0,
     },
 ];
 
 // ---------- COMPONENT ----------
-export default function OSQuiz() {
+export default function AIQuiz() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [selectedAnswers, setSelectedAnswers] = useState(
         new Array(questions.length).fill(null)
@@ -612,18 +671,18 @@ export default function OSQuiz() {
             <Head>
                 {/* Primary Meta Tags */}
                 <title>
-                    Operating Systems Quiz – 50 MCQs Test Your OS Knowledge
+                    Artificial Intelligence Quiz – 50 MCQs Test Your AI Knowledge
                 </title>
                 <meta
                     name="description"
-                    content="Test your Operating Systems knowledge with 50 high-quality MCQs covering processes, scheduling, memory management, file systems, deadlocks, and more. Score instantly!"
+                    content="Test your AI knowledge with high-quality MCQs covering machine learning, neural networks, NLP, computer vision, reinforcement learning, and more. Score instantly!"
                 />
                 <meta
                     name="keywords"
-                    content="Operating Systems quiz, OS MCQ, process management, scheduling, memory management, file systems, deadlock, virtualization, kernel"
+                    content="Artificial Intelligence quiz, AI MCQ, machine learning, neural networks, NLP, computer vision, reinforcement learning, deep learning, GPT, BERT, CNN, RNN"
                 />
                 <meta name="robots" content="index, follow" />
-                <meta name="author" content="OS Quiz" />
+                <meta name="author" content="AI Quiz" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta charSet="UTF-8" />
 
@@ -636,22 +695,22 @@ export default function OSQuiz() {
                 <meta name="language" content="en" />
 
                 {/* Open Graph */}
-                <meta property="og:title" content="Operating Systems Quiz – 50 MCQs" />
+                <meta property="og:title" content="Artificial Intelligence Quiz – 50 MCQs" />
                 <meta
                     property="og:description"
-                    content="Test your OS skills with 50 original MCQs. Get instant results and see your score!"
+                    content="Test your AI skills with 50 original MCQs. Get instant results and see your score!"
                 />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://codeskipper.in/test/operating-system" />
+                <meta property="og:url" content="https://codeskipper.in/test/ai" />
                 <meta
                     property="og:image"
-                    content="https://codeskipper.in/og-image-os.jpg"
+                    content="https://codeskipper.in/og-image-ai.jpg"
                 />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Operating Systems Quiz – 50 MCQs" />
+                <meta name="twitter:title" content="Artificial Intelligence Quiz – 50 MCQs" />
                 <meta
                     name="twitter:description"
-                    content="50 original OS MCQs – test your knowledge now!"
+                    content="50 original AI MCQs – test your knowledge now!"
                 />
 
                 {/* Schema.org JSON-LD */}
@@ -661,16 +720,16 @@ export default function OSQuiz() {
                         __html: JSON.stringify({
                             "@context": "https://schema.org",
                             "@type": "Quiz",
-                            "name": "Operating Systems Quiz",
-                            "description": "50 multiple-choice questions covering processes, scheduling, memory management, file systems, deadlocks, and more.",
+                            "name": "Artificial Intelligence Quiz",
+                            "description": "50 multiple-choice questions covering machine learning, deep learning, NLP, computer vision, reinforcement learning, and more.",
                             "educationalLevel": "Intermediate to Advanced",
                             "about": {
                                 "@type": "Thing",
-                                "name": "Operating Systems",
+                                "name": "Artificial Intelligence",
                             },
                             "creator": {
                                 "@type": "Organization",
-                                "name": "OS Quiz",
+                                "name": "AI Quiz",
                             },
                             "numberOfQuestions": 50,
                         }),
@@ -678,7 +737,7 @@ export default function OSQuiz() {
                 />
 
                 {/* Canonical */}
-                <link rel="canonical" href="https://codeskipper.in/test/operating-system" />
+                <link rel="canonical" href="https://codeskipper.in/test/ai" />
             </Head>
 
             <SimpleLayout>
@@ -687,10 +746,10 @@ export default function OSQuiz() {
                         {/* Header */}
                         <div className="text-center mb-8">
                             <h1 className="text-3xl md:text-4xl font-bold text-slate-800 tracking-tight">
-                                🖥️ Operating Systems Quiz
+                                🤖 Artificial Intelligence Quiz
                             </h1>
                             <p className="mt-2 text-slate-600 text-sm md:text-base">
-                                50 original MCQs • Processes • Scheduling • Memory • File Systems • Deadlocks • Virtualization
+                                50 original MCQs • ML • Neural Networks • NLP • Computer Vision • RL • Deep Learning
                             </p>
                             {!showResults && (
                                 <div className="mt-3 inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm text-sm text-slate-700">

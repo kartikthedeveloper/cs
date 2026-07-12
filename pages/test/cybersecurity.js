@@ -2,548 +2,567 @@ import { useState } from "react";
 import Head from "next/head";
 import SimpleLayout from "@/components/SimpleLayout";
 
-// ---------- 50 OPERATING SYSTEMS QUESTIONS ----------
+// ---------- 50 CYBERSECURITY QUESTIONS ----------
 const questions = [
     // 1
     {
         id: 1,
-        question: "Which of the following is NOT a function of an operating system?",
+        question: "What is the primary goal of cybersecurity?",
         options: [
-            "Memory management",
-            "Process management",
-            "File management",
-            "Database management",
+            "To protect data and systems from unauthorized access, damage, or theft",
+            "To increase system performance",
+            "To provide user interfaces",
+            "To manage databases",
         ],
-        correct: 3,
+        correct: 0,
     },
     // 2
     {
         id: 2,
-        question: "What is the kernel of an operating system?",
-        options: [
-            "The user interface",
-            "The core component that manages system resources",
-            "A file system",
-            "A scheduling algorithm",
-        ],
-        correct: 1,
+        question: "Which of the following is a type of malware that encrypts files and demands payment for decryption?",
+        options: ["Virus", "Worm", "Ransomware", "Trojan"],
+        correct: 2,
     },
     // 3
     {
         id: 3,
-        question: "Which scheduling algorithm is non-preemptive?",
-        options: ["Round Robin", "Shortest Job First (SJF)", "Priority Scheduling", "First Come First Serve (FCFS)"],
-        correct: 3,
+        question: "What does the CIA triad stand for in cybersecurity?",
+        options: [
+            "Confidentiality, Integrity, Availability",
+            "Confidentiality, Integrity, Authentication",
+            "Confidentiality, Identity, Access",
+            "Control, Integrity, Availability",
+        ],
+        correct: 0,
     },
     // 4
     {
         id: 4,
-        question: "What is a process?",
-        options: [
-            "A program in execution",
-            "A file stored on disk",
-            "A thread",
-            "A system call",
-        ],
+        question: "Which of the following is a common method for implementing confidentiality?",
+        options: ["Encryption", "Hashing", "Digital Signatures", "Access Control Lists"],
         correct: 0,
     },
     // 5
     {
         id: 5,
-        question: "Which of the following is a state of a process?",
-        options: ["Ready", "Running", "Waiting", "All of the above"],
-        correct: 3,
+        question: "What is a firewall?",
+        options: [
+            "A network security device that monitors and filters incoming and outgoing traffic based on rules",
+            "An antivirus program",
+            "A type of encryption",
+            "A physical barrier",
+        ],
+        correct: 0,
     },
     // 6
     {
         id: 6,
-        question: "What is a deadlock?",
-        options: [
-            "A situation where two or more processes are unable to proceed because each is waiting for a resource held by the other",
-            "A situation where a process terminates abnormally",
-            "A scheduling algorithm",
-            "A memory management technique",
-        ],
+        question: "Which of the following is a symmetric encryption algorithm?",
+        options: ["AES", "RSA", "ECC", "DSA"],
         correct: 0,
     },
     // 7
     {
         id: 7,
-        question: "Which of the following is NOT a necessary condition for deadlock?",
-        options: [
-            "Mutual exclusion",
-            "Hold and wait",
-            "No preemption",
-            "Circular wait",
-            "All are necessary conditions",
-        ],
-        correct: 4,
+        question: "Which of the following is an asymmetric encryption algorithm?",
+        options: ["RSA", "AES", "DES", "3DES"],
+        correct: 0,
     },
     // 8
     {
         id: 8,
-        question: "What is the purpose of virtual memory?",
+        question: "What is a digital signature used for?",
         options: [
-            "To allow the execution of processes that are not entirely in memory",
-            "To increase the speed of the CPU",
-            "To manage input/output devices",
-            "To allocate memory to processes",
+            "To verify the authenticity and integrity of a message",
+            "To encrypt a message",
+            "To compress data",
+            "To establish a secure channel",
         ],
         correct: 0,
     },
     // 9
     {
         id: 9,
-        question: "Which page replacement algorithm is optimal?",
-        options: ["FIFO", "LRU", "Optimal (MIN)", "Clock"],
-        correct: 2,
+        question: "What is a Denial of Service (DoS) attack?",
+        options: [
+            "An attack that floods a system with traffic to make it unavailable to legitimate users",
+            "An attack that steals user credentials",
+            "An attack that installs malware",
+            "An attack that exploits software vulnerabilities",
+        ],
+        correct: 0,
     },
     // 10
     {
         id: 10,
-        question: "What is a system call?",
+        question: "What is a DDoS attack?",
         options: [
-            "A request by a program for a service from the operating system",
-            "A hardware interrupt",
-            "A type of scheduling algorithm",
-            "A file system operation",
+            "Distributed Denial of Service – an attack launched from multiple compromised systems",
+            "A type of encryption",
+            "A firewall rule",
+            "An intrusion detection system",
         ],
         correct: 0,
     },
     // 11
     {
         id: 11,
-        question: "Which of the following is a type of operating system?",
+        question: "What is the principle of least privilege?",
         options: [
-            "Batch OS",
-            "Time-sharing OS",
-            "Real-time OS",
-            "All of the above",
+            "Users and processes should have only the minimum access necessary to perform their functions",
+            "All users should have full access",
+            "Administrators should have more privileges",
+            "Access is based on seniority",
         ],
-        correct: 3,
+        correct: 0,
     },
     // 12
     {
         id: 12,
-        question: "What is the role of a scheduler?",
+        question: "What is a phishing attack?",
         options: [
-            "To select which process runs next",
-            "To allocate memory",
-            "To handle file I/O",
-            "To manage network connections",
+            "An attempt to trick individuals into revealing sensitive information by pretending to be a trustworthy entity",
+            "A type of malware",
+            "A network scan",
+            "A physical security breach",
         ],
         correct: 0,
     },
     // 13
     {
         id: 13,
-        question: "Which of the following is a preemptive scheduling algorithm?",
-        options: ["FCFS", "SJF (non-preemptive)", "Round Robin", "Priority (non-preemptive)"],
-        correct: 2,
+        question: "Which of the following is a secure password practice?",
+        options: [
+            "Using a long, complex, and unique password for each account",
+            "Using the same password for all accounts",
+            "Writing passwords on a sticky note",
+            "Using dictionary words",
+        ],
+        correct: 0,
     },
     // 14
     {
         id: 14,
-        question: "What is a thread?",
+        question: "What is a man-in-the-middle (MITM) attack?",
         options: [
-            "A lightweight process",
-            "A heavy-weight process",
-            "A file descriptor",
-            "A system call",
+            "An attacker intercepts and possibly alters communication between two parties without their knowledge",
+            "An attacker uses a stolen credential",
+            "An attacker installs malware on a target system",
+            "An attacker performs a DDoS",
         ],
         correct: 0,
     },
     // 15
     {
         id: 15,
-        question: "Which of the following is true about multithreading?",
+        question: "What is a VPN (Virtual Private Network) used for?",
         options: [
-            "It improves CPU utilization",
-            "It reduces context switching overhead",
-            "Both A and B",
-            "Neither A nor B",
+            "To create a secure, encrypted connection over an untrusted network like the internet",
+            "To provide antivirus protection",
+            "To manage system updates",
+            "To store passwords",
         ],
-        correct: 2,
+        correct: 0,
     },
     // 16
     {
         id: 16,
-        question: "What is the purpose of inter-process communication (IPC)?",
+        question: "What is an intrusion detection system (IDS)?",
         options: [
-            "To allow processes to exchange data",
-            "To synchronize processes",
-            "Both A and B",
-            "To schedule processes",
+            "A system that monitors network traffic for suspicious activity and alerts administrators",
+            "A system that blocks all traffic",
+            "An encryption tool",
+            "A password manager",
         ],
-        correct: 2,
+        correct: 0,
     },
     // 17
     {
         id: 17,
-        question: "Which of the following is a synchronization mechanism?",
-        options: ["Semaphore", "Mutex", "Monitor", "All of the above"],
-        correct: 3,
+        question: "What is an intrusion prevention system (IPS)?",
+        options: [
+            "A system that actively blocks or prevents detected threats",
+            "A system that only logs traffic",
+            "A type of firewall",
+            "A type of malware",
+        ],
+        correct: 0,
     },
     // 18
     {
         id: 18,
-        question: "What is the difference between a semaphore and a mutex?",
+        question: "What is the purpose of hashing?",
         options: [
-            "A semaphore can be used for counting; a mutex is binary",
-            "A mutex can be used for counting; a semaphore is binary",
-            "They are the same",
-            "Semaphore is hardware; mutex is software",
+            "To produce a fixed-length output from any input, used for data integrity verification",
+            "To encrypt data",
+            "To compress data",
+            "To authenticate users",
         ],
         correct: 0,
     },
     // 19
     {
         id: 19,
-        question: "What is a critical section?",
-        options: [
-            "A segment of code that accesses shared resources",
-            "A segment of code that is not executed",
-            "A memory region for kernel",
-            "A scheduling queue",
-        ],
+        question: "Which of the following is a common hashing algorithm?",
+        options: ["SHA-256", "AES", "RSA", "ECC"],
         correct: 0,
     },
     // 20
     {
         id: 20,
-        question: "Which of the following is a file allocation method?",
+        question: "What is a zero-day vulnerability?",
         options: [
-            "Contiguous allocation",
-            "Linked allocation",
-            "Indexed allocation",
-            "All of the above",
+            "A software vulnerability that is unknown to the vendor and has no patch available",
+            "A vulnerability that has been patched",
+            "A vulnerability that only affects old software",
+            "A vulnerability that is not serious",
         ],
-        correct: 3,
+        correct: 0,
     },
     // 21
     {
         id: 21,
-        question: "What is a file system?",
+        question: "What is the purpose of security awareness training for employees?",
         options: [
-            "A method for storing and organizing files",
-            "A type of operating system",
-            "A scheduling algorithm",
-            "A memory management technique",
+            "To educate employees about security risks and best practices to reduce human error",
+            "To teach employees programming",
+            "To install security software",
+            "To enforce password changes",
         ],
         correct: 0,
     },
     // 22
     {
         id: 22,
-        question: "Which of the following is a type of file system?",
-        options: ["FAT", "NTFS", "ext4", "All of the above"],
-        correct: 3,
+        question: "Which of the following is a social engineering attack?",
+        options: ["Phishing", "Man-in-the-middle", "SQL injection", "Buffer overflow"],
+        correct: 0,
     },
     // 23
     {
         id: 23,
-        question: "What is the role of a device driver?",
+        question: "What is SQL injection?",
         options: [
-            "To manage hardware devices",
-            "To schedule processes",
-            "To manage memory",
-            "To handle file systems",
+            "A code injection technique that exploits vulnerabilities in an application's SQL query handling",
+            "A network scanning technique",
+            "An encryption method",
+            "A type of firewall",
         ],
         correct: 0,
     },
     // 24
     {
         id: 24,
-        question: "Which of the following is an example of a real-time operating system?",
-        options: ["Windows", "Linux", "VxWorks", "macOS"],
-        correct: 2,
+        question: "Which of the following is a secure coding practice?",
+        options: [
+            "Input validation",
+            "Using outdated libraries",
+            "Hardcoding credentials",
+            "Disabling security features",
+        ],
+        correct: 0,
     },
     // 25
     {
         id: 25,
-        question: "What is the purpose of a bootloader?",
+        question: "What is a certificate authority (CA)?",
         options: [
-            "To load the operating system into memory",
-            "To compile the kernel",
-            "To manage user accounts",
-            "To perform system updates",
+            "A trusted entity that issues digital certificates for secure communications",
+            "An antivirus provider",
+            "A firewall vendor",
+            "A password manager",
         ],
         correct: 0,
     },
     // 26
     {
         id: 26,
-        question: "Which of the following is a protection mechanism in OS?",
+        question: "What is SSL/TLS used for?",
         options: [
-            "User mode vs. kernel mode",
-            "File permissions",
-            "Memory protection",
-            "All of the above",
+            "To provide secure communications over the internet by encrypting data between a client and server",
+            "To store passwords",
+            "To manage user accounts",
+            "To scan for malware",
         ],
-        correct: 3,
+        correct: 0,
     },
     // 27
     {
         id: 27,
-        question: "What is a process control block (PCB)?",
+        question: "What is a brute force attack?",
         options: [
-            "A data structure that contains information about a process",
-            "A file system structure",
-            "A memory block",
-            "A scheduling queue",
+            "An attack that tries all possible combinations of passwords or keys to gain access",
+            "An attack that uses malware",
+            "A denial-of-service attack",
+            "A phishing attempt",
         ],
         correct: 0,
     },
     // 28
     {
         id: 28,
-        question: "Which of the following is a scheduling criterion?",
-        options: ["CPU utilization", "Throughput", "Turnaround time", "All of the above"],
-        correct: 3,
+        question: "Which of the following is a strong authentication factor?",
+        options: [
+            "Biometric",
+            "Password only",
+            "Single-factor",
+            "Knowledge-based",
+        ],
+        correct: 0,
     },
     // 29
     {
         id: 29,
-        question: "What is the difference between preemptive and non-preemptive scheduling?",
+        question: "What is multi-factor authentication (MFA)?",
         options: [
-            "Preemptive can interrupt a running process; non-preemptive cannot",
-            "Non-preemptive can interrupt a running process; preemptive cannot",
-            "They are the same",
-            "Preemptive is only for real-time systems",
+            "Using two or more independent authentication factors to verify identity",
+            "Using a single password",
+            "Using a PIN only",
+            "Using only biometrics",
         ],
         correct: 0,
     },
     // 30
     {
         id: 30,
-        question: "What is thrashing?",
+        question: "What is a rootkit?",
         options: [
-            "High page fault activity causing poor performance",
-            "A scheduling algorithm",
-            "A file system error",
-            "A hardware failure",
+            "A type of malware that provides privileged access to a system while hiding its presence",
+            "A type of firewall",
+            "An antivirus program",
+            "A network scanner",
         ],
         correct: 0,
     },
     // 31
     {
         id: 31,
-        question: "Which of the following is a method for handling deadlocks?",
+        question: "What is the purpose of a Security Information and Event Management (SIEM) system?",
         options: [
-            "Deadlock prevention",
-            "Deadlock avoidance",
-            "Deadlock detection and recovery",
-            "All of the above",
+            "To collect, analyze, and correlate security events from multiple sources for threat detection and response",
+            "To encrypt data",
+            "To manage user passwords",
+            "To provide antivirus protection",
         ],
-        correct: 3,
+        correct: 0,
     },
     // 32
     {
         id: 32,
-        question: "What is the banker's algorithm used for?",
-        options: [
-            "Deadlock avoidance",
-            "Deadlock prevention",
-            "Deadlock detection",
-            "Memory allocation",
-        ],
+        question: "Which of the following is a type of malware that self-replicates and spreads without user intervention?",
+        options: ["Worm", "Virus", "Trojan", "Ransomware"],
         correct: 0,
     },
     // 33
     {
         id: 33,
-        question: "Which of the following is a type of memory management technique?",
-        options: ["Paging", "Segmentation", "Both A and B", "Neither"],
-        correct: 2,
+        question: "What is a Trojan horse?",
+        options: [
+            "Malware that disguises itself as legitimate software but performs malicious actions",
+            "A type of virus that infects files",
+            "A worm",
+            "A ransomware variant",
+        ],
+        correct: 0,
     },
     // 34
     {
         id: 34,
-        question: "What is a page fault?",
+        question: "What is the difference between a vulnerability and an exploit?",
         options: [
-            "An interrupt that occurs when a program accesses a page that is not in memory",
-            "A hardware error",
-            "A scheduling error",
-            "A file system error",
+            "A vulnerability is a weakness; an exploit is the code or technique that takes advantage of that weakness",
+            "They are the same",
+            "An exploit is a weakness; vulnerability is the attack",
+            "They are unrelated",
         ],
         correct: 0,
     },
     // 35
     {
         id: 35,
-        question: "Which of the following is a disk scheduling algorithm?",
-        options: ["FCFS", "SSTF", "SCAN", "All of the above"],
-        correct: 3,
+        question: "What is a patch?",
+        options: [
+            "A piece of code that fixes a vulnerability or bug in a software application",
+            "A type of malware",
+            "A network device",
+            "A security policy",
+        ],
+        correct: 0,
     },
     // 36
     {
         id: 36,
-        question: "What is the purpose of a file descriptor?",
+        question: "What is the principle of defense-in-depth?",
         options: [
-            "An identifier for an open file",
-            "A file name",
-            "A directory entry",
-            "A file system type",
+            "Using multiple layers of security to protect systems and data",
+            "Using a single strong security measure",
+            "Removing all security controls",
+            "Focusing only on network security",
         ],
         correct: 0,
     },
     // 37
     {
         id: 37,
-        question: "Which of the following is a characteristic of a distributed operating system?",
+        question: "What is a honey pot in cybersecurity?",
         options: [
-            "Multiple independent systems appear as a single system",
-            "Centralized control",
-            "Single point of failure",
-            "All of the above",
+            "A decoy system designed to lure attackers and study their methods",
+            "A type of encryption",
+            "A firewall rule",
+            "A backup server",
         ],
         correct: 0,
     },
     // 38
     {
         id: 38,
-        question: "What is a system call interface?",
-        options: [
-            "The boundary between user programs and the kernel",
-            "A file system",
-            "A scheduling algorithm",
-            "A memory management unit",
-        ],
-        correct: 0,
+        question: "Which of the following is a type of access control model?",
+        options: ["RBAC", "DAC", "MAC", "All of the above"],
+        correct: 3,
     },
     // 39
     {
         id: 39,
-        question: "Which of the following is a real-time scheduling algorithm?",
-        options: ["Rate Monotonic", "Earliest Deadline First", "Both A and B", "Round Robin"],
-        correct: 2,
+        question: "What does RBAC stand for?",
+        options: [
+            "Role-Based Access Control",
+            "Rule-Based Access Control",
+            "Risk-Based Access Control",
+            "Resource-Based Access Control",
+        ],
+        correct: 0,
     },
     // 40
     {
         id: 40,
-        question: "What is the role of a file system in an OS?",
+        question: "What is the purpose of a security audit?",
         options: [
-            "To organize and store data on storage devices",
-            "To manage memory",
-            "To schedule processes",
-            "To handle network communication",
+            "To assess and evaluate the security posture of an organization",
+            "To install security software",
+            "To train employees",
+            "To write security policies",
         ],
         correct: 0,
     },
     // 41
     {
         id: 41,
-        question: "Which of the following is a type of operating system structure?",
+        question: "Which of the following is an example of a physical security measure?",
         options: [
-            "Monolithic kernel",
-            "Microkernel",
-            "Hybrid kernel",
-            "All of the above",
+            "Biometric locks",
+            "Firewalls",
+            "Antivirus",
+            "Encryption",
         ],
-        correct: 3,
+        correct: 0,
     },
     // 42
     {
         id: 42,
-        question: "What is the purpose of a system boot?",
+        question: "What is the role of incident response?",
         options: [
-            "To start the operating system",
-            "To shut down the system",
-            "To manage processes",
-            "To allocate memory",
+            "To prepare, detect, contain, and recover from security incidents",
+            "To prevent all attacks",
+            "To install new software",
+            "To update passwords",
         ],
         correct: 0,
     },
     // 43
     {
         id: 43,
-        question: "Which of the following is a security mechanism in OS?",
+        question: "What is a VPN gateway?",
         options: [
-            "Authentication",
-            "Authorization",
-            "Encryption",
-            "All of the above",
+            "A device that establishes secure VPN connections between networks",
+            "A type of firewall",
+            "An encryption algorithm",
+            "A malware detection tool",
         ],
-        correct: 3,
+        correct: 0,
     },
     // 44
     {
         id: 44,
-        question: "What is a zombie process?",
-        options: [
-            "A process that has terminated but still has an entry in the process table",
-            "A process that is running",
-            "A process that is waiting for I/O",
-            "A process that is in the ready queue",
-        ],
+        question: "Which of the following is a wireless security protocol?",
+        options: ["WPA3", "SSL", "IPsec", "HTTPS"],
         correct: 0,
     },
     // 45
     {
         id: 45,
-        question: "What is the role of the dispatcher in scheduling?",
+        question: "What is an access control list (ACL)?",
         options: [
-            "To give control of the CPU to the selected process",
-            "To select the next process to run",
-            "To manage memory",
-            "To handle interrupts",
+            "A list of permissions attached to a resource specifying which users or systems can access it",
+            "A list of all employees",
+            "A type of encryption key",
+            "A network topology",
         ],
         correct: 0,
     },
     // 46
     {
         id: 46,
-        question: "Which of the following is a type of I/O buffering?",
+        question: "What is a keylogger?",
         options: [
-            "Single buffer",
-            "Double buffer",
-            "Circular buffer",
-            "All of the above",
+            "Malware that records keystrokes to capture sensitive information",
+            "A type of firewall",
+            "A hardware security device",
+            "A password manager",
         ],
-        correct: 3,
+        correct: 0,
     },
     // 47
     {
         id: 47,
-        question: "What is the purpose of a system call library?",
+        question: "What is the purpose of a non-disclosure agreement (NDA) in cybersecurity?",
         options: [
-            "To provide an interface for system calls to user programs",
-            "To manage files",
-            "To schedule processes",
-            "To manage memory",
+            "To legally bind individuals or organizations to protect confidential information",
+            "To encrypt data",
+            "To provide antivirus protection",
+            "To establish a secure network",
         ],
         correct: 0,
     },
     // 48
     {
         id: 48,
-        question: "Which of the following is a type of interrupt?",
-        options: ["Hardware interrupt", "Software interrupt", "Exception", "All of the above"],
-        correct: 3,
+        question: "Which of the following is a risk management process?",
+        options: [
+            "Risk identification, assessment, mitigation, and monitoring",
+            "Only installing antivirus",
+            "Ignoring risks",
+            "Buying insurance",
+        ],
+        correct: 0,
     },
     // 49
     {
         id: 49,
-        question: "What is the role of the process scheduler?",
+        question: "What is the difference between a vulnerability and a threat?",
         options: [
-            "To manage the execution of processes",
-            "To manage memory",
-            "To manage files",
-            "To manage network connections",
+            "A vulnerability is a weakness; a threat is a potential cause of harm exploiting that weakness",
+            "They are synonyms",
+            "A threat is a weakness; a vulnerability is a cause of harm",
+            "They are unrelated",
         ],
         correct: 0,
     },
     // 50
     {
         id: 50,
-        question: "Which of the following is an example of a mobile operating system?",
-        options: ["Android", "iOS", "HarmonyOS", "All of the above"],
+        question: "Which of the following is an emerging cybersecurity trend?",
+        options: [
+            "Zero Trust Architecture",
+            "AI in cybersecurity",
+            "Quantum-safe cryptography",
+            "All of the above",
+        ],
         correct: 3,
     },
 ];
 
 // ---------- COMPONENT ----------
-export default function OSQuiz() {
+export default function CybersecurityQuiz() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [selectedAnswers, setSelectedAnswers] = useState(
         new Array(questions.length).fill(null)
@@ -612,18 +631,18 @@ export default function OSQuiz() {
             <Head>
                 {/* Primary Meta Tags */}
                 <title>
-                    Operating Systems Quiz – 50 MCQs Test Your OS Knowledge
+                    Cyber Security Quiz – Test Your Security Knowledge
                 </title>
                 <meta
                     name="description"
-                    content="Test your Operating Systems knowledge with 50 high-quality MCQs covering processes, scheduling, memory management, file systems, deadlocks, and more. Score instantly!"
+                    content="Test your Cyber Security knowledge with 50 high-quality MCQs covering threats, cryptography, network security, malware, policies, and more. Score instantly"
                 />
                 <meta
                     name="keywords"
-                    content="Operating Systems quiz, OS MCQ, process management, scheduling, memory management, file systems, deadlock, virtualization, kernel"
+                    content="Cybersecurity quiz, security MCQ, network security, cryptography, malware, phishing, ransomware, firewall, encryption, access control, SIEM, zero trust"
                 />
                 <meta name="robots" content="index, follow" />
-                <meta name="author" content="OS Quiz" />
+                <meta name="author" content="Cybersecurity Quiz" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta charSet="UTF-8" />
 
@@ -636,22 +655,22 @@ export default function OSQuiz() {
                 <meta name="language" content="en" />
 
                 {/* Open Graph */}
-                <meta property="og:title" content="Operating Systems Quiz – 50 MCQs" />
+                <meta property="og:title" content="Cyber Security Quiz – 50 MCQs" />
                 <meta
                     property="og:description"
-                    content="Test your OS skills with 50 original MCQs. Get instant results and see your score!"
+                    content="Test your cyber Security skills with 50 original MCQs. Get instant results and see your score!"
                 />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://codeskipper.in/test/operating-system" />
+                <meta property="og:url" content="https://codeskipper.in/test/cybersecurity" />
                 <meta
                     property="og:image"
-                    content="https://codeskipper.in/og-image-os.jpg"
+                    content="https://codeskipper.in/og-image-cybersecurity.jpg"
                 />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Operating Systems Quiz – 50 MCQs" />
+                <meta name="twitter:title" content="Cybersecurity Quiz – 50 MCQs" />
                 <meta
                     name="twitter:description"
-                    content="50 original OS MCQs – test your knowledge now!"
+                    content="50 original cybersecurity MCQs – test your knowledge now!"
                 />
 
                 {/* Schema.org JSON-LD */}
@@ -661,16 +680,16 @@ export default function OSQuiz() {
                         __html: JSON.stringify({
                             "@context": "https://schema.org",
                             "@type": "Quiz",
-                            "name": "Operating Systems Quiz",
-                            "description": "50 multiple-choice questions covering processes, scheduling, memory management, file systems, deadlocks, and more.",
+                            "name": "Cybersecurity Quiz",
+                            "description": "50 multiple-choice questions covering threats, encryption, network security, malware, access control, incident response, and more.",
                             "educationalLevel": "Intermediate to Advanced",
                             "about": {
                                 "@type": "Thing",
-                                "name": "Operating Systems",
+                                "name": "Cybersecurity",
                             },
                             "creator": {
                                 "@type": "Organization",
-                                "name": "OS Quiz",
+                                "name": "Cybersecurity Quiz",
                             },
                             "numberOfQuestions": 50,
                         }),
@@ -678,7 +697,7 @@ export default function OSQuiz() {
                 />
 
                 {/* Canonical */}
-                <link rel="canonical" href="https://codeskipper.in/test/operating-system" />
+                <link rel="canonical" href="https://codeskipper.in/test/cybersecurity" />
             </Head>
 
             <SimpleLayout>
@@ -687,10 +706,10 @@ export default function OSQuiz() {
                         {/* Header */}
                         <div className="text-center mb-8">
                             <h1 className="text-3xl md:text-4xl font-bold text-slate-800 tracking-tight">
-                                🖥️ Operating Systems Quiz
+                                🔐 Cybersecurity Quiz
                             </h1>
                             <p className="mt-2 text-slate-600 text-sm md:text-base">
-                                50 original MCQs • Processes • Scheduling • Memory • File Systems • Deadlocks • Virtualization
+                                50 original MCQs • Threats • Encryption • Network Security • Malware • Access Control • Incident Response
                             </p>
                             {!showResults && (
                                 <div className="mt-3 inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm text-sm text-slate-700">

@@ -604,7 +604,7 @@ export default function NetworkingQuiz() {
             <Head>
                 {/* Primary Meta Tags */}
                 <title>
-                    Computer Networking Quiz – 50 MCQs Test Your Knowledge
+                    Computer Networking Quiz – Test Your Knowledge
                 </title>
                 <meta
                     name="description"
@@ -643,10 +643,10 @@ export default function NetworkingQuiz() {
                     content="Test your networking skills with 50 original MCQs. Get instant results and see your score!"
                 />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://yourdomain.com/networking" />
+                <meta property="og:url" content="https://codeskipper.in/test/networking" />
                 <meta
                     property="og:image"
-                    content="https://yourdomain.com/og-image-networking.jpg"
+                    content="https://codeskipper.in/og-image-networking.jpg"
                 />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Computer Networking Quiz – 50 MCQs" />
@@ -679,7 +679,7 @@ export default function NetworkingQuiz() {
                 />
 
                 {/* Canonical */}
-                <link rel="canonical" href="https://yourdomain.com/networking" />
+                <link rel="canonical" href="https://codeskipper.in/test/networking" />
             </Head>
             <SimpleLayout>
 

@@ -99,7 +99,7 @@ const RoadmapHome = () => {
 
     // ===== STATS =====
     const stats = [
-        { value: "10+", label: "Learning Paths" },
+        { value: "5+", label: "Learning Paths" },
         { value: "150+", label: "Modules & Lessons" },
         { value: "800+", label: "Practice Problems" },
         { value: "24/7", label: "Updated Content" },

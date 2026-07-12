@@ -501,10 +501,10 @@ export default function DSAQuiz() {
                     content="Test your DSA skills with 50 original MCQs. Get instant results and see your score!"
                 />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://yourdomain.com/dsa" />
+                <meta property="og:url" content="https://codeskipper.in/test/dsa" />
                 <meta
                     property="og:image"
-                    content="https://yourdomain.com/og-image-dsa.jpg"
+                    content="https://codeskipper.in/og-image-dsa.jpg"
                 />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Data Structures & Algorithms Quiz – 50 MCQs" />
@@ -537,7 +537,7 @@ export default function DSAQuiz() {
                 />
 
                 {/* Canonical */}
-                <link rel="canonical" href="https://yourdomain.com/dsa" />
+                <link rel="canonical" href="https://codeskipper.in/test/dsa" />
             </Head>
 
             <SimpleLayout>

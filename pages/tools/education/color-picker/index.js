@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import SimpleLayout from "@/components/SimpleLayout";
+import Head from "next/head";
 
 const ColorPickerGradientGenerator = () => {
     const [color1, setColor1] = useState("#3498db");
@@ -35,16 +36,251 @@ const ColorPickerGradientGenerator = () => {
 
     return (
         <>
+            <Head>
+                <title>
+                    Free Color Picker & CSS Gradient Generator Online | Code Skipper
+                </title>
+
+                <meta
+                    name="description"
+                    content="Free online Color Picker and CSS Gradient Generator. Generate HEX, RGB, RGBA colors, create beautiful gradients, copy CSS instantly and use them in HTML, CSS, React, Tailwind CSS and web design projects."
+                />
+
+                <meta
+                    name="keywords"
+                    content="color picker, css gradient generator, gradient maker, hex color picker, rgb color converter, rgba color, css tools, web developer tools, online gradient generator, free color picker, tailwind color picker, react color picker"
+                />
+
+                <meta name="robots" content="index, follow, max-image-preview:large" />
+
+                <link
+                    rel="canonical"
+                    href="https://codeskipper.in/tools/education/color-picker"
+                />
+
+                <meta property="og:type" content="website" />
+
+                <meta
+                    property="og:title"
+                    content="Free Color Picker & CSS Gradient Generator"
+                />
+
+                <meta
+                    property="og:description"
+                    content="Generate beautiful CSS gradients and pick colors instantly."
+                />
+
+                <meta
+                    property="og:url"
+                    content="https://codeskipper.in/tools/education/color-picker"
+                />
+
+                <meta property="og:site_name" content="Code Skipper" />
+
+                <meta property="og:image" content="https://codeskipper.in/logo.png" />
+
+                <meta name="twitter:card" content="summary_large_image" />
+
+                <meta
+                    name="twitter:title"
+                    content="Free Color Picker & Gradient Generator"
+                />
+
+                <meta
+                    name="twitter:description"
+                    content="Generate CSS gradients, HEX, RGB, RGBA colors online."
+                />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+
+                            "@context": "https://schema.org",
+
+                            "@type": "SoftwareApplication",
+
+                            "name": "Color Picker & Gradient Generator",
+
+                            "applicationCategory": "DeveloperApplication",
+
+                            "operatingSystem": "Any",
+
+                            "url": "https://codeskipper.in/tools/education/color-picker",
+
+                            "description": "Free online Color Picker and CSS Gradient Generator.",
+
+                            "offers": {
+                                "@type": "Offer",
+                                "price": "0",
+                                "priceCurrency": "USD"
+                            }
+
+                        })
+                    }}
+                />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+
+                            "@context": "https://schema.org",
+
+                            "@type": "BreadcrumbList",
+
+                            "itemListElement": [
+
+                                {
+
+                                    "@type": "ListItem",
+
+                                    "position": 1,
+
+                                    "name": "Home",
+
+                                    "item": "https://codeskipper.in"
+
+                                },
+
+                                {
+
+                                    "@type": "ListItem",
+
+                                    "position": 2,
+
+                                    "name": "Developer Tools",
+
+                                    "item": "https://codeskipper.in/tools"
+
+                                },
+
+                                {
+
+                                    "@type": "ListItem",
+
+                                    "position": 3,
+
+                                    "name": "Color Picker"
+
+                                }
+
+                            ]
+
+                        })
+                    }}
+                />
+            </Head>
             <SimpleLayout>
                 <div className="min-h-screen bg-gradient-to-r from-gray-50 via-blue-50 to-purple-50 flex flex-col items-center justify-center p-6">
-                    <motion.h1
-                        initial={{ y: -30, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 0.6 }}
-                        className="text-5xl font-extrabold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"
-                    >
-                        🎨 Color Picker & Gradient Generator
-                    </motion.h1>
+                    <section className="max-w-6xl mx-auto mt-20 px-4">
+
+                        {/* Heading */}
+                        <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
+                            Free Online Color Picker & CSS Gradient Generator
+                        </h2>
+
+                        {/* Paragraph */}
+                        <p className="text-lg md:text-xl text-gray-600 leading-9 mb-6">
+                            Choosing the perfect color combination is one of the most important parts of
+                            web design, mobile app development, UI/UX design, branding, and graphic
+                            design. Our free Color Picker and CSS Gradient Generator allows you to
+                            generate beautiful gradients instantly, convert HEX to RGB, copy CSS code,
+                            and create stunning color combinations without installing any software.
+                        </p>
+
+                        {/* Second Heading */}
+                        <h3 className="text-3xl font-bold text-blue-700 mb-5">
+                            ✨ Features
+                        </h3>
+
+                        {/* List */}
+                        <ul className="grid md:grid-cols-2 gap-4 mb-10">
+
+                            <li className="flex items-center bg-blue-50 border border-blue-100 rounded-xl p-4 shadow-sm hover:shadow-md transition">
+                                <span className="text-green-500 text-xl mr-3">✔</span>
+                                Unlimited Color Picker
+                            </li>
+
+                            <li className="flex items-center bg-pink-50 border border-pink-100 rounded-xl p-4 shadow-sm hover:shadow-md transition">
+                                <span className="text-green-500 text-xl mr-3">✔</span>
+                                HEX to RGB Converter
+                            </li>
+
+                            <li className="flex items-center bg-purple-50 border border-purple-100 rounded-xl p-4 shadow-sm hover:shadow-md transition">
+                                <span className="text-green-500 text-xl mr-3">✔</span>
+                                RGBA Color Support
+                            </li>
+
+                            <li className="flex items-center bg-yellow-50 border border-yellow-100 rounded-xl p-4 shadow-sm hover:shadow-md transition">
+                                <span className="text-green-500 text-xl mr-3">✔</span>
+                                CSS Gradient Generator
+                            </li>
+
+                            <li className="flex items-center bg-green-50 border border-green-100 rounded-xl p-4 shadow-sm hover:shadow-md transition">
+                                <span className="text-green-500 text-xl mr-3">✔</span>
+                                Live Gradient Preview
+                            </li>
+
+                            <li className="flex items-center bg-indigo-50 border border-indigo-100 rounded-xl p-4 shadow-sm hover:shadow-md transition">
+                                <span className="text-green-500 text-xl mr-3">✔</span>
+                                One Click Copy CSS
+                            </li>
+
+                        </ul>
+
+                        {/* Heading */}
+
+
+                        {/* Ordered List */}
+                        <h3 className="text-3xl font-bold text-pink-700 mb-5">
+                            📌 How to Use
+                        </h3>
+
+                        <ol className="space-y-4">
+
+                            <li className="flex items-start bg-white rounded-xl border p-4 shadow-sm">
+                                <span className="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center mr-4 font-bold">
+                                    1
+                                </span>
+
+                                <p className="text-gray-700 leading-7">
+                                    Select your primary color using the color picker.
+                                </p>
+                            </li>
+
+                            <li className="flex items-start bg-white rounded-xl border p-4 shadow-sm">
+                                <span className="bg-pink-600 text-white w-8 h-8 rounded-full flex items-center justify-center mr-4 font-bold">
+                                    2
+                                </span>
+
+                                <p className="text-gray-700 leading-7">
+                                    Choose your secondary color.
+                                </p>
+                            </li>
+
+                            <li className="flex items-start bg-white rounded-xl border p-4 shadow-sm">
+                                <span className="bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center mr-4 font-bold">
+                                    3
+                                </span>
+
+                                <p className="text-gray-700 leading-7">
+                                    Adjust the gradient angle according to your design needs.
+                                </p>
+                            </li>
+
+                            <li className="flex items-start bg-white rounded-xl border p-4 shadow-sm">
+                                <span className="bg-green-600 text-white w-8 h-8 rounded-full flex items-center justify-center mr-4 font-bold">
+                                    4
+                                </span>
+
+                                <p className="text-gray-700 leading-7">
+                                    Copy the generated CSS and use it in your HTML, CSS, React, Tailwind
+                                    CSS, or Next.js project.
+                                </p>
+                            </li>
+
+                        </ol>
+
+                    </section>
 
                     {/* Color Inputs */}
                     <motion.div
@@ -167,7 +403,16 @@ const ColorPickerGradientGenerator = () => {
                         </div>
                     </motion.div>
 
+                    <h3 className="text-3xl mt-[60px] font-bold text-purple-700 mb-5">
+                        🚀 Who Can Use This Tool?
+                    </h3>
 
+                    <p className="text-lg text-gray-600 leading-9 mb-8">
+                        This online Color Picker tool is designed for Frontend Developers, React
+                        Developers, Next.js Developers, Tailwind CSS users, UI/UX Designers,
+                        Graphic Designers, Students, and anyone looking to build visually appealing
+                        websites or applications.
+                    </p>
                 </div>
             </SimpleLayout>
         </>
