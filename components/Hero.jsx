@@ -11,26 +11,10 @@ import {
 } from "react-icons/fa";
 
 const quickLinks = [
-  { name: "Programming MCQs", link: "/mcq" },
-  { name: "Learning Roadmaps", link: "/roadmap" },
-  { name: "Interview Questions", link: "/interview" },
-  { name: "Computer Glossary", link: "/glossary" },
-  // { name: "Online Courses", link: "/courses" },
-  { name: "Training Institutes", link: "/institute" },
-];
-const technologies = [
-  "HTML",
-  "CSS",
-  "JavaScript",
-  "React",
-  "Next.js",
-  "Node.js",
-  "Express",
-  "MongoDB",
-  "Python",
-  "Java",
-  "Power BI",
-  "AI",
+  { name: "Artificial Intelligence", link: "/mcq/artificial-intelligence" },
+  { name: "Ethical Hacking", link: "/mcq/ethical-hacking-mcq" },
+  { name: "I/O Device", link: "/mcq/io-device" },
+  { name: "Networking", link: "/mcq/networking-mcq" },
 ];
 
 export default function Hero() {
@@ -193,22 +177,16 @@ text-white">
                   Popular Technologies
 
                 </h3>
-
                 <div className="flex flex-wrap mt-4 gap-3">
-
-                  {technologies.map((tech) => (
-
-                    <span
-                      key={tech}
-                      className="bg-white/20 px-4 py-2 rounded-full"
+                  {quickLinks.map((item) => (
+                    <Link
+                      key={item.link}
+                      href={item.link}
+                      className="bg-white/20 px-4 py-2 rounded-full transition-all duration-300 hover:bg-white hover:text-indigo-700 hover:scale-105"
                     >
-
-                      {tech}
-
-                    </span>
-
+                      {item.name}
+                    </Link>
                   ))}
-
                 </div>
 
               </div>

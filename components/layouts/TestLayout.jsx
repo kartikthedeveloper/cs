@@ -1,5 +1,5 @@
 import Navbar from "../Navbar";
-import Roadmap from "../Testsidebar";
+import Test from "../Testsidebar";
 import Footer from "../Footer";
 import { useState } from "react";
 
@@ -15,7 +15,7 @@ export default function Layout({ children }) {
       {/* Main Content */}
       <div className="flex flex-1 relative">
         {/* Sidebar */}
-        <Roadmap isOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        <Test isOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
         {/* Overlay for Mobile */}
         {sidebarOpen && (
@@ -26,7 +26,7 @@ export default function Layout({ children }) {
         )}
 
         {/* Main Content */}
-       <main className="flex-1 p-4 overflow-auto bg-gray-100 text-black dark:text-white min-h-[calc(100vh-64px-48px)] md:min-h-0">
+       <main className="flex-1 p-4 overflow-auto bg-gray-100 dark:bg-gray-800 text-black dark:text-white min-h-[calc(100vh-64px-48px)] md:min-h-0">
           {children}
         </main>
       </div>

@@ -144,7 +144,7 @@ const MCQS_SUBJECTS = [
         id: 4,
         name: "Operating Systems",
         category: "Computer Science",
-        link: "/test/os",
+        link: "/test/operating-system",
         description: "Processes, memory, file systems, concurrency & virtualization.",
         icon: "os",
         difficulty: "Intermediate",
@@ -153,53 +153,10 @@ const MCQS_SUBJECTS = [
         border: "border-amber-200",
         text: "text-amber-700",
     },
-    {
-        id: 5,
-        name: "Computer Architecture",
-        category: "Computer Science",
-        link: "/test/architecture",
-        description: "CPU, pipelining, memory hierarchy, I/O & parallel systems.",
-        icon: "architecture",
-        difficulty: "Advanced",
-        color: "from-rose-500 to-pink-400",
-        bg: "bg-rose-50",
-        border: "border-rose-200",
-        text: "text-rose-700",
-    },
-
-    // ── Programming ──
-    {
-        id: 6,
-        name: "Programming Fundamentals",
-        category: "Programming",
-        link: "/test/programming",
-        description: "Variables, loops, functions, OOP & error handling.",
-        icon: "programming",
-        difficulty: "Beginner",
-        color: "from-sky-500 to-blue-400",
-        bg: "bg-sky-50",
-        border: "border-sky-200",
-        text: "text-sky-700",
-    },
-
-    // ── Web Development ──
-    {
-        id: 7,
-        name: "Web Development",
-        category: "Web Development",
-        link: "/test/webdev",
-        description: "HTML, CSS, JavaScript, React, Node.js & performance.",
-        icon: "webdev",
-        difficulty: "Intermediate",
-        color: "from-fuchsia-500 to-pink-400",
-        bg: "bg-fuchsia-50",
-        border: "border-fuchsia-200",
-        text: "text-fuchsia-700",
-    },
 
     // ── Data Science ──
     {
-        id: 8,
+        id: 5,
         name: "Artificial Intelligence",
         category: "Data Science",
         link: "/test/ai",
@@ -212,7 +169,7 @@ const MCQS_SUBJECTS = [
         text: "text-violet-700",
     },
     {
-        id: 9,
+        id: 6,
         name: "Machine Learning",
         category: "Data Science",
         link: "/test/ml",
@@ -227,7 +184,7 @@ const MCQS_SUBJECTS = [
 
     // ── Cybersecurity ──
     {
-        id: 10,
+        id: 7,
         name: "Cybersecurity",
         category: "Cybersecurity",
         link: "/test/cybersecurity",
@@ -242,7 +199,7 @@ const MCQS_SUBJECTS = [
 
     // ── Cloud Computing ──
     {
-        id: 11,
+        id: 8,
         name: "Cloud Computing",
         category: "Cloud Computing",
         link: "/test/cloud",
@@ -253,21 +210,6 @@ const MCQS_SUBJECTS = [
         bg: "bg-cyan-50",
         border: "border-cyan-200",
         text: "text-cyan-700",
-    },
-
-    // ── Software Engineering ──
-    {
-        id: 12,
-        name: "Software Engineering",
-        category: "Software Engineering",
-        link: "/test/se",
-        description: "SDLC, agile, design patterns, testing & DevOps.",
-        icon: "se",
-        difficulty: "Intermediate",
-        color: "from-teal-500 to-emerald-400",
-        bg: "bg-teal-50",
-        border: "border-teal-200",
-        text: "text-teal-700",
     },
 ];
 
