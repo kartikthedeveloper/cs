@@ -37,6 +37,8 @@ export default function Home() {
         <link rel="icon" href="/Images/favicon.ico" />
 
         <meta name="robots" content="index, follow" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7929787380903765"
+     crossorigin="anonymous"></script>
       </Head>
 
       {/* JSON-LD Structured Data for better SEO */}
