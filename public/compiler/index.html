@@ -1,136 +1,616 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="UTF-8" />
-    <title>Advanced Online Compiler</title>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CodeSkipper Playground — Online Compiler</title>
 
-    <!-- CodeMirror CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css"
-    />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/addon/hint/show-hint.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Split.js for Resizable Panes -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/split.js/1.6.0/split.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/split.js/1.6.0/split.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
-    <!-- html2canvas for Screenshot -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  :root{
+    --bg-0:#0a0d12;
+    --bg-1:#0d1117;
+    --bg-2:#141a22;
+    --bg-3:#1c2430;
+    --border:#262f3c;
+    --text-0:#e8edf4;
+    --text-1:#8b96a5;
+    --text-2:#57626f;
+    --brand:#04AA6D;
+    --brand-glow:rgba(4,170,109,.35);
+    --html-c:#e37933;
+    --css-c:#3b82f6;
+    --js-c:#eab627;
+    --console-c:#a371f7;
+    --danger:#f06464;
+    --radius:8px;
+    --mono:'JetBrains Mono', ui-monospace, monospace;
+    --display:'Space Grotesk', sans-serif;
+  }
+  [data-theme="light"]{
+    --bg-0:#eef1f5;
+    --bg-1:#ffffff;
+    --bg-2:#f4f6f9;
+    --bg-3:#e9edf2;
+    --border:#d8dee6;
+    --text-0:#161b22;
+    --text-1:#57626f;
+    --text-2:#8b96a5;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    font-family:var(--display);
+    background:var(--bg-0);
+    color:var(--text-0);
+    display:flex;
+    flex-direction:column;
+    height:100vh;
+    overflow:hidden;
+    transition:background .25s ease, color .25s ease;
+  }
 
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="toolbar">
-      <a href="https://CodeSkipper.in/">
-        <button>HOME</button>
-      </a>
-      <button onclick="runCode()">▶ Run</button>
-      <button onclick="toggleLayout()">🔁 Toggle Layout</button>
-      <button onclick="toggleDarkMode()">🌙 Dark Mode</button>
-      <button onclick="captureScreenshot()">📸 Screenshot</button>
-      <button onclick="openInNewTab()">🌐 Open in New Tab</button>
-    </div>
+  /* ===== Top bar ===== */
+  .topbar{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:0 16px;
+    height:52px;
+    min-height:52px;
+    background:var(--bg-1);
+    border-bottom:1px solid var(--border);
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    text-decoration:none;
+    color:var(--text-0);
+    font-weight:700;
+    font-size:15px;
+    letter-spacing:.2px;
+    white-space:nowrap;
+  }
+  .brand .mark{
+    width:26px;height:26px;border-radius:7px;
+    background:linear-gradient(135deg, var(--brand), #027a4f);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--mono); font-weight:700; color:#04140d; font-size:13px;
+    box-shadow:0 0 0 1px rgba(255,255,255,.08) inset;
+  }
+  .brand small{color:var(--text-1); font-weight:500; font-size:11px;}
 
-    <div id="container" class="vertical">
-      <div class="split" id="editor-pane">
-        <div class="tabs">
-          <button onclick="switchTab('html')">HTML</button>
-          <button onclick="switchTab('css')">CSS</button>
-          <button onclick="switchTab('js')">JS</button>
-        </div>
+  .topbar-divider{width:1px; height:24px; background:var(--border); flex-shrink:0;}
 
-        <div class="code-area">
-          <!-- HTML Tab -->
-          <div id="tab-html" class="tab-content">
-            <label for="htmlCode">HTML Code Editor</label>
-            <textarea
-              id="htmlCode"
-              title="HTML Code Editor"
-              placeholder="Write your HTML code here"
-            >
-<div class="card">
-  <h1>Welcome to My Page</h1>
-  <p>This is a sample description inside a styled card.</p>
-  <button onclick="showAlert()">Click Me</button>
+  .lang-tabs{display:flex; gap:2px; background:var(--bg-2); padding:3px; border-radius:9px; border:1px solid var(--border);}
+  .lang-tab{
+    display:flex; align-items:center; gap:7px;
+    padding:6px 12px; border:none; background:transparent; color:var(--text-1);
+    font-family:var(--mono); font-size:12.5px; font-weight:600; cursor:pointer;
+    border-radius:6px; transition:all .15s ease; letter-spacing:.3px;
+  }
+  .lang-tab .dot{width:8px;height:8px;border-radius:50%; flex-shrink:0;}
+  .lang-tab[data-lang="html"] .dot{background:var(--html-c);}
+  .lang-tab[data-lang="css"] .dot{background:var(--css-c);}
+  .lang-tab[data-lang="js"] .dot{background:var(--js-c);}
+  .lang-tab.active{background:var(--bg-3); color:var(--text-0); box-shadow:0 0 0 1px var(--border);}
+  .lang-tab:hover:not(.active){color:var(--text-0);}
+
+  .spacer{flex:1;}
+
+  .toolbar-actions{display:flex; align-items:center; gap:6px;}
+  .icon-btn{
+    display:flex; align-items:center; gap:6px;
+    background:var(--bg-2); border:1px solid var(--border); color:var(--text-1);
+    padding:7px 11px; border-radius:7px; cursor:pointer; font-family:var(--display);
+    font-size:12.5px; font-weight:600; transition:all .15s ease; white-space:nowrap;
+  }
+  .icon-btn:hover{ color:var(--text-0); border-color:var(--text-2); background:var(--bg-3);}
+  .icon-btn.primary{
+    background:var(--brand); border-color:var(--brand); color:#04140d;
+    box-shadow:0 0 0 3px var(--brand-glow);
+  }
+  .icon-btn.primary:hover{filter:brightness(1.08);}
+  .icon-btn svg{width:14px;height:14px; flex-shrink:0;}
+  .icon-btn .label{display:inline;}
+  kbd{
+    font-family:var(--mono); font-size:10px; background:rgba(0,0,0,.25);
+    padding:2px 5px; border-radius:4px; border:1px solid var(--border); color:var(--text-1);
+  }
+
+  /* ===== Main split area ===== */
+  #main-split{flex:1; display:flex; min-height:0;}
+  #main-split.vertical{flex-direction:row;}
+  #main-split.horizontal{flex-direction:column;}
+
+  .pane{position:relative; min-width:0; min-height:0; display:flex; flex-direction:column; background:var(--bg-1);}
+  .gutter{background:var(--bg-0); position:relative;}
+  .gutter::after{
+    content:''; position:absolute; background:var(--border); border-radius:3px;
+  }
+  .gutter.gutter-horizontal{cursor:col-resize;}
+  .gutter.gutter-horizontal::after{width:3px; height:36px; top:50%; left:50%; transform:translate(-50%,-50%);}
+  .gutter.gutter-vertical{cursor:row-resize;}
+  .gutter.gutter-vertical::after{height:3px; width:36px; top:50%; left:50%; transform:translate(-50%,-50%);}
+
+  /* editor pane */
+  #editor-pane .editor-wrap{flex:1; min-height:0; position:relative;}
+  .CodeMirror{height:100% !important; font-family:var(--mono) !important; font-size:13.5px; line-height:1.6;}
+  .editor-box{position:absolute; inset:0; display:none;}
+  .editor-box.active{display:block;}
+
+  /* output pane */
+  #output-pane{background:#fff;}
+  .output-header{
+    display:flex; align-items:center; gap:8px; padding:8px 12px;
+    background:var(--bg-2); border-bottom:1px solid var(--border); flex-shrink:0;
+  }
+  .traffic{display:flex; gap:6px;}
+  .traffic span{width:10px;height:10px;border-radius:50%;}
+  .traffic span:nth-child(1){background:#ff5f57;}
+  .traffic span:nth-child(2){background:#febc2e;}
+  .traffic span:nth-child(3){background:#28c840;}
+  .output-url{
+    flex:1; background:var(--bg-1); border:1px solid var(--border); border-radius:6px;
+    color:var(--text-2); font-family:var(--mono); font-size:11px; padding:4px 10px; text-align:center;
+  }
+  .output-frame-wrap{flex:1; min-height:0; position:relative;}
+  #output{width:100%; height:100%; border:none; display:block; background:#fff;}
+
+  /* console drawer */
+  #console-drawer{
+    height:34%; min-height:80px; flex-shrink:0; border-top:1px solid var(--border);
+    background:var(--bg-0); display:flex; flex-direction:column; transition:height .18s ease;
+  }
+  #console-drawer.collapsed{height:34px !important;}
+  .console-head{
+    display:flex; align-items:center; gap:8px; padding:6px 12px; height:34px; min-height:34px;
+    background:var(--bg-2); cursor:pointer; flex-shrink:0; user-select:none;
+  }
+  .console-head .dot{width:8px;height:8px;border-radius:50%; background:var(--console-c);}
+  .console-head span{font-family:var(--mono); font-size:11.5px; font-weight:600; color:var(--text-1); letter-spacing:.4px;}
+  .console-head .count{
+    background:var(--console-c); color:#1a0d29; font-size:10px; font-weight:700;
+    padding:1px 6px; border-radius:8px; font-family:var(--mono);
+  }
+  .console-body{flex:1; overflow-y:auto; font-family:var(--mono); font-size:12px; padding:4px 0;}
+  .console-line{
+    padding:5px 14px; border-bottom:1px solid rgba(255,255,255,.03); white-space:pre-wrap; word-break:break-word;
+    display:flex; gap:9px;
+  }
+  .console-line .tag{color:var(--text-2); flex-shrink:0;}
+  .console-line.log{color:var(--text-0);}
+  .console-line.warn{color:#e2b93b; background:rgba(226,185,59,.06);}
+  .console-line.error{color:var(--danger); background:rgba(240,100,100,.07);}
+  .console-empty{padding:14px; color:var(--text-2); font-size:12px;}
+
+  /* status bar */
+  .statusbar{
+    display:flex; align-items:center; gap:16px; padding:0 14px; height:26px; min-height:26px;
+    background:var(--brand); color:#04140d; font-family:var(--mono); font-size:11px; font-weight:600;
+    flex-shrink:0;
+  }
+  .statusbar .seg{display:flex; align-items:center; gap:5px;}
+  .statusbar .sep{flex:1;}
+  .pulse{width:6px;height:6px;border-radius:50%; background:#04140d; animation:pulse 1.6s infinite ease-in-out;}
+  @keyframes pulse{0%,100%{opacity:.35;} 50%{opacity:1;}}
+
+  /* toast */
+  #toast{
+    position:fixed; bottom:36px; left:50%; transform:translateX(-50%) translateY(20px);
+    background:var(--bg-3); color:var(--text-0); border:1px solid var(--border);
+    padding:9px 16px; border-radius:8px; font-size:12.5px; font-family:var(--display); font-weight:600;
+    opacity:0; pointer-events:none; transition:all .25s ease; z-index:999; box-shadow:0 8px 24px rgba(0,0,0,.35);
+    display:flex; align-items:center; gap:8px;
+  }
+  #toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+  #toast .dot{width:6px;height:6px;border-radius:50%; background:var(--brand);}
+
+  ::-webkit-scrollbar{width:10px; height:10px;}
+  ::-webkit-scrollbar-track{background:transparent;}
+  ::-webkit-scrollbar-thumb{background:var(--bg-3); border-radius:6px; border:2px solid var(--bg-1);}
+  ::-webkit-scrollbar-thumb:hover{background:var(--border);}
+
+  @media (max-width:760px){
+    .icon-btn .label{display:none;}
+    .brand small{display:none;}
+    .topbar{gap:8px; padding:0 10px;}
+  }
+</style>
+</head>
+
+<body data-theme="dark">
+
+<div class="topbar">
+  <a class="brand" href="https://CodeSkipper.in/" title="CodeSkipper Home">
+    <span class="mark">CS</span>
+    <span>CodeSkipper<small style="margin-left:6px;">Playground</small></span>
+  </a>
+  <div class="topbar-divider"></div>
+
+  <div class="lang-tabs" role="tablist">
+    <button class="lang-tab active" data-lang="html"><span class="dot"></span>HTML</button>
+    <button class="lang-tab" data-lang="css"><span class="dot"></span>CSS</button>
+    <button class="lang-tab" data-lang="js"><span class="dot"></span>JS</button>
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="toolbar-actions">
+    <button class="icon-btn primary" id="btn-run" title="Run (Ctrl+Enter)">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      <span class="label">Run</span>
+    </button>
+    <button class="icon-btn" id="btn-layout" title="Toggle layout">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="8" height="16" rx="1"/><rect x="13" y="4" width="8" height="16" rx="1"/></svg>
+      <span class="label">Layout</span>
+    </button>
+    <button class="icon-btn" id="btn-theme" title="Toggle dark/light">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a9 9 0 109 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 01-4.4 2.26 5.403 5.403 0 01-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg>
+      <span class="label">Theme</span>
+    </button>
+    <button class="icon-btn" id="btn-shot" title="Screenshot output">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8V6a2 2 0 012-2h2M20 8V6a2 2 0 00-2-2h-2M4 16v2a2 2 0 002 2h2M20 16v2a2 2 0 01-2 2h-2"/><circle cx="12" cy="12" r="3"/></svg>
+      <span class="label">Snap</span>
+    </button>
+    <button class="icon-btn" id="btn-newtab" title="Open output in new tab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
+      <span class="label">Open</span>
+    </button>
+    <button class="icon-btn" id="btn-download" title="Download as .html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+      <span class="label">Save</span>
+    </button>
+    <button class="icon-btn" id="btn-share" title="Copy shareable link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+      <span class="label">Share</span>
+    </button>
+    <button class="icon-btn" id="btn-reset" title="Reset to default template">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+      <span class="label">Reset</span>
+    </button>
+  </div>
 </div>
-            </textarea>
-          </div>
 
-          <!-- CSS Tab -->
-          <div id="tab-css" class="tab-content hidden">
-            <label for="cssCode">CSS Code Editor</label>
-            <textarea
-              id="cssCode"
-              title="CSS Code Editor"
-              placeholder="Write your CSS code here"
-            >
-body {
-  background-color: #f0f0f0;
-  font-family: Arial, sans-serif;
-  text-align: center;
-  padding: 50px;
-}
+<div id="main-split" class="vertical">
+  <div class="pane" id="editor-pane">
+    <div class="editor-wrap">
+      <div class="editor-box active" id="box-html"><textarea id="htmlCode"></textarea></div>
+      <div class="editor-box" id="box-css"><textarea id="cssCode"></textarea></div>
+      <div class="editor-box" id="box-js"><textarea id="jsCode"></textarea></div>
+    </div>
+  </div>
 
-.card {
-  background-color: white;
-  padding: 30px;
-  margin: auto;
-  width: 300px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
-
-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #04AA6D;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-            </textarea>
-          </div>
-
-          <!-- JS Tab -->
-          <div id="tab-js" class="tab-content hidden">
-            <label for="jsCode">JavaScript Code Editor</label>
-            <textarea
-              id="jsCode"
-              title="JavaScript Code Editor"
-              placeholder="Write your JavaScript code here"
-            >
-function showAlert() {
-  alert("Button clicked!");
-  console.log("Button was clicked!");
-}
-            </textarea>
-          </div>
-        </div>
+  <div class="pane" id="output-pane">
+    <div class="output-header">
+      <div class="traffic"><span></span><span></span><span></span></div>
+      <div class="output-url">preview://codeskipper.playground</div>
+      <button class="icon-btn" id="btn-fullscreen" title="Fullscreen preview" style="padding:5px 9px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px;"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3M3 16v3a2 2 0 002 2h3m11-5v3a2 2 0 01-2 2h-3"/></svg>
+      </button>
+    </div>
+    <div class="output-frame-wrap">
+      <iframe id="output" title="Live output" sandbox="allow-scripts allow-modals allow-popups allow-forms"></iframe>
+    </div>
+    <div id="console-drawer">
+      <div class="console-head" id="console-toggle">
+        <span class="dot"></span>
+        <span>CONSOLE</span>
+        <span class="count" id="console-count">0</span>
+        <div style="flex:1;"></div>
+        <button class="icon-btn" id="btn-clear-console" style="padding:3px 8px; font-size:10.5px;" title="Clear console">Clear</button>
       </div>
-
-      <div class="split" id="output-pane">
-        <iframe id="output"></iframe>
+      <div class="console-body" id="console-body">
+        <div class="console-empty">Console output will appear here when you run your code.</div>
       </div>
     </div>
+  </div>
+</div>
 
-    <!-- CodeMirror JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/addon/hint/show-hint.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/addon/hint/html-hint.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/addon/hint/show-hint.min.css"
-    />
+<div class="statusbar">
+  <div class="seg"><span class="pulse"></span><span id="status-lang">HTML</span></div>
+  <div class="seg" id="status-pos">Ln 1, Col 1</div>
+  <div class="seg" id="status-chars">0 chars</div>
+  <div class="sep"></div>
+  <div class="seg" id="status-autorun">Auto-run: ON</div>
+  <div class="seg"><kbd>Ctrl</kbd>+<kbd>Enter</kbd> to run</div>
+</div>
 
-    <script src="script.js"></script>
-  </body>
+<div id="toast"><span class="dot"></span><span id="toast-msg">Saved</span></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/addon/hint/show-hint.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/addon/hint/html-hint.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/addon/hint/css-hint.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/addon/hint/javascript-hint.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/addon/edit/closetag.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/addon/edit/closebrackets.min.js"></script>
+
+<script>
+(function(){
+  "use strict";
+
+  var DEFAULTS = {
+    html: '<div class="card">\n  <h1>Welcome to CodeSkipper</h1>\n  <p>Edit HTML, CSS &amp; JS on the left — the preview updates live.</p>\n  <button onclick="showAlert()">Click Me</button>\n</div>',
+    css: 'body {\n  background-color: #f0f0f0;\n  font-family: Arial, sans-serif;\n  text-align: center;\n  padding: 50px;\n}\n\n.card {\n  background-color: white;\n  padding: 30px;\n  margin: auto;\n  width: 320px;\n  border-radius: 10px;\n  box-shadow: 0 4px 16px rgba(0,0,0,0.15);\n}\n\nbutton {\n  margin-top: 20px;\n  padding: 10px 20px;\n  background-color: #04AA6D;\n  color: white;\n  border: none;\n  border-radius: 6px;\n  cursor: pointer;\n  font-weight: 600;\n}\n\nbutton:hover {\n  filter: brightness(1.08);\n}',
+    js: 'function showAlert() {\n  console.log("Button was clicked!");\n  alert("Button clicked!");\n}\n\nconsole.log("Code Skipper Terminal ready.");'
+  };
+
+  var state = { lang: 'html', layout: 'vertical', theme: 'dark', autorun: true, consoleCount: 0 };
+  var editors = {};
+  var splitInstance = null;
+  var runTimer = null;
+
+  function makeEditor(id, mode){
+    var cm = CodeMirror.fromTextArea(document.getElementById(id), {
+      mode: mode,
+      theme: state.theme === 'dark' ? 'dracula' : 'default',
+      lineNumbers: true,
+      autoCloseTags: true,
+      autoCloseBrackets: true,
+      indentUnit: 2,
+      tabSize: 2,
+      extraKeys: {
+        "Ctrl-Space": "autocomplete",
+        "Ctrl-Enter": function(){ runCode(); },
+        "Cmd-Enter": function(){ runCode(); }
+      }
+    });
+    cm.on('change', function(){
+      if(!state.autorun) return;
+      clearTimeout(runTimer);
+      runTimer = setTimeout(runCode, 500);
+    });
+    cm.on('cursorActivity', function(){ updateStatus(cm); });
+    return cm;
+  }
+
+  function init(){
+    document.getElementById('htmlCode').value = DEFAULTS.html;
+    document.getElementById('cssCode').value = DEFAULTS.css;
+    document.getElementById('jsCode').value = DEFAULTS.js;
+
+    editors.html = makeEditor('htmlCode', 'htmlmixed');
+    editors.css  = makeEditor('cssCode', 'css');
+    editors.js   = makeEditor('jsCode', 'javascript');
+
+    restoreFromHash();
+    initSplit();
+    bindUI();
+    updateStatus(editors.html);
+    runCode();
+  }
+
+  function initSplit(){
+    if(splitInstance) splitInstance.destroy();
+    var isVertical = state.layout === 'vertical';
+    document.getElementById('main-split').className = state.layout;
+    splitInstance = Split(['#editor-pane', '#output-pane'], {
+      sizes: [50,50],
+      minSize: [260,260],
+      gutterSize: 8,
+      direction: isVertical ? 'horizontal' : 'vertical'
+    });
+    setTimeout(function(){ Object.values(editors).forEach(function(e){ e.refresh(); }); }, 60);
+  }
+
+  function switchTab(lang){
+    state.lang = lang;
+    document.querySelectorAll('.lang-tab').forEach(function(t){ t.classList.toggle('active', t.dataset.lang === lang); });
+    document.querySelectorAll('.editor-box').forEach(function(b){ b.classList.remove('active'); });
+    document.getElementById('box-'+lang).classList.add('active');
+    editors[lang].refresh();
+    editors[lang].focus();
+    updateStatus(editors[lang]);
+  }
+
+  function updateStatus(cm){
+    var pos = cm.getCursor();
+    document.getElementById('status-lang').textContent = state.lang.toUpperCase();
+    document.getElementById('status-pos').textContent = 'Ln ' + (pos.line+1) + ', Col ' + (pos.ch+1);
+    document.getElementById('status-chars').textContent = cm.getValue().length + ' chars';
+  }
+
+  function buildDoc(){
+    var consoleBridge =
+      '<script>' +
+      '(function(){' +
+      'var post = function(type, args){ try{ parent.postMessage({__cs_console:true, type:type, args:args.map(function(a){ try{ return typeof a==="object" ? JSON.stringify(a) : String(a);}catch(e){return String(a);} })}, "*"); }catch(e){} };' +
+      '["log","warn","error","info"].forEach(function(m){' +
+      'var orig = console[m];' +
+      'console[m] = function(){ post(m==="info"?"log":m, Array.prototype.slice.call(arguments)); orig.apply(console, arguments); };' +
+      '});' +
+      'window.addEventListener("error", function(e){ post("error", [e.message + " (line " + e.lineno + ")"]); });' +
+      '})();' +
+      '<\/script>';
+
+    return '<!DOCTYPE html><html><head><meta charset="UTF-8">' +
+      '<style>' + editors.css.getValue() + '</style>' +
+      '</head><body>' + consoleBridge +
+      editors.html.getValue() +
+      '<script>' + editors.js.getValue() + '<\/script>' +
+      '</body></html>';
+  }
+
+  function runCode(){
+    var doc = buildDoc();
+    document.getElementById('output').srcdoc = doc;
+    flashStatus();
+  }
+
+  function flashStatus(){
+    var el = document.getElementById('status-autorun');
+    el.textContent = 'Ran ' + new Date().toLocaleTimeString();
+    setTimeout(function(){ el.textContent = 'Auto-run: ' + (state.autorun ? 'ON' : 'OFF'); }, 1200);
+  }
+
+  function addConsoleLine(type, text){
+    var body = document.getElementById('console-body');
+    var empty = body.querySelector('.console-empty');
+    if(empty) empty.remove();
+    var line = document.createElement('div');
+    line.className = 'console-line ' + type;
+    var tag = document.createElement('span');
+    tag.className = 'tag';
+    tag.textContent = type === 'error' ? '✕' : type === 'warn' ? '!' : '>';
+    var msg = document.createElement('span');
+    msg.textContent = text;
+    line.appendChild(tag); line.appendChild(msg);
+    body.appendChild(line);
+    body.scrollTop = body.scrollHeight;
+    state.consoleCount++;
+    document.getElementById('console-count').textContent = state.consoleCount;
+  }
+
+  function clearConsole(){
+    state.consoleCount = 0;
+    document.getElementById('console-count').textContent = '0';
+    var body = document.getElementById('console-body');
+    body.innerHTML = '<div class="console-empty">Console output will appear here when you run your code.</div>';
+  }
+
+  function toggleLayout(){
+    state.layout = state.layout === 'vertical' ? 'horizontal' : 'vertical';
+    initSplit();
+  }
+
+  function toggleTheme(){
+    state.theme = state.theme === 'dark' ? 'light' : 'dark';
+    document.body.setAttribute('data-theme', state.theme);
+    var cmTheme = state.theme === 'dark' ? 'dracula' : 'default';
+    Object.values(editors).forEach(function(e){ e.setOption('theme', cmTheme); });
+    showToast('Theme: ' + state.theme);
+  }
+
+  function takeScreenshot(){
+    var target = document.querySelector('.output-frame-wrap');
+    html2canvas(target, {useCORS:true, backgroundColor:'#ffffff'}).then(function(canvas){
+      var link = document.createElement('a');
+      link.download = 'codeskipper-preview.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+      showToast('Screenshot saved');
+    }).catch(function(){ showToast('Could not capture (cross-origin content)'); });
+  }
+
+  function openNewTab(){
+    var blob = new Blob([buildDoc()], {type:'text/html'});
+    var url = URL.createObjectURL(blob);
+    window.open(url, '_blank');
+    showToast('Opened in new tab');
+  }
+
+  function downloadHtml(){
+    var blob = new Blob([buildDoc()], {type:'text/html'});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url; a.download = 'my-codeskipper-project.html';
+    a.click();
+    URL.revokeObjectURL(url);
+    showToast('Downloaded my-codeskipper-project.html');
+  }
+
+  function shareLink(){
+    var payload = {h: editors.html.getValue(), c: editors.css.getValue(), j: editors.js.getValue()};
+    var encoded = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
+    var url = location.origin + location.pathname + '#code=' + encoded;
+    if(navigator.clipboard){
+      navigator.clipboard.writeText(url).then(function(){ showToast('Link copied to clipboard'); })
+        .catch(function(){ showToast('Copy failed — link built in URL bar'); });
+    }
+    history.replaceState(null, '', '#code=' + encoded);
+  }
+
+  function restoreFromHash(){
+    var hash = location.hash;
+    if(hash.indexOf('#code=') !== 0) return;
+    try{
+      var encoded = hash.replace('#code=', '');
+      var payload = JSON.parse(decodeURIComponent(escape(atob(encoded))));
+      if(payload.h !== undefined) editors.html.setValue(payload.h);
+      if(payload.c !== undefined) editors.css.setValue(payload.c);
+      if(payload.j !== undefined) editors.js.setValue(payload.j);
+    }catch(e){ /* ignore malformed hash */ }
+  }
+
+  function resetAll(){
+    if(!confirm('Reset all code to the default template? This cannot be undone.')) return;
+    editors.html.setValue(DEFAULTS.html);
+    editors.css.setValue(DEFAULTS.css);
+    editors.js.setValue(DEFAULTS.js);
+    clearConsole();
+    runCode();
+    showToast('Reset to default template');
+  }
+
+  function toggleFullscreen(){
+    var el = document.getElementById('output-pane');
+    if(!document.fullscreenElement){
+      (el.requestFullscreen || el.webkitRequestFullscreen || function(){}).call(el);
+    } else {
+      (document.exitFullscreen || document.webkitExitFullscreen || function(){}).call(document);
+    }
+  }
+
+  var toastTimer = null;
+  function showToast(msg){
+    var t = document.getElementById('toast');
+    document.getElementById('toast-msg').textContent = msg;
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 2000);
+  }
+
+  function bindUI(){
+    document.querySelectorAll('.lang-tab').forEach(function(btn){
+      btn.addEventListener('click', function(){ switchTab(btn.dataset.lang); });
+    });
+    document.getElementById('btn-run').addEventListener('click', runCode);
+    document.getElementById('btn-layout').addEventListener('click', toggleLayout);
+    document.getElementById('btn-theme').addEventListener('click', toggleTheme);
+    document.getElementById('btn-shot').addEventListener('click', takeScreenshot);
+    document.getElementById('btn-newtab').addEventListener('click', openNewTab);
+    document.getElementById('btn-download').addEventListener('click', downloadHtml);
+    document.getElementById('btn-share').addEventListener('click', shareLink);
+    document.getElementById('btn-reset').addEventListener('click', resetAll);
+    document.getElementById('btn-fullscreen').addEventListener('click', toggleFullscreen);
+    document.getElementById('btn-clear-console').addEventListener('click', clearConsole);
+    document.getElementById('console-toggle').addEventListener('click', function(e){
+      if(e.target.id === 'btn-clear-console') return;
+      document.getElementById('console-drawer').classList.toggle('collapsed');
+    });
+
+    window.addEventListener('message', function(e){
+      if(e.data && e.data.__cs_console){
+        addConsoleLine(e.data.type, e.data.args.join(' '));
+      }
+    });
+
+    document.addEventListener('keydown', function(e){
+      if((e.ctrlKey || e.metaKey) && e.key === 'Enter'){ e.preventDefault(); runCode(); }
+    });
+
+    window.addEventListener('resize', function(){
+      Object.values(editors).forEach(function(ed){ ed.refresh(); });
+    });
+  }
+
+  init();
+})();
+</script>
+</body>
 </html>
