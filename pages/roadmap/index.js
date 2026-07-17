@@ -11,6 +11,7 @@ import {
     FaServer,
     FaChartLine,
     FaCode,
+    FaBrain,
     FaPython,
     FaJava,
     FaDatabase,
@@ -92,7 +93,17 @@ const RoadmapHome = () => {
             desc: "Components, hooks, state management, routing & performance.",
             link: "/roadmap/react",
         },
-
+        {
+            id: 7,
+            name: "AI Engineer",
+            icon: FaBrain, // react-icons/fa
+            color: "from-violet-500 to-purple-700",
+            bg: "bg-violet-50",
+            text: "text-violet-700",
+            border: "border-violet-200",
+            desc: "Python, ML, Deep Learning, LLMs, GenAI, AI Agents & MLOps.",
+            link: "/roadmap/ai-engineer",
+        },
 
 
     ];
