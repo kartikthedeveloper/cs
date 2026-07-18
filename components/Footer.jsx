@@ -111,7 +111,7 @@ const Footer = () => {
 
               {/* WhatsApp */}
               <a
-                href="https://whatsapp.com/channel/0029Vb7VU8wKwqSMA7l1yL0r"
+                href="https://whatsapp.com/channel/0029Vb8U5M55Ejy1Ktn2sY1Y"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp Channel"

@@ -323,10 +323,7 @@ const InterviewHome = () => {
                         </div>
                     </motion.section>
 
-                    {/* ===== FOOTER NOTE ===== */}
-                    <div className="text-center text-sm text-gray-500 border-t border-gray-200 pt-8 mt-4">
-                        <p>© 2026 Code Skipper — Technical Interview Preparation. Updated weekly with love ❤️</p>
-                    </div>
+             
 
                 </div>
             </section>

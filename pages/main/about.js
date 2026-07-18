@@ -1,5 +1,6 @@
 // pages/about.js
 import { motion } from 'framer-motion';
+import Image from "next/image";
 import {
     FaRocket, FaUsers, FaCode, FaTrophy, FaHeart,
     FaLaptopCode, FaBook, FaRoad, FaLightbulb, FaBriefcase,
@@ -178,7 +179,59 @@ export default function AboutUs() {
                 {/* ===== FAVICON ===== */}
                 <link rel="icon" href="/Images/favicon.ico" />
                 <link rel="apple-touch-icon" href="/Images/apple-touch-icon.png" />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
 
+                            "@context": "https://schema.org",
+
+                            "@type": "Person",
+
+                            "name": "Kartik Sharma",
+
+                            "jobTitle": "Founder, MERN Stack Developer, Technical Trainer",
+
+                            "url": "https://codeskipper.in",
+
+                            "worksFor": {
+
+                                "@type": "Organization",
+
+                                "name": "CodeSkipper"
+
+                            },
+
+                            "knowsAbout": [
+
+                                "MERN Stack Development",
+
+                                "Web Development",
+
+                                "Node.js",
+
+                                "React.js",
+
+                                "MongoDB",
+
+                                "Express.js",
+
+                                "Digital Marketing",
+
+                                "SEO",
+
+                                "Cyber Security",
+
+                                "Programming"
+
+                            ],
+
+                            "description": "Founder, owner and primary content writer of CodeSkipper. Creates educational content focused on software development, coding interviews, career preparation and digital skills."
+
+                        })
+
+                    }}
+                />
                 {/* ===== STRUCTURED DATA — ORGANIZATION ===== */}
                 <script
                     type="application/ld+json"
@@ -348,7 +401,7 @@ export default function AboutUs() {
                                 {[
                                     { icon: <FaUsers />, value: "1,000+", label: "MCQ's" },
                                     { icon: <FaBook />, value: "1000+", label: "Interview Que Ans" },
-                                    { icon: <FaCode />, value: "5+", label: "Tech Roadmap" },
+                                    { icon: <FaCode />, value: "7+", label: "Tech Roadmap" },
                                     { icon: <FaTrophy />, value: "10+", label: "Free Tools" }
                                 ].map((stat, index) => (
                                     <motion.div
@@ -566,6 +619,198 @@ export default function AboutUs() {
                             </div>
                         </div>
                     </section>
+                    {/* ================= FOUNDER SECTION ================= */}
+
+                    {/* ================= GEO / AUTHOR SECTION ================= */}
+
+                    <section className="py-24 px-4 bg-gradient-to-br from-slate-50 via-white to-blue-50 overflow-hidden">
+                        <div className="max-w-7xl mx-auto">
+
+                            <motion.div
+                                initial={{ opacity: 0, y: 40 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.7 }}
+                                className="text-center mb-16"
+                            >
+                                <span className="inline-block px-5 py-2 rounded-full bg-blue-100 text-blue-700 font-semibold uppercase tracking-wider text-sm">
+                                    Human Written Content
+                                </span>
+
+                                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-6">
+                                    Who Creates Content on
+                                    <span className="text-blue-600"> CodeSkipper?</span>
+                                </h2>
+
+                                <p className="max-w-3xl mx-auto mt-6 text-lg text-gray-600 leading-8">
+                                    Every learning resource on CodeSkipper is designed with one goal —
+                                    helping students understand concepts through practical, industry-focused
+                                    learning instead of memorizing theory.
+                                </p>
+                            </motion.div>
+
+                            <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+                                {/* LEFT IMAGE */}
+
+                                <motion.div
+                                    initial={{ x: -80, opacity: 0 }}
+                                    whileInView={{ x: 0, opacity: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.8 }}
+                                    className="relative"
+                                >
+
+                                    <div className="absolute -inset-5 bg-gradient-to-r from-blue-500 to-purple-600 blur-3xl opacity-20 rounded-3xl"></div>
+
+                                    <div className="relative overflow-hidden rounded-3xl shadow-2xl border border-gray-200">
+
+                                        <img
+                                            src="/Images/kartik-sharma.webp"
+                                            alt="Kartik Sharma - Founder of CodeSkipper"
+                                            className="w-full object-cover"
+                                        />
+
+                                    </div>
+
+                                </motion.div>
+
+
+                                {/* RIGHT CONTENT */}
+
+                                <motion.div
+                                    initial={{ x: 80, opacity: 0 }}
+                                    whileInView={{ x: 0, opacity: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.8 }}
+                                >
+
+                                    <span className="text-blue-600 font-semibold uppercase tracking-wider">
+                                        Founder & Author
+                                    </span>
+
+                                    <h3 className="text-4xl font-bold text-gray-900 mt-3">
+                                        Kartik Sharma
+                                    </h3>
+
+
+                                    <p className="mt-8 text-gray-600 leading-8 text-lg">
+
+                                        Hi, I'm <strong>Kartik Sharma</strong>, founder of
+                                        <strong> CodeSkipper</strong>.
+
+                                        I personally research, write, organize and review the majority of
+                                        educational content available on this platform.
+
+                                        Every roadmap, interview question, programming article,
+                                        MCQ, notes and career resource is created with a practical
+                                        learning approach so students can develop real-world skills
+                                        and prepare for technical interviews with confidence.
+
+                                    </p>
+
+                                    <div className="grid grid-cols-2 gap-5 mt-10">
+
+                                        <div className="bg-white rounded-2xl p-5 shadow-md">
+                                            <h4 className="font-bold text-gray-800">
+                                                Cyber Security
+                                            </h4>
+
+                                            <p className="text-gray-500 mt-2">
+                                                Cyber Crime Intervention Officer
+                                            </p>
+                                        </div>
+
+                                        <div className="bg-white rounded-2xl p-5 shadow-md">
+                                            <h4 className="font-bold text-gray-800">
+                                                Development
+                                            </h4>
+
+                                            <p className="text-gray-500 mt-2">
+                                                MERN Stack Developer & Trainer
+                                            </p>
+                                        </div>
+
+                                        <div className="bg-white rounded-2xl p-5 shadow-md">
+                                            <h4 className="font-bold text-gray-800">
+                                                Digital Marketing
+                                            </h4>
+
+                                            <p className="text-gray-500 mt-2">
+                                                SEO & Digital Marketing Specialist
+                                            </p>
+                                        </div>
+
+                                        <div className="bg-white rounded-2xl p-5 shadow-md">
+                                            <h4 className="font-bold text-gray-800">
+                                                Experience
+                                            </h4>
+
+                                            <p className="text-gray-500 mt-2">
+                                                6+ Years in IT Industry
+                                            </p>
+                                        </div>
+
+                                    </div>
+
+                                    <div className="mt-10 flex flex-wrap gap-3">
+
+                                        {[
+                                            "Industry Experience",
+                                            "Career Focused",
+                                            "Interview Ready"
+                                        ].map((item, index) => (
+
+                                            <motion.span
+                                                key={index}
+                                                whileHover={{ scale: 1.08 }}
+                                                className="px-5 py-2 rounded-full bg-blue-100 text-blue-700 font-medium"
+                                            >
+                                                {item}
+                                            </motion.span>
+
+                                        ))}
+
+                                    </div>
+
+                                </motion.div>
+
+                            </div>
+
+
+                            {/* TRUST BOX */}
+
+                            <motion.div
+                                initial={{ opacity: 0, y: 40 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.2 }}
+                                className="mt-20 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-3xl p-10 text-white shadow-xl"
+                            >
+
+                                <h3 className="text-3xl font-bold mb-6">
+                                    Why You Can Trust CodeSkipper
+                                </h3>
+
+                                <p className="text-blue-100 text-lg leading-8">
+
+                                    CodeSkipper focuses on creating educational content that is
+                                    easy to understand, practical and continuously updated.
+
+                                    Every article, interview question, programming tutorial,
+                                    roadmap and study resource is researched before publishing
+                                    and reviewed to keep it relevant with modern technologies.
+
+                                    Our objective is to help students build real skills,
+                                    improve problem-solving ability and prepare confidently
+                                    for internships, placements and software engineering careers.
+
+                                </p>
+
+                            </motion.div>
+
+                        </div>
+                    </section>
 
                     {/* ===== FAQ SECTION ===== */}
                     <section className="py-20 px-4 bg-gray-50" id="faq">
@@ -642,39 +887,6 @@ export default function AboutUs() {
                         </div>
                     </section>
 
-                    {/* ===== SOCIAL PROOF / COMMUNITY LINKS ===== */}
-                    <section className="py-16 px-4 bg-white">
-                        <div className="max-w-4xl mx-auto text-center">
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                            >
-                                <h3 className="text-2xl font-bold text-gray-800 mb-4">Join Our Community</h3>
-                                <p className="text-gray-600 mb-6">Connect with students on these platforms</p>
-                                <div className="flex flex-wrap justify-center gap-4">
-                                    {[
-                                        { icon: <FaWhatsapp />, label: "WhatsApp", color: "bg-green-500",link:"https://www.whatsapp.com/channel/0029Vb7VU8wKwqSMA7l1yL0r" },
-                                        // { icon: <FaTelegram />, label: "Telegram", color: "bg-blue-500" },
-                                        // { icon: <FaDiscord />, label: "Discord", color: "bg-indigo-500" },
-                                        // { icon: <FaLinkedin />, label: "LinkedIn", color: "bg-blue-700" },
-                                        { icon: <FaYoutube />, label: "YouTube", color: "bg-red-600" }
-                                    ].map((platform, index) => (
-                                        <motion.a
-                                            key={index}
-                                            href="#"
-                                            whileHover={{ scale: 1.05, y: -3 }}
-                                            className={`${platform.color} text-white px-6 py-3 rounded-full flex items-center gap-3 font-medium shadow-md hover:shadow-lg transition-all`}
-                                        >
-                                            {platform.icon}
-                                            {platform.label}
-                                        </motion.a>
-                                    ))}
-                                </div>
-                            </motion.div>
-                        </div>
-                    </section>
-
                     {/* ===== FINAL CTA ===== */}
                     <section className="py-20 px-4 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 text-white">
                         <div className="max-w-4xl mx-auto text-center">
@@ -688,7 +900,7 @@ export default function AboutUs() {
                                 <h2 className="text-4xl md:text-5xl font-bold mb-6">
                                     Ready to Start Your Coding Journey?
                                 </h2>
-                            
+
                                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                     <Link href="/mcq">
                                         <motion.button
