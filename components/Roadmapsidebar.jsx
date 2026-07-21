@@ -7,11 +7,13 @@ export default function Sidebar({ isOpen, setSidebarOpen }) {
   const roadmapSubjects = [
     { id: 1, name: "Home", link: "/roadmap" },
     { id: 8, name: "AI Engineer", link: "/roadmap/ai-engineer" },
+    { id: 8, name: "Android Developer", link: "/roadmap/android-developer" },
     { id: 2, name: "Backend Developer", link: "/roadmap/backend" },
     { id: 3, name: "Cyber Security", link: "/roadmap/cyber-security" },
     { id: 4, name: "Digital Marketing", link: "/roadmap/digital-marketing" },
     { id: 5, name: "Frontend Developer", link: "/roadmap/frontend" },
     { id: 6, name: "Full Stack Web Developer", link: "/roadmap/fullstack" },
+    { id: 6, name: "JAVA Developer", link: "/roadmap/java-developer" },
     { id: 7, name: "React Developer", link: "/roadmap/react" },
 
   ];
