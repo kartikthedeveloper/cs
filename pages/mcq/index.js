@@ -195,16 +195,16 @@ const Home = () => {
       description:
         "Java syntax, OOP, collections, exception handling, and JVM.",
     },
-    {
-      id: 17,
-      name: "JavaScript",
-      category: ["Web Development"],
-      link: "/mcq/javascript-mcq",
-      icon: Braces,
-      gradient: "from-yellow-400 to-yellow-600",
-      description:
-        "JavaScript fundamentals, ES6, DOM, events, and promises.",
-    },
+    // {
+    //   id: 17,
+    //   name: "JavaScript",
+    //   category: ["Web Development"],
+    //   link: "/mcq/javascript-mcq",
+    //   icon: Braces,
+    //   gradient: "from-yellow-400 to-yellow-600",
+    //   description:
+    //     "JavaScript fundamentals, ES6, DOM, events, and promises.",
+    // },
     {
       id: 18,
       name: "Machine Learning",
@@ -225,16 +225,16 @@ const Home = () => {
       description:
         "Graphics, audio, video, animation, and multimedia applications.",
     },
-    {
-      id: 20,
-      name: "Node JS",
-      category: ["Backend Development"],
-      link: "/mcq/node-mcq",
-      icon: Server,
-      gradient: "from-green-600 to-emerald-700",
-      description:
-        "Node.js modules, Express, APIs, and asynchronous programming.",
-    },
+    // {
+    //   id: 20,
+    //   name: "Node JS",
+    //   category: ["Backend Development"],
+    //   link: "/mcq/node-mcq",
+    //   icon: Server,
+    //   gradient: "from-green-600 to-emerald-700",
+    //   description:
+    //     "Node.js modules, Express, APIs, and asynchronous programming.",
+    // },
     {
       id: 21,
       name: "Operating System",
@@ -245,26 +245,26 @@ const Home = () => {
       description:
         "Processes, threads, scheduling, memory management, and file systems.",
     },
-    {
-      id: 22,
-      name: "Python",
-      category: ["Programming"],
-      link: "/mcq/python-mcq",
-      icon: Terminal,
-      gradient: "from-blue-500 to-yellow-500",
-      description:
-        "Python syntax, OOP, modules, functions, and data structures.",
-    },
-    {
-      id: 23,
-      name: "React JS",
-      category: ["Web Development"],
-      link: "/mcq/react-mcq",
-      icon: Atom,
-      gradient: "from-cyan-400 to-blue-600",
-      description:
-        "React components, hooks, state management, and routing.",
-    },
+    // {
+    //   id: 22,
+    //   name: "Python",
+    //   category: ["Programming"],
+    //   link: "/mcq/python-mcq",
+    //   icon: Terminal,
+    //   gradient: "from-blue-500 to-yellow-500",
+    //   description:
+    //     "Python syntax, OOP, modules, functions, and data structures.",
+    // },
+    // {
+    //   id: 23,
+    //   name: "React JS",
+    //   category: ["Web Development"],
+    //   link: "/mcq/react-mcq",
+    //   icon: Atom,
+    //   gradient: "from-cyan-400 to-blue-600",
+    //   description:
+    //     "React components, hooks, state management, and routing.",
+    // },
     {
       id: 24,
       name: "System Design",
